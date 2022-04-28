@@ -77,7 +77,7 @@ begin
     ('DAIRY'),
     ('FROZEN'),
     ('ALCOHOL'),
-    ('BAKERY');
+    ('BAKED GOODS');
 
    insert into item(item_name,quantity,scale,vendor_id,category_id) values
     ('apples',100,'pounds',1,2),

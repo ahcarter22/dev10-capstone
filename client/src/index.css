@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#vendors {
+  border-style: solid;
+  border-radius: 2px;
+  border-color: brown;
+}
+
+#items {
+  background-color: lightyellow;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: green;
+}

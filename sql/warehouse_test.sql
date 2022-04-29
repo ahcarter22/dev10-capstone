@@ -81,9 +81,9 @@ begin
     ('BAKED GOODS');
 
    insert into item(item_name,quantity,scale,expiration_date,vendor_id,category_id) values
-    ('apples',100,'pounds','1988-10-05',1,2),
+    ('apples',100,'pounds','2020-10-05',1,2),
     ('beef sirloin',150,'pounds','2001-01-01',2,1),
-    ('avocados',200,'pounds','2001-09-11',3,2);
+    ('avocados',200,'pounds','2005-09-11',3,2);
 
 end //
 -- 4. Change the statement terminator back to the original.

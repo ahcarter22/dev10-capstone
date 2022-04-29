@@ -22,15 +22,15 @@ function Items() {
         .then(itemData => setItems(itemData))
         .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
         }, []);
-        console.log(items)
-  
 
     function removeItemFromState(itemId) {
         setItems(items.filter(itemObj => itemObj.itemId !== itemId));
     }
 
     function itemFactory() {
-        return items.map(itemObj => (
+        const sortedItems = items.sort((a , b) => a.categoryId - b.categoryId)
+        console.log(sortedItems)
+        return sortedItems.map(itemObj => (
             <Item 
                 key={itemObj.itemId} 
                 itemObj={itemObj} 

@@ -6,8 +6,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Vendors/>
-        <Items />
+        <div id="vendors">
+          <Vendors />
+        </div>
+        <div id= "items">
+          <Items />
+        </div>
+        
         
       </header>
     </div>

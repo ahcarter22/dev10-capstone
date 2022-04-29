@@ -10,8 +10,6 @@ function Vendor(props) {
     const {vendorId, name, email, phone} = props.vendorObj;
     // const [user, setUser] = useContext(AuthContext);
 
-
-   
     return (
         <div className="vendor-card">
             <p><b>Id:</b> {vendorId}</p>

@@ -19,6 +19,7 @@ create table item (
     item_name varchar(30) not null,
     quantity int not null,
     scale varchar(40) not null,
+    expiration_date date not null,
     vendor_id int not null,
     category_id int not null,
     constraint fk_item_vendor_id
@@ -83,9 +84,9 @@ insert into app_user_role
     ('ALCOHOL'),
     ('BAKED GOODS');
 
-   insert into item(item_name,quantity,scale,vendor_id,category_id) values
-    ('apples',100,'pounds',1,2),
-    ('beef sirloin',150,'pounds',2,1),
-    ('avocados',200,'pounds',3,2);
+   insert into item(item_name,quantity,scale,expiration_date,vendor_id,category_id) values
+    ('apples',100,'pounds','1988-10-05',1,2),
+    ('beef sirloin',150,'pounds','2001-01-01',2,1),
+    ('avocados',200,'pounds','2001-09-11',3,2);
 
 

@@ -6,6 +6,7 @@ import warehouse.models.Vendor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class ItemMapper implements RowMapper<Item> {
     @Override
@@ -15,6 +16,11 @@ public class ItemMapper implements RowMapper<Item> {
         item.setName(resultSet.getString("item_name"));
         item.setQuantity(resultSet.getInt("quantity"));
         item.setScale(resultSet.getString("scale"));
+
+        if (resultSet.getDate("expiration_date") != null) {
+            item.setExpirationDate(resultSet.getDate("expiration_date").toLocalDate());
+        }
+
         item.setVendorId(resultSet.getInt("vendor_id"));
         item.setCategoryId(resultSet.getInt("category_id"));
 

@@ -1,5 +1,6 @@
 package warehouse.models;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Item {
@@ -7,6 +8,7 @@ public class Item {
     private String name;
     private int quantity;
     private String scale;
+    private LocalDate expirationDate;
     private int vendorId;
     private int categoryId;
 
@@ -14,20 +16,14 @@ public class Item {
 
     }
 
-    public Item(int itemId, String name, int quantity, String scale, int vendorId, int categoryId) {
+    public Item(int itemId, String name, int quantity, String scale,
+                LocalDate expirationDate, int vendorId, int categoryId) {
         this.itemId = itemId;
         this.name = name;
         this.quantity = quantity;
         this.scale = scale;
+        this.expirationDate = expirationDate;
         this.vendorId = vendorId;
-        this.categoryId = categoryId;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -63,12 +59,28 @@ public class Item {
         this.scale = scale;
     }
 
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
     public int getVendorId() {
         return vendorId;
     }
 
     public void setVendorId(int vendorId) {
         this.vendorId = vendorId;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     @Override

@@ -18,7 +18,7 @@ public class ItemDbRepository implements ItemRepository{
 
     @Override
     public List<Item> findAll() {
-        final String sql = "select item_id, item_name, quantity, scale, vendor_id, category_id from item;";
+        final String sql = "select item_id, item_name, quantity, scale, expiration_date, vendor_id, category_id from item;";
         return jdbcTemplate.query(sql, new ItemMapper());
     }
 

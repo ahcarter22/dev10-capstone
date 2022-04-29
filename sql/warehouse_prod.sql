@@ -18,6 +18,8 @@ create table item (
     item_id int primary key auto_increment,
     item_name varchar(30) not null,
     quantity int not null,
+    vendor_id int not null,
+    category_id int not null,
     constraint fk_item_vendor_id
        foreign key (vendor_id)
        references vendor(vendor_id),

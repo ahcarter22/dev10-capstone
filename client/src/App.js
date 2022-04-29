@@ -1,5 +1,6 @@
 
 import Vendors from './Vendors';
+import Items from './Items';
 
 function App() {
   return (

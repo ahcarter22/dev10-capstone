@@ -105,3 +105,4 @@ insert into app_user_role
     (1, 2),
     (2, 1);
 
+call set_known_good_state();

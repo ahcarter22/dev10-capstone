@@ -1,0 +1,7 @@
+@url = http://localhost:8080/api/item
+
+GET {{url}} HTTP/1.1
+
+###############
+
+GET {{url}}/1 HTTP/1.1

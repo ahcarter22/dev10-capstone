@@ -83,8 +83,6 @@ begin
     ('apples',100,'pounds',1,2),
     ('beef sirloin',150,'pounds',2,1),
     ('avocados',200,'pounds',3,2);
-    
-    
 
 end //
 -- 4. Change the statement terminator back to the original.

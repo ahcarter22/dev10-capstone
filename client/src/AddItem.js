@@ -74,6 +74,21 @@ function AddItem(){
 
                     <label htmlFor="expirationDate"><b>Expiration Date:</b></label><br />
                     <input onChange={handleExpirationDateChange} id="expirationDate"></input><br />
+
+                    <label htmlFor="category"><b>Category:</b></label><br />
+                    <select id="selectCategory">
+                        <option value="meat">Meat</option>
+                        <option value="produce">Produce</option>
+                        <option value="dairy">Dairy</option>
+                    </select><br />
+
+                    <label htmlFor="vendor"><b>Vendor:</b></label><br />
+                    <select id="selectVendor">
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                        <option value="c">c</option>
+                    </select><br />
+
                     <button>Submit</button> <br />
                 </form>
             </div>

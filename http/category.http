@@ -1,0 +1,3 @@
+@url = http://localhost:8080/api/category
+
+GET {{url}} HTTP/1.1

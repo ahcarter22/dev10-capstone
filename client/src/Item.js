@@ -15,7 +15,7 @@ function Item(props) {
     const [categoryName,setCategoryName] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/category",
+        fetch("http://localhost:8080/api/category/" + categoryId,
         {
             headers: {
             //     Authorization: "Bearer " + localStorage.getItem("token")

@@ -37,7 +37,7 @@ public class VendorDbRepository implements VendorRepository{
     @Override
     public Vendor add(Vendor vendor) {
 
-        final String sql = "insert into vendor (vendor_name,vendor_email,vendor_phone) values (?,?,?);";
+        final String sql = "insert into vendor (vendor_name,vendor_email,vendor_phone, item_list) values (?,?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -45,8 +45,10 @@ public class VendorDbRepository implements VendorRepository{
             ps.setString(1, vendor.getName());
             ps.setString(2, vendor.getEmail());
             ps.setString(3, vendor.getPhone());
+            //ps.setString(4, vendor.getItems().toString());
             return ps;
         }, keyHolder);
+
 
         if (rowsAffected <= 0) {
             return null;
@@ -63,9 +65,10 @@ public class VendorDbRepository implements VendorRepository{
                 + "vendor_name = ?, "
                 + "vendor_email = ?, "
                 + "vendor_phone = ? "
+                //+ "item_list = ? "
                 + "where vendor_id = ?;";
 
-        return jdbcTemplate.update(sql, vendor.getName(), vendor.getEmail(), vendor.getPhone(), vendor.getVendorId()) > 0;
+        return jdbcTemplate.update(sql, vendor.getName(), vendor.getEmail(), vendor.getPhone(), /*vendor.getItems().toString(),*/ vendor.getVendorId()) > 0;
     }
 
     @Override

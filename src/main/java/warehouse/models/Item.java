@@ -6,32 +6,18 @@ import java.util.Objects;
 public class Item {
     private int itemId;
     private String name;
-    private int quantity;
+    private Integer quantity;
     private String scale;
     private LocalDate expirationDate;
-    private int vendorId;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Item item = (Item) o;
-        return itemId == item.itemId && quantity == item.quantity && vendorId == item.vendorId && Objects.equals(name, item.name) && Objects.equals(scale, item.scale) && Objects.equals(expirationDate, item.expirationDate) && category == item.category;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(itemId, name, quantity, scale, expirationDate, vendorId, category);
-    }
-
+    private Integer vendorId;
     private Category category;
 
     public Item(){
 
     }
 
-    public Item(int itemId, String name, int quantity, String scale,
-                LocalDate expirationDate, int vendorId, Category category) {
+    public Item(int itemId, String name, Integer quantity, String scale,
+                LocalDate expirationDate, Integer vendorId, Category category) {
         this.itemId = itemId;
         this.name = name;
         this.quantity = quantity;
@@ -57,11 +43,11 @@ public class Item {
         this.name = name;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
@@ -81,20 +67,30 @@ public class Item {
         this.expirationDate = expirationDate;
     }
 
-    public int getVendorId() {
+    public Integer getVendorId() {
         return vendorId;
     }
 
-    public void setVendorId(int vendorId) {
+    public void setVendorId(Integer vendorId) {
         this.vendorId = vendorId;
     }
 
-
-
-
-
     public Category getCategory() {
         return category;
+    }
+  
+  @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return itemId == item.itemId && quantity == item.quantity && vendorId == item.vendorId && Objects.equals(name, item.name) && 
+          Objects.equals(scale, item.scale) && Objects.equals(expirationDate, item.expirationDate) && category == item.category;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemId, name, quantity, scale, expirationDate, vendorId, category);
     }
 
     public void setCategory(Category category) {

@@ -25,6 +25,7 @@ public class ItemService {
     }
 
     public Result<Item> add(Item item){
+
         return null;
     }
 
@@ -33,10 +34,41 @@ public class ItemService {
     }
 
     public boolean deleteById(int itemId){
-        return false;
+
+        return itemRepository.deleteById(itemId);
     }
 
     private Result<Item> validate(Item item){
-        return null;
+
+        Result<Item> result = new Result<>();
+        if (item == null) {
+            result.addMessage("item cannot be null", ResultType.INVALID);
+            return result;
+        }
+        if(Validations.isNullOrBlank(item.getName())){
+            result.addMessage("Name is required", ResultType.INVALID);
+        }
+
+        if(Validations.isNull(item.getQuantity())){
+            result.addMessage("Quantity is required", ResultType.INVALID);
+        }
+
+        if (Validations.isNullOrBlank(item.getScale())){
+            result.addMessage("Scale is required", ResultType.INVALID);
+        }
+
+        if (Validations.isNull(item.getExpirationDate())) {
+            result.addMessage("Date is required", ResultType.INVALID);
+        }
+
+        if (Validations.isNull(item.getVendorId())) {
+            result.addMessage("VendorId required", ResultType.INVALID);
+        }
+
+        if (Validations.isNull(item.getCategoryId())){
+            result.addMessage("CategoryId required", ResultType.INVALID);
+        }
+
+        return result;
     }
 }

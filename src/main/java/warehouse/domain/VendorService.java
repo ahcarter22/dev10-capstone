@@ -64,6 +64,7 @@ public class VendorService {
         return vendorRepository.deleteById(vendorId);
     }
 
+    /*
     //validation checked in ItemService first
     public Result<Vendor> addItem(Integer vendorId, Item item){
         Vendor vendor = this.vendorRepository.findById(vendorId);
@@ -90,6 +91,8 @@ public class VendorService {
     public boolean deleteItemByKey(){
         return false;
     }
+
+    */
 
     private Result<Vendor> validate(Vendor vendor){
         Result<Vendor> result = new Result<>();

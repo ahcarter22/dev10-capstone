@@ -6,8 +6,7 @@ create table vendor(
     vendor_id int primary key auto_increment,
     vendor_name varchar(50) not null,
     vendor_email varchar(50) not null,
-    vendor_phone varchar(20) not null,
-	item_list text(15000)
+    vendor_phone varchar(20) not null
 ); 
 
 create table category (
@@ -56,11 +55,11 @@ create table app_user_role (
         references app_role(app_role_id)
 );
 
-insert into vendor (vendor_name, vendor_email, vendor_phone, item_list)
+insert into vendor (vendor_name, vendor_email, vendor_phone)
    values
-   ("Johnny's Apples", 'apples@johnny.com','347-123-0055', "Johnny's Awesome Apple"),
-   ('Meats For Us', 'meats@meats.com','929-345-0123', null),
-   ('Millennial Avocados','avocados@millennial.org', '646-235-2215', 'Antiboomer Avocado');
+   ("Johnny's Apples", 'apples@johnny.com','347-123-0055'),
+   ('Meats For Us', 'meats@meats.com','929-345-0123'),
+   ('Millennial Avocados','avocados@millennial.org', '646-235-2215');
 
 insert into app_role (`name`) values
     ('EMPLOYEE'),

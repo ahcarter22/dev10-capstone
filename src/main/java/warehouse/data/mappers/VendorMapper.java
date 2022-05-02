@@ -14,6 +14,10 @@ public class VendorMapper implements RowMapper<Vendor> {
         vendor.setName(resultSet.getString("vendor_name"));
         vendor.setEmail(resultSet.getString("vendor_email"));
         vendor.setPhone(resultSet.getString("vendor_phone"));
+        if(resultSet.getString("item_list") != null) {
+            String itemList = resultSet.getString("item_list");
+            String[] item_split = itemList.split(",");
+        }
         return vendor;
     }
 }

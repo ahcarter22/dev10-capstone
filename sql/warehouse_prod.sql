@@ -6,7 +6,8 @@ create table vendor(
     vendor_id int primary key auto_increment,
     vendor_name varchar(50) not null,
     vendor_email varchar(50) not null,
-    vendor_phone varchar(20) not null
+    vendor_phone varchar(20) not null,
+	item_list text(15000)
 ); 
 
 create table category (
@@ -55,11 +56,11 @@ create table app_user_role (
         references app_role(app_role_id)
 );
 
-insert into vendor (vendor_name, vendor_email, vendor_phone)
+insert into vendor (vendor_name, vendor_email, vendor_phone, item_list)
    values
-   ("Johnny's Apples", 'apples@johnny.com','347-123-0055'),
-   ('Meats For Us', 'meats@meats.com','929-345-0123'),
-   ('Millennial Avocados','avocados@millennial.org', '646-235-2215');
+   ("Johnny's Apples", 'apples@johnny.com','347-123-0055', "Johnny's Awesome Apple"),
+   ('Meats For Us', 'meats@meats.com','929-345-0123', null),
+   ('Millennial Avocados','avocados@millennial.org', '646-235-2215', 'Antiboomer Avocado');
 
 insert into app_role (`name`) values
     ('EMPLOYEE'),
@@ -85,8 +86,8 @@ insert into app_user_role
     ('BAKED GOODS');
 
    insert into item(item_name,quantity,scale,expiration_date,vendor_id,category_id) values
-    ('apples',100,'pounds','2020-10-05',1,2),
-    ('beef sirloin',150,'pounds','2001-01-01',2,1),
-    ('avocados',200,'pounds','2005-09-11',3,2);
+    ("Johnny's Awesome Apple",100,'pounds','2020-10-05',1,2),
+    ('SuperMeaty Beef Sirloin',150,'pounds','2001-01-01',2,1),
+    ('Antiboomer Avocado',200,'pounds','2005-09-11',3,2);
 
 

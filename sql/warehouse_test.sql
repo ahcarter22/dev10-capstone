@@ -6,7 +6,8 @@ create table vendor(
     vendor_id int primary key auto_increment,
     vendor_name varchar(50) not null,
     vendor_email varchar(50) not null,
-    vendor_phone varchar(20) not null
+    vendor_phone varchar(20) not null,
+	item_list text(15000)
 ); 
 
 create table category (
@@ -66,11 +67,11 @@ begin
     delete from category;
     alter table category auto_increment = 1;
     
-   insert into vendor (vendor_name, vendor_email, vendor_phone)
+   insert into vendor (vendor_name, vendor_email, vendor_phone, item_list)
    values
-   ("Johnny's Apples", 'apples@johnny.com','347-123-0055'),
-   ('Meats For Us', 'meats@meats.com','929-345-0123'),
-   ('Millennial Avocados','avocados@millennial.org', '646-235-2215');
+   ("Johnny's Apples", 'apples@johnny.com','347-123-0055', "Johnny's Awesome Apple"),
+   ('Meats For Us', 'meats@meats.com','929-345-0123', null),
+   ('Millennial Avocados','avocados@millennial.org', '646-235-2215', 'Antiboomer Avocado');
    
    insert into category(category_name) values
 	('MEATS'),

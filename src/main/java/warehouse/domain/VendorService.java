@@ -2,6 +2,7 @@ package warehouse.domain;
 
 import org.springframework.stereotype.Service;
 import warehouse.data.VendorRepository;
+import warehouse.models.Item;
 import warehouse.models.Vendor;
 
 import java.util.List;
@@ -19,7 +20,6 @@ public class VendorService {
     }
 
     public Vendor findById(int vendorId){
-
         return vendorRepository.findById(vendorId);
     }
 
@@ -64,6 +64,33 @@ public class VendorService {
         return vendorRepository.deleteById(vendorId);
     }
 
+    //validation checked in ItemService first
+    public Result<Vendor> addItem(Integer vendorId, Item item){
+        Vendor vendor = this.vendorRepository.findById(vendorId);
+        List<Item> items = vendor.getItems();
+
+        items.add(item);
+        vendor.setItems(items);
+        return update(vendor);
+    }
+
+    //validation checked in ItemService first
+    public Result<Vendor> updateItem(Integer vendorId, Item updatedItem){
+        Vendor vendor = this.vendorRepository.findById(vendorId);
+        List<Item> items = vendor.getItems();
+        for(Item oldItem: items) {
+            if(oldItem.getItemId() == updatedItem.getItemId()) {
+                oldItem = updatedItem;
+            }
+        }
+
+        vendor.setItems(items);
+        return update(vendor);
+    }
+    public boolean deleteItemByKey(){
+        return false;
+    }
+
     private Result<Vendor> validate(Vendor vendor){
         Result<Vendor> result = new Result<>();
 
@@ -83,7 +110,4 @@ public class VendorService {
         }
         return result;
     }
-//    public Result<Void> addItem(){}
-//    public Result<Void> updateItem(){}
-//    public boolean deleteItemByKey(){}
 }

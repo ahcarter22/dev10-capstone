@@ -55,6 +55,14 @@ public class Vendor {
         this.phone = phone;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

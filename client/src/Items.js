@@ -28,7 +28,7 @@ function Items() {
     }
 
     function itemFactory() {
-        const sortedItems = items.sort((a , b) => a.categoryId - b.categoryId)
+        const sortedItems = items.sort((a , b) => new Date(a.expirationDate) - new Date(b.expirationDate))
         console.log(sortedItems)
         return sortedItems.map(itemObj => (
             <Item 

@@ -20,6 +20,7 @@ function Item(props) {
             <p><b>Expiration Date: </b>{expirationDate}</p>
             <p><b>Category Id: </b> {categoryId}</p>
             <p><b>Vendor Id: </b> {vendorId}</p>
+        
       
         </div>
     )

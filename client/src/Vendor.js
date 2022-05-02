@@ -16,6 +16,8 @@ function Vendor(props) {
             <p><b>Name:</b> {name}</p>
             <p><b>Email:</b> {email}.</p>
             <p><b>Phone:</b> {phone}</p>
+            <Link to ={'/editVendor/'+vendorId}>Edit</Link>
+
       
         </div>
     )

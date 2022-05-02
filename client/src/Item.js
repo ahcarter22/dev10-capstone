@@ -12,7 +12,9 @@ function Item(props) {
         expirationDate, categoryId, vendorId} = props.itemObj;
     // const [user, setUser] = useContext(AuthContext);
 
-    const [categoryName,setCategoryName] = useState([]);
+    const [category,setCategory] = useState([]);
+
+    const [vendor,setVendor] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:8080/api/category/" + categoryId,
@@ -28,9 +30,27 @@ function Item(props) {
                 alert("Something went wrong while fetching...");
             }
             })
-        .then(categoryData=>setCategoryName(categoryData))
+        .then(categoryData=>setCategory(categoryData))
         .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
         }, []);
+
+    useEffect(() => {
+            fetch("http://localhost:8080/api/vendor/" + vendorId,
+            {
+                headers: {
+                //     Authorization: "Bearer " + localStorage.getItem("token")
+                }
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    alert("Something went wrong while fetching...");
+                }
+                })
+            .then(vendorData=>setVendor(vendorData))
+            .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+            }, []);
 
 
     return (
@@ -40,8 +60,8 @@ function Item(props) {
             <p><b>Quantity: </b>{quantity}</p>
             <p><b>Scale: </b>{scale}</p>
             <p><b>Expiration Date: </b>{expirationDate}</p>
-            <p><b>Category Name: </b> {categoryName}</p>
-            <p><b>Vendor Id: </b> {vendorId}</p>
+            <p><b>Category Name: </b> {category}</p>
+            <p><b>Vendor Name: </b> {vendor.name}</p>
             <Link to ={'/editItem/'+itemId}><button >EDIT</button></Link>
             <Link to={"/deleteItem/" + itemId} ><button>DELETE</button></Link>
         

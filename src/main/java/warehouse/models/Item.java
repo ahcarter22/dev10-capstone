@@ -6,18 +6,18 @@ import java.util.Objects;
 public class Item {
     private int itemId;
     private String name;
-    private int quantity;
+    private Integer quantity;
     private String scale;
     private LocalDate expirationDate;
-    private int vendorId;
-    private int categoryId;
+    private Integer vendorId;
+    private Integer categoryId;
 
     public Item(){
 
     }
 
-    public Item(int itemId, String name, int quantity, String scale,
-                LocalDate expirationDate, int vendorId, int categoryId) {
+    public Item(int itemId, String name, Integer quantity, String scale,
+                LocalDate expirationDate, Integer vendorId, Integer categoryId) {
         this.itemId = itemId;
         this.name = name;
         this.quantity = quantity;
@@ -43,11 +43,11 @@ public class Item {
         this.name = name;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
@@ -67,19 +67,19 @@ public class Item {
         this.expirationDate = expirationDate;
     }
 
-    public int getVendorId() {
+    public Integer getVendorId() {
         return vendorId;
     }
 
-    public void setVendorId(int vendorId) {
+    public void setVendorId(Integer vendorId) {
         this.vendorId = vendorId;
     }
 
-    public int getCategoryId() {
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 

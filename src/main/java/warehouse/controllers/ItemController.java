@@ -32,4 +32,13 @@ public class ItemController {
         }
         return ResponseEntity.ok(item);
     }
+
+    @DeleteMapping("/{itemId}")
+    public ResponseEntity<Void> deleteById(@PathVariable int itemId) {
+        if (itemService.deleteById(itemId)) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 }

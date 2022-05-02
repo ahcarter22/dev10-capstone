@@ -2,6 +2,7 @@ package warehouse.data;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import warehouse.data.mappers.ItemMapper;
 import warehouse.data.mappers.VendorMapper;
 import warehouse.models.Item;
@@ -42,8 +43,10 @@ public class ItemDbRepository implements ItemRepository{
     }
 
     @Override
+    @Transactional
     public boolean deleteById(int itemId) {
-        return false;
+
+        return jdbcTemplate.update("delete from item where item_id = ?;", itemId) > 0;
     }
 
     private boolean validate(Item item){

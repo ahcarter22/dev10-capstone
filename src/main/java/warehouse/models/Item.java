@@ -10,21 +10,35 @@ public class Item {
     private String scale;
     private LocalDate expirationDate;
     private int vendorId;
-    private int categoryId;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return itemId == item.itemId && quantity == item.quantity && vendorId == item.vendorId && Objects.equals(name, item.name) && Objects.equals(scale, item.scale) && Objects.equals(expirationDate, item.expirationDate) && category == item.category;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemId, name, quantity, scale, expirationDate, vendorId, category);
+    }
+
+    private Category category;
 
     public Item(){
 
     }
 
     public Item(int itemId, String name, int quantity, String scale,
-                LocalDate expirationDate, int vendorId, int categoryId) {
+                LocalDate expirationDate, int vendorId, Category category) {
         this.itemId = itemId;
         this.name = name;
         this.quantity = quantity;
         this.scale = scale;
         this.expirationDate = expirationDate;
         this.vendorId = vendorId;
-        this.categoryId = categoryId;
+        this.category = category;
     }
 
     public int getItemId() {
@@ -75,24 +89,15 @@ public class Item {
         this.vendorId = vendorId;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+
+
+
+
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Item item = (Item) o;
-        return itemId == item.itemId && quantity == item.quantity && vendorId == item.vendorId && categoryId == item.categoryId && Objects.equals(name, item.name) && Objects.equals(scale, item.scale);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(itemId, name, quantity, scale, vendorId, categoryId);
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

@@ -93,12 +93,6 @@ public class ItemService {
             result.addMessage("VendorId required", ResultType.INVALID);
         }
 
-        /*
-        if (Validations.isNull(item.getCategory())){
-            result.addMessage("CategoryId required", ResultType.INVALID);
-        }
-        */
-
         return result;
     }
 }

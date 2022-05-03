@@ -10,21 +10,21 @@ public class Item {
     private String scale;
     private LocalDate expirationDate;
     private Integer vendorId;
-    private Category category;
+    private Integer categoryId;
 
-    public Item(){
+    public Item() {
 
     }
 
     public Item(int itemId, String name, Integer quantity, String scale,
-                LocalDate expirationDate, Integer vendorId, Category category) {
+                LocalDate expirationDate, Integer vendorId, Integer categoryId) {
         this.itemId = itemId;
         this.name = name;
         this.quantity = quantity;
         this.scale = scale;
         this.expirationDate = expirationDate;
         this.vendorId = vendorId;
-        this.category = category;
+        this.categoryId = categoryId;
     }
 
     public int getItemId() {
@@ -75,8 +75,12 @@ public class Item {
         this.vendorId = vendorId;
     }
 
-    public Category getCategory() {
-        return category;
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
   
   @Override
@@ -84,16 +88,12 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return itemId == item.itemId && quantity == item.quantity && vendorId == item.vendorId && Objects.equals(name, item.name) && 
-          Objects.equals(scale, item.scale) && Objects.equals(expirationDate, item.expirationDate) && category == item.category;
+        return itemId == item.itemId && quantity == item.quantity && vendorId == item.vendorId && Objects.equals(name, item.name) &&
+          Objects.equals(scale, item.scale) && Objects.equals(expirationDate, item.expirationDate) && categoryId == item.categoryId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemId, name, quantity, scale, expirationDate, vendorId, category);
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+        return Objects.hash(itemId, name, quantity, scale, expirationDate, vendorId, categoryId);
     }
 }

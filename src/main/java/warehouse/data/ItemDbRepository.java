@@ -25,7 +25,7 @@ public class ItemDbRepository implements ItemRepository{
 
     @Override
     public List<Item> findAll() {
-        final String sql = "select item_id, item_name, quantity, scale, expiration_date, vendor_id, category_id from item;";
+        final String sql = "select * from item;";
         return jdbcTemplate.query(sql, new ItemMapper());
     }
 
@@ -51,7 +51,7 @@ public class ItemDbRepository implements ItemRepository{
             ps.setString(4, item.getScale());
             ps.setDate(5, java.sql.Date.valueOf(item.getExpirationDate()));
             ps.setInt(6, item.getVendorId());
-            ps.setString(7, item.getCategory().getCategoryName());
+            ps.setInt(7, item.getCategoryId());
             return ps;
         }, keyHolder);
 
@@ -78,7 +78,7 @@ public class ItemDbRepository implements ItemRepository{
                 + "where item_id = ?;";
 
         return jdbcTemplate.update(sql, item.getItemId(), item.getName(), item.getQuantity(), item.getScale(),
-                item.getExpirationDate(), item.getVendorId(), item.getCategory(), item.getVendorId()) > 0;
+                item.getExpirationDate(), item.getVendorId(), item.getCategoryId(), item.getVendorId()) > 0;
     }
 
     @Override
@@ -117,7 +117,7 @@ public class ItemDbRepository implements ItemRepository{
             return false;
         }
 
-        if(item.getCategory() == null) {
+        if(item.getCategoryId() == null) {
             return false;
         }
 

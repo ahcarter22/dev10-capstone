@@ -23,7 +23,7 @@ public class ItemMapper implements RowMapper<Item> {
         }
 
         item.setVendorId(resultSet.getInt("vendor_id"));
-        item.setCategory(Category.getCategoryById(resultSet.getInt("category_id")));
+        item.setCategoryId(resultSet.getInt("category_id"));
 
         return item;
     }

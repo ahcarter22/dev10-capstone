@@ -6,7 +6,7 @@ function AddItem(){
     const [quantity,setQuantity] = useState("");
     const [scale, setScale] = useState("");
     const [expirationDate, setExpirationDate] = useState("");
-    const [categoryId, setCategoryId] = useState("");
+    const [category, setCategory] = useState("");
     const [vendorId, setVendorId] =useState("");
     const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ function AddItem(){
         setExpirationDate(event.target.value);
     }
     function getOption(){
-        categoryId = document.queryselector('selectCategory').value
+        setCategory(document.queryselector('selectCategory').value);
     }
 
     function addItem(itemObj) {
@@ -42,7 +42,7 @@ function AddItem(){
         newItem.quantity = quantity;
         newItem.scale = scale;
         newItem.expirationDate = expirationDate;
-        newItem.categoryId = categoryId;
+        newItem.category = category;
         newItem.vendorId = vendorId;
 
         fetch("http://localhost:8080/api/item", {
@@ -80,9 +80,9 @@ function AddItem(){
 
                     <label htmlFor="category"><b>Category:</b></label><br />
                     <select id="selectCategory">
-                        <option value="1">Meat</option>
-                        <option value="2">Produce</option>
-                        <option value="3">Dairy</option>
+                        <option value="MEATS">Meat</option>
+                        <option value="PRODUCE">Produce</option>
+                        <option value="DAIRY">Dairy</option>
                     </select><br />
                     <script onChange ={getOption}></script><br />
 

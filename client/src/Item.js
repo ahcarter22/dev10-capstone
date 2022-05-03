@@ -9,30 +9,32 @@ function Item(props) {
     console.log(props.itemObj)
 
     const {itemId, name, quantity, scale, 
-        expirationDate, categoryId, vendorId} = props.itemObj;
+        expirationDate, category, vendorId} = props.itemObj;
     // const [user, setUser] = useContext(AuthContext);
 
-    const [category,setCategory] = useState([]);
+    //const [category,setCategory] = useState([]);
 
     const [vendor,setVendor] = useState([]);
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/category/" + categoryId,
-        {
-            headers: {
-            //     Authorization: "Bearer " + localStorage.getItem("token")
-            }
-        })
-        .then(response => {
-            if (response.status === 200) {
-                return response.json();
-            } else {
-                alert("Something went wrong while fetching...");
-            }
-            })
-        .then(categoryData=>setCategory(categoryData))
-        .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
-        }, []);
+    console.log(props);
+
+    // useEffect(() => {
+    //     fetch("http://localhost:8080/api/category/" + categoryId,
+    //     {
+    //         headers: {
+    //         //     Authorization: "Bearer " + localStorage.getItem("token")
+    //         }
+    //     })
+    //     .then(response => {
+    //         if (response.status === 200) {
+    //             return response.json();
+    //         } else {
+    //             alert("Something went wrong while fetching...");
+    //         }
+    //         })
+    //     .then(categoryData=>setCategory(categoryData))
+    //     .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+    //     }, []);
 
     useEffect(() => {
             fetch("http://localhost:8080/api/vendor/" + vendorId,

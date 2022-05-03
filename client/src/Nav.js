@@ -4,6 +4,11 @@ import { useContext } from "react";
 
 function Nav(){
     return(
+        <header>
+            <div class="container">
+            <h1 class="logo"></h1>
+            <img src="https://www.seekpng.com/png/detail/212-2124944_the-warehouse-logo-png-transparent-logo-warehouse.png"
+                 width="180" height="60" alt=""></img>
         <nav>
             <ul className='nav-links'>
                 <li>
@@ -11,7 +16,11 @@ function Nav(){
                 </li> 
 
                 <li>
-                    <Link to="/items">Show All Items</Link>
+                    <Link to="/items">Items</Link>
+                </li>
+
+                <li>
+                    <Link to="/vendors">Vendors</Link>
                 </li>
 
                 <li>
@@ -19,14 +28,12 @@ function Nav(){
                 </li>
 
                 <li>
-                    <Link to="/vendors">Show All Vendors</Link>
-                </li>
-
-                <li>
                     <Link to="/addVendor">Add an Vendor</Link>
                 </li>
             </ul>
         </nav>
+        </div>
+        </header>
     );
 }
 

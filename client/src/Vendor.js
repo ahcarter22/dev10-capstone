@@ -14,6 +14,7 @@ function Vendor(props) {
     return (
         <div className="vendor-card">
             <p><b>Id:</b> {vendorId}</p>
+            <img src="image/warehouse.jpeg"></img>
             <p><b>Name:</b> {name}</p>
             <p><b>Email:</b> {email}.</p>
             <p><b>Phone:</b> {phone}</p>

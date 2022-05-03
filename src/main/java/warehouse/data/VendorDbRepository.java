@@ -37,7 +37,7 @@ public class VendorDbRepository implements VendorRepository{
     @Override
     public Vendor add(Vendor vendor) {
 
-        final String sql = "insert into vendor (vendor_name,vendor_email,vendor_phone, item_list) values (?,?,?,?);";
+        final String sql = "insert into vendor (vendor_name,vendor_email,vendor_phone) values (?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {

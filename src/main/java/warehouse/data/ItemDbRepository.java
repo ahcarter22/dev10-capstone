@@ -40,18 +40,17 @@ public class ItemDbRepository implements ItemRepository{
 
     @Override
     public Item add(Item item) {
-        final String sql = "insert into item (item_id, item_name, quantity, scale, expiration_date, vendor_id, category_id) values (?,?,?,?,?,?,?);";
+        final String sql = "insert into item (item_name, quantity, scale, expiration_date, vendor_id, category_id) values (?,?,?,?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, item.getItemId());
-            ps.setString(2, item.getName());
-            ps.setInt(3, item.getQuantity());
-            ps.setString(4, item.getScale());
-            ps.setDate(5, java.sql.Date.valueOf(item.getExpirationDate()));
-            ps.setInt(6, item.getVendorId());
-            ps.setInt(7, item.getCategoryId());
+            ps.setString(1, item.getName());
+            ps.setInt(2, item.getQuantity());
+            ps.setString(3, item.getScale());
+            ps.setDate(4, java.sql.Date.valueOf(item.getExpirationDate()));
+            ps.setInt(5, item.getVendorId());
+            ps.setInt(6, item.getCategoryId());
             return ps;
         }, keyHolder);
 
@@ -60,7 +59,7 @@ public class ItemDbRepository implements ItemRepository{
             return null;
         }
 
-        item.setVendorId(keyHolder.getKey().intValue());
+        item.setItemId(keyHolder.getKey().intValue());
 
         return item;
     }
@@ -70,15 +69,15 @@ public class ItemDbRepository implements ItemRepository{
         final String sql = "update item set "
                 + "item_id = ?, "
                 + "item_name = ?, "
-                + "quantity = ? "
-                + "scale = ? "
-                + "expiration_date = ? "
-                + "vendor_id = ? "
+                + "quantity = ?, "
+                + "scale = ?, "
+                + "expiration_date = ?, "
+                + "vendor_id = ?, "
                 + "category_id = ? "
                 + "where item_id = ?;";
 
         return jdbcTemplate.update(sql, item.getItemId(), item.getName(), item.getQuantity(), item.getScale(),
-                item.getExpirationDate(), item.getVendorId(), item.getCategoryId(), item.getVendorId()) > 0;
+                item.getExpirationDate(), item.getVendorId(), item.getCategoryId(), item.getItemId()) > 0;
     }
 
     @Override

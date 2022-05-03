@@ -16,13 +16,30 @@ Content-Type: application/json
 
 {
     "name": "Test",
-    "quantity": "2",
+    "quantity": 2,
     "scale": "tons",
     "expirationDate": "2021-04-04",
-    "vendorId": "1",
-    "category": "PRODUCE"
+    "vendorId": 1,
+    "categoryId": 1
 }
 
 ###
 
-DELETE {{url}}/2 HTTP/1.1
+PUT {{url}}/5 HTTP/1.1
+Content-Type: application/json
+
+{
+    "itemId": 5,
+    "name": "updated Test",
+    "quantity": 2,
+    "scale": "tons",
+    "expirationDate": "2021-04-04",
+    "vendorId": 1,
+    "categoryId": 1
+}
+
+
+
+###
+
+DELETE {{url}}/7 HTTP/1.1

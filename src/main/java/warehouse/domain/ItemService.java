@@ -49,7 +49,7 @@ public class ItemService {
         }
 
         if (item.getItemId() <= 0) {
-            result.addMessage("vendorId must be set for `update` operation", ResultType.INVALID);
+            result.addMessage("itemId must be set for `update` operation", ResultType.INVALID);
             return result;
         }
 

@@ -30,6 +30,7 @@ create table item (
        references category(category_id)
 );
 
+
 create table app_user (
     app_user_id int primary key auto_increment,
     username varchar(50) not null unique,
@@ -55,6 +56,8 @@ create table app_user_role (
         references app_role(app_role_id)
 );
 
+
+
 insert into vendor (vendor_name, vendor_email, vendor_phone)
    values
    ("Johnny's Apples", 'apples@johnny.com','347-123-0055'),
@@ -62,7 +65,7 @@ insert into vendor (vendor_name, vendor_email, vendor_phone)
    ('Millennial Avocados','avocados@millennial.org', '646-235-2215');
 
 insert into app_role (`name`) values
-    ('EMPLOYEE'),
+    ('USER'),
     ('ADMIN');
 
 -- passwords are set to "P@ssw0rd!"

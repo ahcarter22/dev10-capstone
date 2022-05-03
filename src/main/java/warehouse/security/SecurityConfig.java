@@ -30,11 +30,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
 
                 .antMatchers( HttpMethod.POST, "/api/login").permitAll()
-                .antMatchers( HttpMethod.GET, "/api/item").authenticated()
-                .antMatchers( HttpMethod.POST, "/api/item").authenticated()
-                .antMatchers( HttpMethod.DELETE, "/api/item/*").authenticated()
-                .antMatchers( HttpMethod.GET, "/api/item/*" ).authenticated()
-                .antMatchers( HttpMethod.PUT, "/api/item/*").authenticated()
+                .antMatchers( HttpMethod.GET, "/api/item").permitAll()
+                .antMatchers( HttpMethod.POST, "/api/item").permitAll()
+                .antMatchers( HttpMethod.DELETE, "/api/item/*").permitAll()
+                .antMatchers( HttpMethod.GET, "/api/item/*" ).permitAll()
+                .antMatchers( HttpMethod.PUT, "/api/item/*").permitAll()
+
+                .antMatchers( HttpMethod.GET, "/api/vendor").permitAll()
+                .antMatchers( HttpMethod.POST, "/api/vendor").permitAll()
+                .antMatchers( HttpMethod.DELETE, "/api/vendor/*").permitAll()
+                .antMatchers( HttpMethod.GET, "/api/vendor/*" ).permitAll()
+                .antMatchers( HttpMethod.PUT, "/api/vendor/*").permitAll()
                 .antMatchers("/**").denyAll()
 
                 // require authentication for any request...

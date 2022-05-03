@@ -32,4 +32,4 @@ Content-Type: application/json
 
 ###
 
-DELETE {{url}}/4 HTTP/1.1
+DELETE {{url}}/ HTTP/1.1

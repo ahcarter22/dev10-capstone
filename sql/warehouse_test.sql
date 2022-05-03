@@ -7,7 +7,7 @@ create table vendor(
     vendor_name varchar(50) not null,
     vendor_email varchar(50) not null,
     vendor_phone varchar(20) not null
-); 
+);
 
 create table category (
     category_id int primary key auto_increment,
@@ -55,6 +55,7 @@ create table app_user_role (
         references app_role(app_role_id)
 );
 
+
 delimiter //
 create procedure set_known_good_state()
 begin
@@ -65,13 +66,18 @@ begin
 	alter table vendor auto_increment = 1;
     delete from category;
     alter table category auto_increment = 1;
-    
+
+
+
    insert into vendor (vendor_name, vendor_email, vendor_phone)
    values
    ("Johnny's Apples", 'apples@johnny.com','347-123-0055'),
    ('Meats For Us', 'meats@meats.com','929-345-0123'),
    ('Millennial Avocados','avocados@millennial.org', '646-235-2215');
-   
+
+
+
+
    insert into category(category_name) values
 	('MEATS'),
     ('PRODUCE'),
@@ -90,7 +96,7 @@ end //
 delimiter ;
 
 insert into app_role (`name`) values
-    ('EMPLOYEE'),
+    ('USER'),
     ('ADMIN');
 
 -- passwords are set to "P@ssw0rd!"

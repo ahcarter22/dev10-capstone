@@ -12,6 +12,7 @@ import warehouse.models.Vendor;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -88,6 +89,38 @@ public class ItemDbRepository implements ItemRepository{
     }
 
     private boolean validate(Item item){
-        return false;
+        if(item == null) {
+            return false;
+        }
+
+        if(item.getItemId() <= 0) {
+            return false;
+        }
+
+        if(item.getName() == null || item.getName().isBlank()) {
+            return false;
+        }
+
+        if(item.getQuantity() <= 0) {
+            return false;
+        }
+
+        if(item.getScale() == null || item.getScale().isBlank()) {
+            return false;
+        }
+
+        if(item.getExpirationDate().isAfter(LocalDate.now())){
+            return false;
+        }
+
+        if(item.getVendorId() == null || item.getVendorId().intValue() <= 0) {
+            return false;
+        }
+
+        if(item.getCategory() == null) {
+            return false;
+        }
+
+        return true;
     }
 }

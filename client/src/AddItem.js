@@ -27,6 +27,9 @@ function AddItem(){
     function handleExpirationDateChange(event) {
         setExpirationDate(event.target.value);
     }
+    function getOption(){
+        categoryId = document.queryselector('selectCategory').value
+    }
 
     function addItem(itemObj) {
         setItems([...items, itemObj])
@@ -77,10 +80,11 @@ function AddItem(){
 
                     <label htmlFor="category"><b>Category:</b></label><br />
                     <select id="selectCategory">
-                        <option value="meat">Meat</option>
-                        <option value="produce">Produce</option>
-                        <option value="dairy">Dairy</option>
+                        <option value="1">Meat</option>
+                        <option value="2">Produce</option>
+                        <option value="3">Dairy</option>
                     </select><br />
+                    <script onChange ={getOption}></script><br />
 
                     <label htmlFor="vendor"><b>Vendor:</b></label><br />
                     <select id="selectVendor">

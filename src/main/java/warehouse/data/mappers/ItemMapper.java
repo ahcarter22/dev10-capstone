@@ -1,6 +1,7 @@
 package warehouse.data.mappers;
 
 import org.springframework.jdbc.core.RowMapper;
+import warehouse.models.Category;
 import warehouse.models.Item;
 import warehouse.models.Vendor;
 
@@ -22,7 +23,7 @@ public class ItemMapper implements RowMapper<Item> {
         }
 
         item.setVendorId(resultSet.getInt("vendor_id"));
-        item.setCategoryId(resultSet.getInt("category_id"));
+        item.setCategory(Category.getCategoryById(resultSet.getInt("category_id")));
 
         return item;
     }

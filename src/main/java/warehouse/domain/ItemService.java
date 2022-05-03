@@ -63,10 +63,7 @@ public class ItemService {
 
         if (Validations.isNull(item.getVendorId())) {
             result.addMessage("VendorId required", ResultType.INVALID);
-        }
 
-        if (Validations.isNull(item.getCategoryId())){
-            result.addMessage("CategoryId required", ResultType.INVALID);
         }
 
         return result;

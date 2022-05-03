@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( HttpMethod.DELETE, "/api/vendor/*").permitAll()
                 .antMatchers( HttpMethod.GET, "/api/vendor/*" ).permitAll()
                 .antMatchers( HttpMethod.PUT, "/api/vendor/*").permitAll()
+                .antMatchers("/refresh_token").permitAll()
                 .antMatchers("/**").denyAll()
 
                 // require authentication for any request...

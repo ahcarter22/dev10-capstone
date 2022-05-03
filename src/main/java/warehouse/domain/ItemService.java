@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import warehouse.data.ItemRepository;
 import warehouse.data.ItemRepository;
 import warehouse.models.Item;
+import warehouse.models.Vendor;
 
 import java.util.List;
 
@@ -26,11 +27,38 @@ public class ItemService {
 
     public Result<Item> add(Item item){
 
-        return null;
+        Result<Item> result = validate(item);
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        if (item.getItemId() != 0) {
+            result.addMessage("itemId cannot be 'set' for 'add' operation", ResultType.INVALID);
+            return result;
+        }
+
+        item = itemRepository.add(item);
+        result.setPayload(item);
+        return result;
     }
 
     public Result<Item> update(Item item){
-        return null;
+        Result<Item> result = validate(item);
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        if (item.getItemId() <= 0) {
+            result.addMessage("vendorId must be set for `update` operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (!itemRepository.update(item)) {
+            String msg = String.format("itemId: %s, not found", item.getItemId());
+            result.addMessage(msg, ResultType.NOT_FOUND);
+        }
+
+        return result;
     }
 
     public boolean deleteById(int itemId){
@@ -63,7 +91,6 @@ public class ItemService {
 
         if (Validations.isNull(item.getVendorId())) {
             result.addMessage("VendorId required", ResultType.INVALID);
-
         }
 
         return result;

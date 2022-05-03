@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import warehouse.domain.ItemService;
+import warehouse.domain.Result;
 import warehouse.models.Item;
 
 import java.util.List;
@@ -31,6 +32,29 @@ public class ItemController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(item);
+    }
+
+    @PostMapping
+    public ResponseEntity<Object> add(@RequestBody Item item) {
+        Result<Item> result = itemService.add(item);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
+    }
+
+    @PutMapping("/{agentId}")
+    public ResponseEntity<Object> update(@PathVariable int itemId, @RequestBody Item item) {
+        if (itemId != item.getItemId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        Result<Item> result = itemService.update(item);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return ErrorResponse.build(result);
     }
 
     @DeleteMapping("/{itemId}")

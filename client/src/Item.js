@@ -60,8 +60,8 @@ function Item(props) {
             <p><b>Quantity: </b>{quantity}</p>
             <p><b>Scale: </b>{scale}</p>
             <p><b>Expiration Date: </b>{expirationDate}</p>
-            <p><b>Category Name: </b> {category}</p>
-            <p><b>Vendor Name: </b> {vendor.name}</p>
+            <p><b>Category: </b> {category}</p>
+            <p><b>Vendor: </b> {vendor.name}</p>
             <Link to ={'/editItem/'+itemId}><button >EDIT</button></Link>
             <Link to={"/deleteItem/" + itemId} ><button>DELETE</button></Link>
         

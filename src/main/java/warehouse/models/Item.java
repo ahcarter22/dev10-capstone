@@ -1,5 +1,6 @@
 package warehouse.models;
 
+import java.sql.Blob;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,6 +10,7 @@ public class Item {
     private Integer quantity;
     private String scale;
     private LocalDate expirationDate;
+    private String image;
     private Integer vendorId;
     private Integer categoryId;
 
@@ -17,12 +19,13 @@ public class Item {
     }
 
     public Item(int itemId, String name, Integer quantity, String scale,
-                LocalDate expirationDate, Integer vendorId, Integer categoryId) {
+                LocalDate expirationDate, String image, Integer vendorId, Integer categoryId) {
         this.itemId = itemId;
         this.name = name;
         this.quantity = quantity;
         this.scale = scale;
         this.expirationDate = expirationDate;
+        this.image=image;
         this.vendorId = vendorId;
         this.categoryId = categoryId;
     }
@@ -95,5 +98,13 @@ public class Item {
     @Override
     public int hashCode() {
         return Objects.hash(itemId, name, quantity, scale, expirationDate, vendorId, categoryId);
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

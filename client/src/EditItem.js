@@ -84,7 +84,7 @@ function EditItem(){
         <label htmlFor="quantity">Quantity:</label><br/>
         <input id = "quantity" value={toEdit.quantity} onChange={handleQuantityChange}></input><br/>
         <label htmlFor="scale">Scale:</label><br/>
-        <input id = "scale" value={toEdit.scale} onChange={handleScaleChange}></input><br/>
+        <input id = "scale" value={toEdit.scale} onChange={handleScaleChange}></input><br/><br/><br/>
         <button> Submit </button>
     </form>:
        <></>

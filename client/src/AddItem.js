@@ -6,11 +6,31 @@ function AddItem(){
     const [quantity,setQuantity] = useState("");
     const [scale, setScale] = useState("");
     const [expirationDate, setExpirationDate] = useState("");
-    const [category, setCategory] = useState("");
+    const [categoryId, setCategoryId] = useState("");
     const [vendorId, setVendorId] =useState("");
     const navigate = useNavigate();
 
     const [items, setItems] = useState([]);
+
+    // const [categories,setCategories] = useState([]);
+
+    // useEffect(() => {
+    //     fetch("http://localhost:8080/api/category", 
+    //     {
+    //         headers: {
+    //         //     Authorization: "Bearer " + localStorage.getItem("token")
+    //         }
+    //     })
+    //     .then(response => {
+    //         if (response.status === 200) {
+    //             return response.json();
+    //         } else {
+    //             alert("Something went wrong while fetching...");
+    //         }
+    //         })
+    //     .then(categoryData=>setCategories(categoryData))
+    //     .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+    //     }, []);
 
     function handleNameChange(event) {
         setName(event.target.value);
@@ -27,10 +47,18 @@ function AddItem(){
     function handleExpirationDateChange(event) {
         setExpirationDate(event.target.value);
     }
-    function getOption(){
-        setCategory(document.queryselector('selectCategory').value);
+    
+    function handleVendorIdChange(event){
+        setVendorId(event.target.value);
     }
 
+    function getOption(){
+        setCategoryId(parseInt(document.queryselector('selectCategory').value));
+        // console.log(document.queryselector('selectCategory'))
+    }
+   
+   // console.log(document.queryselector('selectCategory')
+    
     function addItem(itemObj) {
         setItems([...items, itemObj])
     }
@@ -42,7 +70,7 @@ function AddItem(){
         newItem.quantity = quantity;
         newItem.scale = scale;
         newItem.expirationDate = expirationDate;
-        newItem.category = category;
+        newItem.categoryId = categoryId;
         newItem.vendorId = vendorId;
 
         fetch("http://localhost:8080/api/item", {
@@ -78,20 +106,26 @@ function AddItem(){
                     <label htmlFor="expirationDate"><b>Expiration Date:</b></label><br />
                     <input onChange={handleExpirationDateChange} id="expirationDate"></input><br />
 
-                    <label htmlFor="category"><b>Category:</b></label><br />
-                    <select id="selectCategory">
-                        <option value="MEATS">Meat</option>
-                        <option value="PRODUCE">Produce</option>
-                        <option value="DAIRY">Dairy</option>
-                    </select><br />
-                    <script onChange ={getOption}></script><br />
+                    <label htmlFor="vendorId"><b>VendorId:</b></label><br />
+                    <input onChange={handleVendorIdChange} id="vendorId"></input><br />
 
-                    <label htmlFor="vendor"><b>Vendor:</b></label><br />
-                    <select id="selectVendor">
-                        <option value="a">a</option>
-                        <option value="b">b</option>
-                        <option value="c">c</option>
+                    <label htmlFor="categoryId"><b>Category:</b></label><br />
+                    <select id="selectCategory">
+                        <option value={1}>Meat</option>
+                        <option value={2}>Produce</option>
+                        <option value={3}>Dairy</option>
+                        <option value={4}>Frozen</option>
+                        <option value={5}>Alcohol</option>
+                        <option value={6}>Baked Goods</option>
                     </select><br />
+                    <script onChange ={getOption} id="categoryId"> </script><br /> 
+
+                    {/* <label htmlFor="vendor"><b>Vendor:</b></label><br />
+                    <select id="selectVendor">
+                        <option value="1">a</option>
+                        <option value="2">b</option>
+                        <option value="3">c</option>
+                    </select><br /><br /><br /> */}
 
                     <button>Submit</button> <br />
                 </form>

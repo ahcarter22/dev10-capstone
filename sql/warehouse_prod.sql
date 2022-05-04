@@ -20,6 +20,7 @@ create table item (
     quantity int not null,
     scale varchar(40) not null,
     expiration_date date not null,
+    image varchar(500),
     vendor_id int not null,
     category_id int not null,
     constraint fk_item_vendor_id
@@ -87,9 +88,9 @@ insert into app_user_role
     ('ALCOHOL'),
     ('BAKED GOODS');
 
-   insert into item(item_name,quantity,scale,expiration_date,vendor_id,category_id) values
-    ("Johnny's Awesome Apple",100,'pounds','2020-10-05',1,2),
-    ('SuperMeaty Beef Sirloin',150,'pounds','2001-01-01',2,1),
-    ('Antiboomer Avocado',200,'pounds','2005-09-11',3,2);
+   insert into item(item_name,quantity,scale,expiration_date,image,vendor_id,category_id) values
+    ("Johnny's Awesome Apple",100,'pounds','2020-10-05','https://c.tenor.com/1HdVv6rRFcQAAAAM/excited-apple.gif',1,2),
+    ('SuperMeaty Beef Sirloin',150,'pounds','2001-01-01','https://media2.giphy.com/media/Bij8vM5lm372rT13ty/giphy.gif',2,1),
+    ('Antiboomer Avocado',200,'pounds','2005-09-11','http://image.thepaper.cn/wap/image/9/745/963.gif',3,2);
 
 

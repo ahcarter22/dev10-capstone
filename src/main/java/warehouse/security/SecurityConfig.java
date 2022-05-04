@@ -42,6 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( HttpMethod.DELETE, "/api/vendor/*").permitAll()
                 .antMatchers( HttpMethod.GET, "/api/vendor/*" ).permitAll()
                 .antMatchers( HttpMethod.PUT, "/api/vendor/*").permitAll()
+                .antMatchers( HttpMethod.GET, "/api/category/*").permitAll()
+                .antMatchers( HttpMethod.GET, "/api/category").permitAll()
                 .antMatchers("/refresh_token").permitAll()
                 .antMatchers("/**").denyAll()
 

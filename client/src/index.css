@@ -163,3 +163,42 @@ button:after {
   border-radius: 10px;
 }
 
+.addItem,.addVendor{
+  border: thick double #04743c;
+  padding: 25px;
+  margin-top:75px;
+  text-align: center;
+  margin-left:400px;
+  margin-right: 450px;
+}
+
+input{
+  border-radius: 5px;
+  width:200px;
+  padding:10px;
+}
+
+label{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+b {
+  font-family: Copperplate, Papyrus, fantasy;
+ 
+}
+
+.name{
+  font-size:x-large;
+}
+.homepage{
+  margin-left:200px;
+  margin-right:200px;
+}
+select{
+  border-radius: 5px;
+  width:200px;
+  padding:10px;
+}
+#homepicture{
+  margin-top: 20px;
+}

@@ -52,6 +52,7 @@ function AddVendor(){
     return (
         <div>
             <div className="addVendor">
+                <h1>Add a Vendor</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name"><b>Name:</b></label><br />
                     <input onChange={handleNameChange} id="name"></input><br />
@@ -60,7 +61,7 @@ function AddVendor(){
                     <input onChange={handleEmailChange} id="email"></input><br />
 
                     <label htmlFor="phone"><b>Phone:</b></label><br />
-                    <input onChange={handlePhoneChange} id="phone"></input><br />
+                    <input onChange={handlePhoneChange} id="phone"></input><br /><br /><br />
                     <button>Submit</button> <br />
                 </form>
             </div>

@@ -24,11 +24,11 @@ function Nav(){
                 </li>
 
                 <li>
-                    <Link to="/addItem">Add an Item</Link>
+                    <Link to="/addItem">Add Item</Link>
                 </li>
 
                 <li>
-                    <Link to="/addVendor">Add an Vendor</Link>
+                    <Link to="/addVendor">Add Vendor</Link>
                 </li>
             </ul>
         </nav>

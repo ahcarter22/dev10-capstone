@@ -127,6 +127,7 @@ function AddItem({ overwriteErrorList }) {
     return (
         <div>
             <div className="addItem">
+                <h1>Add an Item</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name"><b>Name:</b></label><br />
                     <input onChange={handleNameChange} id="name"></input><br />
@@ -155,7 +156,7 @@ function AddItem({ overwriteErrorList }) {
                         <option value="4">Frozen</option>
                         <option value="5">Alcohol</option>
                         <option value="6">Baked Goods</option>
-                    </select><br />
+                    </select><br /><br /><br />
 
 
                     <button>Submit</button> <br />

@@ -57,11 +57,11 @@ function Item(props) {
 
     return (
         <div className="item-card">
-            <p><b>Id: </b> {itemId}</p>
+            <h1>Add a Vendor</h1>
+            <p className="name"><b>{name}</b></p>
             <img src={imageUrl}  width="180" height="160"></img>
-            <p><b></b> {name}</p>
-            <p><b>Quantity: </b>{quantity}</p>
-            <p><b>Scale: </b>{scale}</p>
+            <p><b>Item Id: </b> {itemId}</p>
+            <p><b>Quantity: </b>{quantity} {scale}</p>
             <p><b>Expiration Date: </b>{expirationDate}</p>
             <p><b>Category: </b> {category}</p>
             <p><b>Vendor: </b> {vendor.name}</p>

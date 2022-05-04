@@ -13,19 +13,23 @@ import Nav from "./Nav";
 import Login from "./Login";
 import Home from "./Home";
 import NotFound from "./NotFound";
+import AllErrors from "./AllErrors";
 
 import { useEffect, useState } from "react";
 
+
 function App() {
+  const[errorList, setErrorList]=useState([]);
   return (
     <div className="App">
       <BrowserRouter>
       <Nav />
 
       < Routes >
+
          <Route path="/" element={<Home />} />
          <Route path="/items" element={<Items />} />
-         <Route path="/addItem" element={<AddItem />} />
+         <Route path="/addItem" element={<AddItem overwriteErrorList={setErrorList}/>} />
          <Route path="/editItem/:itemId" element={<EditItem />} />
          <Route path="/deleteItem/:itemId" element={<DeleteItem />} />
          <Route path="/vendors" element={<Vendors />} />
@@ -33,7 +37,11 @@ function App() {
          <Route path="/editVendor/:vendorId" element={<EditVendor />} />
          <Route path="/deleteVendor/:vendorId" element={<DeleteVendor />} />
          <Route path="*" element={<NotFound/>} />
+
       </Routes>
+
+      <AllErrors errorList={errorList} />
+     
 
       </BrowserRouter> 
     </div>

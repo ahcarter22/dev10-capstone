@@ -6,7 +6,8 @@ create table vendor(
     vendor_id int primary key auto_increment,
     vendor_name varchar(50) not null,
     vendor_email varchar(50) not null,
-    vendor_phone varchar(20) not null
+    vendor_phone varchar(20) not null,
+	vendor_imageUrl varchar(500)
 );
 
 create table category (
@@ -70,11 +71,11 @@ begin
 
 
 
-   insert into vendor (vendor_name, vendor_email, vendor_phone)
+   insert into vendor (vendor_name, vendor_email, vendor_phone, vendor_imageUrl)
    values
-   ("Johnny's Apples", 'apples@johnny.com','347-123-0055'),
-   ('Meats For Us', 'meats@meats.com','929-345-0123'),
-   ('Millennial Avocados','avocados@millennial.org', '646-235-2215');
+   ("Johnny's Apples", 'apples@johnny.com','347-123-0055',null),
+   ('Meats For Us', 'meats@meats.com','929-345-0123',null),
+   ('Millennial Avocados','avocados@millennial.org', '646-235-2215',null);
 
 
 

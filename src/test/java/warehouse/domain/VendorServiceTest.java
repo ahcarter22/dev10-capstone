@@ -21,8 +21,8 @@ class VendorServiceTest {
 
     @Test
     void shouldAdd() {
-        Vendor vendor = new Vendor(0, "TEST", "email@test.com", "123-456-7890");
-        Vendor mockOut = new Vendor(5, "TEST", "email@test.com", "123-456-7890");
+        Vendor vendor = new Vendor(0, "TEST", "email@test.com", "123-456-7890",null);
+        Vendor mockOut = new Vendor(5, "TEST", "email@test.com", "123-456-7890",null);
 
         when(vendorRepository.add(vendor)).thenReturn(mockOut);
 
@@ -34,7 +34,7 @@ class VendorServiceTest {
     @Test
     void shouldNotAddWhenInvalid() {
 
-        Vendor vendor = new Vendor(35, "TEST", "email@test.com", "123-456-7890");
+        Vendor vendor = new Vendor(35, "TEST", "email@test.com", "123-456-7890",null);
 
         Result<Vendor> actual = vendorService.add(vendor);
         assertEquals(ResultType.INVALID, actual.getType());
@@ -52,7 +52,7 @@ class VendorServiceTest {
 
     @Test
     void shouldUpdate() {
-        Vendor vendor = new Vendor(5, "TEST", "email@test.com", "123-456-7890");
+        Vendor vendor = new Vendor(5, "TEST", "email@test.com", "123-456-7890",null);
 
         when(vendorRepository.update(vendor)).thenReturn(true);
         Result<Vendor> actual = vendorService.update(vendor);
@@ -61,7 +61,7 @@ class VendorServiceTest {
 
     @Test
     void shouldNotUpdateMissing() {
-        Vendor vendor = new Vendor(35, "TEST", "email@test.com", "123-456-7890");
+        Vendor vendor = new Vendor(35, "TEST", "email@test.com", "123-456-7890",null);
 
         when(vendorRepository.update(vendor)).thenReturn(false);
         Result<Vendor> actual = vendorService.update(vendor);
@@ -70,7 +70,7 @@ class VendorServiceTest {
 
     @Test
     void shouldNotUpdateWhenInvalid() {
-        Vendor vendor = new Vendor(35, null, "email@test.com", "123-456-7890");
+        Vendor vendor = new Vendor(35, null, "email@test.com", "123-456-7890",null);
 
         Result<Vendor> actual = vendorService.update(vendor);
         assertEquals(ResultType.INVALID, actual.getType());

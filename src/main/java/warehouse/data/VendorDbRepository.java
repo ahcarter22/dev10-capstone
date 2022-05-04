@@ -21,7 +21,7 @@ public class VendorDbRepository implements VendorRepository{
 
     @Override
     public List<Vendor> findAll() {
-        final String sql = "select vendor_id,vendor_name,vendor_email,vendor_phone from vendor;";
+        final String sql = "select vendor_id,vendor_name,vendor_email,vendor_phone,vendor_imageUrl from vendor;";
         return jdbcTemplate.query(sql, new VendorMapper());
     }
 
@@ -37,7 +37,7 @@ public class VendorDbRepository implements VendorRepository{
     @Override
     public Vendor add(Vendor vendor) {
 
-        final String sql = "insert into vendor (vendor_name,vendor_email,vendor_phone) values (?,?,?);";
+        final String sql = "insert into vendor (vendor_name,vendor_email,vendor_phone,vendor_imageUrl) values (?,?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -45,6 +45,7 @@ public class VendorDbRepository implements VendorRepository{
             ps.setString(1, vendor.getName());
             ps.setString(2, vendor.getEmail());
             ps.setString(3, vendor.getPhone());
+            ps.setString(4,vendor.getImageUrl());
             //ps.setString(4, vendor.getItems().toString());
             return ps;
         }, keyHolder);
@@ -64,11 +65,12 @@ public class VendorDbRepository implements VendorRepository{
         final String sql = "update vendor set "
                 + "vendor_name = ?, "
                 + "vendor_email = ?, "
-                + "vendor_phone = ? "
+                + "vendor_phone = ?, "
+                + "vendor_imageUrl = ? "
                 //+ "item_list = ? "
                 + "where vendor_id = ?;";
 
-        return jdbcTemplate.update(sql, vendor.getName(), vendor.getEmail(), vendor.getPhone(), /*vendor.getItems().toString(),*/ vendor.getVendorId()) > 0;
+        return jdbcTemplate.update(sql, vendor.getName(), vendor.getEmail(), vendor.getPhone(), vendor.getImageUrl(), /*vendor.getItems().toString(),*/ vendor.getVendorId()) > 0;
     }
 
     @Override

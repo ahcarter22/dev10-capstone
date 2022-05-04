@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function AddItem(){
+function AddItem({ overwriteErrorList }) {
     const [name, setName] = useState("");
-    const [quantity,setQuantity] = useState("");
+    const [quantity, setQuantity] = useState("");
     const [scale, setScale] = useState("");
     const [expirationDate, setExpirationDate] = useState("");
-    const [imageUrl, setImageUrl] =useState("");
-    const [categoryId, setCategoryId] = useState("");
-    const [vendorId, setVendorId] =useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    const [categoryId, setCategoryId] = useState();
+    const [vendorId, setVendorId] = useState("");
     const navigate = useNavigate();
 
     const [items, setItems] = useState([]);
@@ -49,58 +49,79 @@ function AddItem(){
         setExpirationDate(event.target.value);
     }
 
-    function handleImageUrlChange(event){
+    function handleImageUrlChange(event) {
         setImageUrl(event.target.value);
     }
-    
-    function handleVendorIdChange(event){
+
+    function handleVendorIdChange(event) {
         setVendorId(event.target.value);
     }
 
-    function handleCategoryIdChange(event){
-        setCategoryId(event.target.value);
-    }
 
     // function getOption(){
     //     setCategoryId(parseInt(document.getElementById('selectCategory').value));
-        
+
     //     //document.getElementById('selectCategory').value
     //     //document.getElementById('value').value=option.value;
     //     // console.log(document.queryselector('selectCategory'))
     // }
-   
-   
-    
+    function getOption(event) {
+        setCategoryId(event.target.value);
+        console.log(event)
+    }
+
+
+
     function addItem(itemObj) {
         setItems([...items, itemObj])
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        let newItem = {};
-        newItem.name = name;
-        newItem.quantity = quantity;
-        newItem.scale = scale;
-        newItem.expirationDate = expirationDate;
-        newItem.imageUrl = imageUrl;
-        newItem.categoryId = categoryId;
-        newItem.vendorId = vendorId;
+        const allErrors = [];
+        if (categoryId == null || categoryId == 0) {
+            allErrors.push("This category ID is not set. Please choose another category");
+        } 
+        if (name == null || name.trim()===""){
+            allErrors.push("Please enter a valid name.")
+        }
+        
+        
+        
+        
+        if (allErrors.length > 0){
+            overwriteErrorList(allErrors);
+        } else {
+            let newItem = {};
+            newItem.name = name;
+            newItem.quantity = quantity;
+            newItem.scale = scale;
+            newItem.expirationDate = expirationDate;
+            newItem.imageUrl = imageUrl;
+            newItem.vendorId = vendorId;
+            newItem.categoryId = categoryId;
 
-        fetch("http://localhost:8080/api/item", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify(newItem)
-        }).then(
-            (response) =>{ if(response.ok){
-                alert("SUCCESS")
-                addItem(newItem)
-                navigate("/items")}else{alert("Failed")}}
-        ).catch(
-            rejection => alert(rejection)
-        );
+
+            fetch("http://localhost:8080/api/item", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify(newItem)
+            }).then(
+                (response) => {
+                    if (response.ok) {
+                        alert("SUCCESS");
+                        addItem(newItem);
+                        overwriteErrorList([]);
+                        navigate("/items");
+                    } else { alert("Failed") }
+                }
+            ).catch(
+                rejection => alert(rejection)
+            );
+        }
     }
 
     return (
@@ -117,30 +138,25 @@ function AddItem(){
                     <input onChange={handleScaleChange} id="scale"></input><br />
 
                     <label htmlFor="expirationDate"><b>Expiration Date:</b></label><br />
-                    <input onChange={handleExpirationDateChange} id="expirationDate"></input><br /> 
+                    <input onChange={handleExpirationDateChange} id="expirationDate"></input><br />
 
                     <label htmlFor="imageUrl"><b>Image URL:</b></label><br />
-                    <input onChange={handleImageUrlChange} id="imageUrl"></input><br /> 
+                    <input onChange={handleImageUrlChange} id="imageUrl"></input><br />
 
                     <label htmlFor="vendorId"><b>VendorId:</b></label><br />
                     <input onChange={handleVendorIdChange} id="vendorId"></input><br />
 
-                    <label htmlFor="categoryId"><b>CId:</b></label><br />
-                    <input onChange={handleCategoryIdChange} id="categoryId"></input><br />
-
-                    {/* <label htmlFor="categoryId"><b>Category:</b></label><br />
-                    <select id="selectCategory" >
+                    <label htmlFor="categoryId"><b>Category:</b></label><br />
+                    <select id="selectCategory" value={categoryId} onChange={(e) => setCategoryId(parseInt(e.target.value))} >
+                        <option value="0">Please select an option</option>
                         <option value="1">Meat</option>
-                        <option value={2}>Produce</option>
-                        <option value={3}>Dairy</option>
-                        <option value={4}>Frozen</option>
-                        <option value={5}>Alcohol</option>
-                        <option value={6}>Baked Goods</option>
-                    </select><br /> */}
-                    
-                    {/* <script onChange ={getOption} id="categoryId"> </script><br />  */}
+                        <option value="2">Produce</option>
+                        <option value="3">Dairy</option>
+                        <option value="4">Frozen</option>
+                        <option value="5">Alcohol</option>
+                        <option value="6">Baked Goods</option>
+                    </select><br />
 
-  
 
                     <button>Submit</button> <br />
                 </form>

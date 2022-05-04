@@ -9,17 +9,19 @@ public class Vendor {
     private String name;
     private String email;
     private String phone;
+    private String imageUrl;
     //private List<Item> items = new ArrayList<>();
 
     public Vendor(){
 
     }
 
-    public Vendor(int vendorId, String name, String email, String phone/*, List<Item> items*/) {
+    public Vendor(int vendorId, String name, String email, String phone, String imageUrl/*, List<Item> items*/) {
         this.vendorId = vendorId;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.imageUrl = imageUrl;
         //this.items = items;
     }
 
@@ -65,16 +67,26 @@ public class Vendor {
     }
     */
 
+
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Vendor vendor = (Vendor) o;
-        return vendorId == vendor.vendorId && Objects.equals(name, vendor.name) && Objects.equals(email, vendor.email) && Objects.equals(phone, vendor.phone) /*&& Objects.equals(items, vendor.items)*/;
+        return vendorId == vendor.vendorId && Objects.equals(name, vendor.name) && Objects.equals(email, vendor.email) && Objects.equals(phone, vendor.phone) && Objects.equals(imageUrl, vendor.imageUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(vendorId, name, email, phone/*, items*/);
+        return Objects.hash(vendorId, name, email, phone, imageUrl);
     }
 }

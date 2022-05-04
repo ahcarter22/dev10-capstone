@@ -18,6 +18,7 @@ public class VendorMapper implements RowMapper<Vendor> {
         vendor.setName(resultSet.getString("vendor_name"));
         vendor.setEmail(resultSet.getString("vendor_email"));
         vendor.setPhone(resultSet.getString("vendor_phone"));
+        vendor.setImageUrl(resultSet.getString("vendor_imageUrl"));
         /*
         if(resultSet.getString("item_list") != null) {
             String itemList = resultSet.getString("item_list");

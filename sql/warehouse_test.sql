@@ -20,7 +20,7 @@ create table item (
     quantity int not null,
     scale varchar(40) not null,
     expiration_date date not null,
-    image varchar(500),
+    imageUrl varchar(500),
     vendor_id int not null,
     category_id int not null,
     constraint fk_item_vendor_id
@@ -87,7 +87,7 @@ begin
     ('ALCOHOL'),
     ('BAKED GOODS');
 
-   insert into item(item_name,quantity,scale,expiration_date,image,vendor_id,category_id) values
+   insert into item(item_name,quantity,scale,expiration_date,imageUrl,vendor_id,category_id) values
     ('apples',100,'pounds','2020-10-05','https://c.tenor.com/1HdVv6rRFcQAAAAM/excited-apple.gif',1,2),
     ('beef sirloin',150,'pounds','2001-01-01','https://media2.giphy.com/media/Bij8vM5lm372rT13ty/giphy.gif',2,1),
     ('avocados',200,'pounds','2005-09-11','http://image.thepaper.cn/wap/image/9/745/963.gif',3,2);

@@ -10,7 +10,7 @@ public class Item {
     private Integer quantity;
     private String scale;
     private LocalDate expirationDate;
-    private String image;
+    private String imageUrl;
     private Integer vendorId;
     private Integer categoryId;
 
@@ -19,13 +19,13 @@ public class Item {
     }
 
     public Item(int itemId, String name, Integer quantity, String scale,
-                LocalDate expirationDate, String image, Integer vendorId, Integer categoryId) {
+                LocalDate expirationDate, String imageUrl, Integer vendorId, Integer categoryId) {
         this.itemId = itemId;
         this.name = name;
         this.quantity = quantity;
         this.scale = scale;
         this.expirationDate = expirationDate;
-        this.image=image;
+        this.imageUrl=imageUrl;
         this.vendorId = vendorId;
         this.categoryId = categoryId;
     }
@@ -86,25 +86,26 @@ public class Item {
         this.categoryId = categoryId;
     }
   
-  @Override
+
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return itemId == item.itemId && quantity == item.quantity && vendorId == item.vendorId && Objects.equals(name, item.name) &&
-          Objects.equals(scale, item.scale) && Objects.equals(expirationDate, item.expirationDate) && categoryId == item.categoryId;
+        return itemId == item.itemId && Objects.equals(name, item.name) && Objects.equals(quantity, item.quantity) && Objects.equals(scale, item.scale) && Objects.equals(expirationDate, item.expirationDate) && Objects.equals(imageUrl, item.imageUrl) && Objects.equals(vendorId, item.vendorId) && Objects.equals(categoryId, item.categoryId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemId, name, quantity, scale, expirationDate, vendorId, categoryId);
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+        return Objects.hash(itemId, name, quantity, scale, expirationDate, imageUrl, vendorId, categoryId);
     }
 }

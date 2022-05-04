@@ -40,7 +40,7 @@ public class ItemDbRepository implements ItemRepository{
 
     @Override
     public Item add(Item item) {
-        final String sql = "insert into item (item_name, quantity, scale, expiration_date, vendor_id, category_id) values (?,?,?,?,?,?);";
+        final String sql = "insert into item (item_name, quantity, scale, expiration_date, imageUrl, vendor_id, category_id) values (?,?,?,?,?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -49,8 +49,9 @@ public class ItemDbRepository implements ItemRepository{
             ps.setInt(2, item.getQuantity());
             ps.setString(3, item.getScale());
             ps.setDate(4, java.sql.Date.valueOf(item.getExpirationDate()));
-            ps.setInt(5, item.getVendorId());
-            ps.setInt(6, item.getCategoryId());
+            ps.setString(5,item.getImageUrl());
+            ps.setInt(6, item.getVendorId());
+            ps.setInt(7, item.getCategoryId());
             return ps;
         }, keyHolder);
 
@@ -72,12 +73,13 @@ public class ItemDbRepository implements ItemRepository{
                 + "quantity = ?, "
                 + "scale = ?, "
                 + "expiration_date = ?, "
+                + "imageUrl = ?, "
                 + "vendor_id = ?, "
                 + "category_id = ? "
                 + "where item_id = ?;";
 
         return jdbcTemplate.update(sql, item.getItemId(), item.getName(), item.getQuantity(), item.getScale(),
-                item.getExpirationDate(), item.getVendorId(), item.getCategoryId(), item.getItemId()) > 0;
+                item.getExpirationDate(), item.getImageUrl(), item.getVendorId(), item.getCategoryId(), item.getItemId()) > 0;
     }
 
     @Override

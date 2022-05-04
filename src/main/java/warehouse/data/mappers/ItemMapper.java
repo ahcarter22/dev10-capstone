@@ -21,7 +21,7 @@ public class ItemMapper implements RowMapper<Item> {
         if (resultSet.getDate("expiration_date") != null) {
             item.setExpirationDate(resultSet.getDate("expiration_date").toLocalDate());
         }
-        item.setImage(resultSet.getString("image"));
+        item.setImageUrl(resultSet.getString("imageUrl"));
 
         item.setVendorId(resultSet.getInt("vendor_id"));
         item.setCategoryId(resultSet.getInt("category_id"));

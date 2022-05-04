@@ -6,6 +6,7 @@ function AddItem(){
     const [quantity,setQuantity] = useState("");
     const [scale, setScale] = useState("");
     const [expirationDate, setExpirationDate] = useState("");
+    const [imageUrl, setImageUrl] =useState("");
     const [categoryId, setCategoryId] = useState("");
     const [vendorId, setVendorId] =useState("");
     const navigate = useNavigate();
@@ -47,17 +48,28 @@ function AddItem(){
     function handleExpirationDateChange(event) {
         setExpirationDate(event.target.value);
     }
+
+    function handleImageUrlChange(event){
+        setImageUrl(event.target.value);
+    }
     
     function handleVendorIdChange(event){
         setVendorId(event.target.value);
     }
 
-    function getOption(){
-        setCategoryId(parseInt(document.queryselector('selectCategory').value));
-        // console.log(document.queryselector('selectCategory'))
+    function handleCategoryIdChange(event){
+        setCategoryId(event.target.value);
     }
+
+    // function getOption(){
+    //     setCategoryId(parseInt(document.getElementById('selectCategory').value));
+        
+    //     //document.getElementById('selectCategory').value
+    //     //document.getElementById('value').value=option.value;
+    //     // console.log(document.queryselector('selectCategory'))
+    // }
    
-   // console.log(document.queryselector('selectCategory')
+   
     
     function addItem(itemObj) {
         setItems([...items, itemObj])
@@ -70,6 +82,7 @@ function AddItem(){
         newItem.quantity = quantity;
         newItem.scale = scale;
         newItem.expirationDate = expirationDate;
+        newItem.imageUrl = imageUrl;
         newItem.categoryId = categoryId;
         newItem.vendorId = vendorId;
 
@@ -104,28 +117,30 @@ function AddItem(){
                     <input onChange={handleScaleChange} id="scale"></input><br />
 
                     <label htmlFor="expirationDate"><b>Expiration Date:</b></label><br />
-                    <input onChange={handleExpirationDateChange} id="expirationDate"></input><br />
+                    <input onChange={handleExpirationDateChange} id="expirationDate"></input><br /> 
+
+                    <label htmlFor="imageUrl"><b>Image URL:</b></label><br />
+                    <input onChange={handleImageUrlChange} id="imageUrl"></input><br /> 
 
                     <label htmlFor="vendorId"><b>VendorId:</b></label><br />
                     <input onChange={handleVendorIdChange} id="vendorId"></input><br />
 
-                    <label htmlFor="categoryId"><b>Category:</b></label><br />
-                    <select id="selectCategory">
-                        <option value={1}>Meat</option>
+                    <label htmlFor="categoryId"><b>CId:</b></label><br />
+                    <input onChange={handleCategoryIdChange} id="categoryId"></input><br />
+
+                    {/* <label htmlFor="categoryId"><b>Category:</b></label><br />
+                    <select id="selectCategory" >
+                        <option value="1">Meat</option>
                         <option value={2}>Produce</option>
                         <option value={3}>Dairy</option>
                         <option value={4}>Frozen</option>
                         <option value={5}>Alcohol</option>
                         <option value={6}>Baked Goods</option>
-                    </select><br />
-                    <script onChange ={getOption} id="categoryId"> </script><br /> 
+                    </select><br /> */}
+                    
+                    {/* <script onChange ={getOption} id="categoryId"> </script><br />  */}
 
-                    {/* <label htmlFor="vendor"><b>Vendor:</b></label><br />
-                    <select id="selectVendor">
-                        <option value="1">a</option>
-                        <option value="2">b</option>
-                        <option value="3">c</option>
-                    </select><br /><br /><br /> */}
+  
 
                     <button>Submit</button> <br />
                 </form>

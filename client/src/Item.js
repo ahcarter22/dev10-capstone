@@ -9,7 +9,7 @@ function Item(props) {
     console.log(props.itemObj)
 
     const {itemId, name, quantity, scale, 
-        expirationDate,image, categoryId, vendorId} = props.itemObj;
+        expirationDate,imageUrl, categoryId, vendorId} = props.itemObj;
     // const [user, setUser] = useContext(AuthContext);
 
     const [category,setCategory] = useState([]);
@@ -58,7 +58,7 @@ function Item(props) {
     return (
         <div className="item-card">
             <p><b>Id: </b> {itemId}</p>
-            <img src={image}  width="180" height="160"></img>
+            <img src={imageUrl}  width="180" height="160"></img>
             <p><b></b> {name}</p>
             <p><b>Quantity: </b>{quantity}</p>
             <p><b>Scale: </b>{scale}</p>

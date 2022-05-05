@@ -13,9 +13,9 @@ function Vendor(props) {
 
     return (
         <div className="vendor-card">
-            <p><b>Id:</b> {vendorId}</p>
+            <p>{name}</p>
             <img src="image/warehouse.jpeg"></img>
-            <p><b>Name:</b> {name}</p>
+            <p><b>Vendor Id:</b> {vendorId}</p>
             <p><b>Email:</b> {email}</p>
             <p><b>Phone:</b> {phone}</p>
             <Link to ={'/editVendor/'+vendorId}><button >EDIT</button></Link> &emsp;

@@ -52,7 +52,7 @@ function AddVendor(){
 
     return (
         <div>
-            <div className="addVendor">
+            <div className="formInfo">
                 <h1>Add a Vendor</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name"><b>Name:</b></label><br />

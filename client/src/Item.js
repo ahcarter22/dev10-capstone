@@ -59,7 +59,6 @@ function Item(props) {
         <div className="item-card">
             <p className="name"><b>{name}</b></p>
             <img src={imageUrl}  width="180" height="160"></img>
-            <p><b>Item Id: </b> {itemId}</p>
             <p><b>Quantity: </b>{quantity} {scale}</p>
             <p><b>Expiration Date: </b>{expirationDate}</p>
             <p><b>Category: </b> {category}</p>

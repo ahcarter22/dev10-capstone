@@ -78,14 +78,19 @@ function EditVendor(){
         );
     }
 
-    return toEdit ? <form className="editForm" onSubmit={handleSubmit}>
+    function handleCancel() {
+        navigate("/vendors");
+    }
+
+    return toEdit ? <form className="formInfo" onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label><br/>
         <input id = "name" value={toEdit.name} onChange={handleNameChange}></input><br/>
         <label htmlFor="email">Email:</label><br/>
         <input id = "email" value={toEdit.email} onChange={handleEmailChange}></input><br/>
         <label htmlFor="phone">Phone:</label><br/>
         <input id = "phone" value={toEdit.phone} onChange={handlePhoneChange}></input><br/>
-        <button> Submit </button>
+        <button> Submit </button> &emsp;
+        <button onClick={handleCancel}>Cancel</button>
     </form>:
        <></>
 }

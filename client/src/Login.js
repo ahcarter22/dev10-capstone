@@ -39,7 +39,7 @@ function Login() {
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <form className="formInfo" onSubmit={submitHandler}>
             <label>Username:</label><br />
             <input onChange={event => setUsername(event.target.value)}></input><br /><br />
             <label>Password:</label><br />

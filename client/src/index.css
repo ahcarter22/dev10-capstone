@@ -20,6 +20,7 @@ body {
   margin-top:5px;
   margin-left:35px;
   text-align: center;
+  border-radius: 20px;
 }
 
 
@@ -163,13 +164,12 @@ button:after {
   border-radius: 10px;
 }
 
-.addItem,.addVendor, .editForm{
+.formInfo{
   border: thick double #04743c;
   padding: 25px;
   margin-top:75px;
   text-align: center;
-  margin-left:400px;
-  margin-right: 450px;
+  
 }
 
 input{

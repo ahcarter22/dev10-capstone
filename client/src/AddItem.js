@@ -127,7 +127,7 @@ function AddItem({ overwriteErrorList }) {
 
     return (
         <div>
-            <div className="addItem">
+            <div className="formInfo">
                 <h1>Add an Item</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name"><b>Name:</b></label><br />

@@ -74,11 +74,11 @@ function DeleteItem(){
 
     return <>
     { toDelete ?
-    <>
-    <h2>Are you sure you'd like to delete {toDelete.name}?</h2>
-    <button onClick={handleDelete}>Delete</button>
-    <button onClick={handleCancel}>Cancel</button>
-    </>
+    <div className="formInfo">
+        <h2>Are you sure you'd like to delete {toDelete.name}?</h2>
+        <button onClick={handleDelete}>Delete</button> &emsp;
+        <button onClick={handleCancel}>Cancel</button>
+    </div>
 : <></> }
     </>
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function AddItem({ overwriteErrorList }) {
@@ -12,6 +12,7 @@ function AddItem({ overwriteErrorList }) {
     const navigate = useNavigate();
 
     const [items, setItems] = useState([]);
+    const [vendors, setVendors] = useState([]);
 
     // const [categories,setCategories] = useState([]);
 
@@ -55,6 +56,7 @@ function AddItem({ overwriteErrorList }) {
 
     function handleVendorIdChange(event) {
         setVendorId(event.target.value);
+        console.log(event.target.value)
     }
 
 
@@ -125,6 +127,26 @@ function AddItem({ overwriteErrorList }) {
         }
     }
 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/vendor",
+        {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                alert("Something went wrong while fetching...");
+            }
+            })
+        .then(vendorData => setVendors(vendorData))
+        .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+        }, []);
+
+        //<label htmlFor="vendorId"><b>VendorId:</b></label><br />
+        // <input onChange={handleVendorIdChange} id="vendorId"></input><br />
     return (
         <div>
             <div className="formInfo">
@@ -145,8 +167,15 @@ function AddItem({ overwriteErrorList }) {
                     <label htmlFor="imageUrl"><b>Image URL:</b></label><br />
                     <input onChange={handleImageUrlChange} id="imageUrl"></input><br />
 
-                    <label htmlFor="vendorId"><b>VendorId:</b></label><br />
-                    <input onChange={handleVendorIdChange} id="vendorId"></input><br />
+                    
+                    <label htmlFor="vendorId"><b>Vendor Name:</b></label><br />
+                    <select id="selectVendorName" value={vendorId} onChange={(e) => handleVendorIdChange(e)} >
+                        <option key={0} value="0">Please select an option</option>
+                        {vendors.map((vendor) => 
+                            <option key={vendor.vendorId} value={vendor.vendorId}>{vendor.name}</option>)
+                        }
+                    </select><br /><br /><br />
+
 
                     <label htmlFor="categoryId"><b>Category:</b></label><br />
                     <select id="selectCategory" value={categoryId} onChange={(e) => setCategoryId(parseInt(e.target.value))} >

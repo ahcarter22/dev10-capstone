@@ -78,7 +78,7 @@ function EditVendor(){
         );
     }
 
-    return toEdit ? <form onSubmit={handleSubmit}>
+    return toEdit ? <form className="editForm" onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label><br/>
         <input id = "name" value={toEdit.name} onChange={handleNameChange}></input><br/>
         <label htmlFor="email">Email:</label><br/>

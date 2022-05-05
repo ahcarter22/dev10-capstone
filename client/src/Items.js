@@ -42,6 +42,7 @@ function Items() {
 
     return (
         <>
+            <p className="pageTitle">Items</p>
             {itemFactory()}
         </>
     )

@@ -57,7 +57,6 @@ function Item(props) {
 
     return (
         <div className="item-card">
-            <h1>Add a Vendor</h1>
             <p className="name"><b>{name}</b></p>
             <img src={imageUrl}  width="180" height="160"></img>
             <p><b>Item Id: </b> {itemId}</p>

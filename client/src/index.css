@@ -163,7 +163,7 @@ button:after {
   border-radius: 10px;
 }
 
-.addItem,.addVendor{
+.addItem,.addVendor, .editForm{
   border: thick double #04743c;
   padding: 25px;
   margin-top:75px;
@@ -201,4 +201,9 @@ select{
 }
 #homepicture{
   margin-top: 20px;
+}
+
+.pageTitle{
+  font-size: x-large;
+  text-align: center;
 }

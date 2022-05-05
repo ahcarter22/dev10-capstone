@@ -42,6 +42,7 @@ function Vendors() {
 
     return (
         <>
+            <p className="pageTitle">Vendors</p>
             {vendorFactory()}
         </>
     )

@@ -16,7 +16,7 @@ function Vendor(props) {
             <p><b>Id:</b> {vendorId}</p>
             <img src="image/warehouse.jpeg"></img>
             <p><b>Name:</b> {name}</p>
-            <p><b>Email:</b> {email}.</p>
+            <p><b>Email:</b> {email}</p>
             <p><b>Phone:</b> {phone}</p>
             <Link to ={'/editVendor/'+vendorId}><button >EDIT</button></Link> &emsp;
             <Link to={"/deleteVendor/" + vendorId} ><button>DELETE</button></Link>

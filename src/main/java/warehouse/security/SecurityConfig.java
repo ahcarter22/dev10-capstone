@@ -29,22 +29,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors();
 
         http.authorizeRequests()
-
                 .antMatchers( HttpMethod.POST, "/api/login").permitAll()
-                .antMatchers( HttpMethod.GET, "/api/item").permitAll()
-                .antMatchers( HttpMethod.POST, "/api/item").permitAll()
-                .antMatchers( HttpMethod.DELETE, "/api/item/*").permitAll()
-                .antMatchers( HttpMethod.GET, "/api/item/*" ).permitAll()
-                .antMatchers( HttpMethod.PUT, "/api/item/*").permitAll()
 
-                .antMatchers( HttpMethod.GET, "/api/vendor").permitAll()
-                .antMatchers( HttpMethod.POST, "/api/vendor").permitAll()
-                .antMatchers( HttpMethod.DELETE, "/api/vendor/*").permitAll()
-                .antMatchers( HttpMethod.GET, "/api/vendor/*" ).permitAll()
-                .antMatchers( HttpMethod.PUT, "/api/vendor/*").permitAll()
-                .antMatchers( HttpMethod.GET, "/api/category/*").permitAll()
-                .antMatchers( HttpMethod.GET, "/api/category").permitAll()
-                .antMatchers("/refresh_token").permitAll()
+                .antMatchers( HttpMethod.GET, "/api/category").authenticated()
+                .antMatchers( HttpMethod.GET, "/api/category/*").authenticated()
+
+                .antMatchers( HttpMethod.GET, "/api/item").authenticated()
+                .antMatchers( HttpMethod.GET, "/api/item/*" ).authenticated()
+                .antMatchers( HttpMethod.POST, "/api/item").authenticated()
+                .antMatchers( HttpMethod.PUT, "/api/item/*").hasRole("ADMIN")
+                .antMatchers( HttpMethod.DELETE, "/api/item/*").hasRole("ADMIN")
+
+                .antMatchers( HttpMethod.GET, "/api/vendor").authenticated()
+                .antMatchers( HttpMethod.GET, "/api/vendor/*" ).authenticated()
+                .antMatchers( HttpMethod.POST, "/api/vendor").authenticated()
+                .antMatchers( HttpMethod.PUT, "/api/vendor/*").hasRole("ADMIN")
+                .antMatchers( HttpMethod.DELETE, "/api/vendor/*").hasRole("ADMIN")
+
                 .antMatchers("/**").denyAll()
 
                 // require authentication for any request...

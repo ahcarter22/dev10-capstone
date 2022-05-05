@@ -1,16 +1,20 @@
 @url = http://localhost:8080/api/vendor
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3YXJlaG91c2UiLCJzdWIiOiJqb2huQHNtaXRoLmNvbSIsImF1dGhvcml0aWVzIjoiUk9MRV9BRE1JTiIsImV4cCI6MTY1MTc2OTU2OX0.kzGpxJRtRSwKVOje2HltTKzXuEx53f4QJjreFmhLYPM
 
 GET {{url}} HTTP/1.1
+Authorization: Bearer {{token}}
 
 ####
 
 GET {{url}}/1 HTTP/1.1
+Authorization: Bearer {{token}}
 
 ###
 
 
 POST {{url}} HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "name": "Java Coffee",
@@ -22,6 +26,7 @@ Content-Type: application/json
 
 PUT {{url}}/6 HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "vendorId": 6,
@@ -32,4 +37,7 @@ Content-Type: application/json
 
 ###
 
-DELETE {{url}}/4 HTTP/1.1
+DELETE {{url}}/7 HTTP/1.1
+Authorization: Bearer {{token}}
+
+###

@@ -5,18 +5,18 @@ import AuthContext from "./AuthContext";
 function EditItem(){
 
     const [toEdit, setToEdit] = useState(null);
-    //const [userStatus, setUserStatus] = useContext(AuthContext);
+    const [userStatus, setUserStatus] = useContext(AuthContext);
     const navigate = useNavigate();
     const{itemId} = useParams();
 
     useEffect(() => {
-        //const jwt = localStorage.getItem( "token" );
-        //if(jwt) 
-        //{
+        const jwt = localStorage.getItem( "token" );
+        if(jwt) 
+        {
             fetch("http://localhost:8080/api/item/" + itemId,
                     {
                         headers: {
-                        //    "Authorization": "Bearer " + jwt
+                           "Authorization": "Bearer " + jwt
                         }
                     }
             )
@@ -30,10 +30,10 @@ function EditItem(){
                 console.log( retrievedItem );
                 setToEdit( retrievedItem );})
             .catch(console.log);
-        //}
-        //else{
-        //   navigate("./login");
-        //}
+        }
+        else{
+          navigate("./login");
+        }
    
     },[])
 
@@ -56,12 +56,12 @@ function EditItem(){
     function handleSubmit(e) {
         e.preventDefault();
 
-        //const jwt = localStorage.getItem("token");
+        const jwt = localStorage.getItem("token");
 
         fetch("http://localhost:8080/api/item/" + itemId,{
             method: "PUT",
             headers: {
-            //    "Authorization": "Bearer " + jwt,
+               "Authorization": "Bearer " + jwt,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(toEdit)

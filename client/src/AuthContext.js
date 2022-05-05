@@ -1,7 +1,5 @@
-function AuthContext(){
-    return(
-        <>AuthContext Placeholder</>
-    );
-}
+import { createContext } from 'react';
+
+const AuthContext = createContext();
 
 export default AuthContext;

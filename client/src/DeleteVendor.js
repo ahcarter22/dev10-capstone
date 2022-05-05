@@ -10,13 +10,13 @@ function DeleteVendor(){
     useEffect( 
         () => {
 
-            //const jwt = localStorage.getItem( "token" );
-            //if( jwt ){
+            const jwt = localStorage.getItem( "token" );
+            if( jwt ){
                 
                 fetch( "http://localhost:8080/api/vendor/" + vendorId,
                     {
                         headers: {
-                        //    Authorization: "Bearer " + jwt
+                           Authorization: "Bearer " + jwt
                         }
                     }
                 )
@@ -36,9 +36,9 @@ function DeleteVendor(){
                     console.log( rejection );
                     alert( "something very bad happened...");
                 });
-           // } else {
-            //    nav("/login");
-            //}
+           } else {
+               nav("/login");
+            }
         },
         []
     );
@@ -51,7 +51,7 @@ function DeleteVendor(){
         fetch("http://localhost:8080/api/vendor/" + vendorId, {
             method: "DELETE",
             headers: {
-                //"Authorization": "Bearer " + localStorage.getItem("token")
+                "Authorization": "Bearer " + localStorage.getItem("token")
             }
         })
         .then(response => {

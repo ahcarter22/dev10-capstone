@@ -1,5 +1,5 @@
 @url = http://localhost:8080/api/item
-@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3YXJlaG91c2UiLCJzdWIiOiJzYWxseUBqb25lcy5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfVVNFUiIsImV4cCI6MTY1MTc2OTQyMH0.NuCdU2FndfihFN9uQBS8ZsQl99SvtjywVDy0b2GMfVc
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3YXJlaG91c2UiLCJzdWIiOiJqb2huQHNtaXRoLmNvbSIsImF1dGhvcml0aWVzIjoiUk9MRV9BRE1JTiIsImV4cCI6MTY1MTc3NTU4MH0.UCfMv2SkA3fkQLvJs8BSrZX6GNWt1ujy9WXMFYOv9x8
 
 GET {{url}} HTTP/1.1
 Authorization: Bearer {{token}}

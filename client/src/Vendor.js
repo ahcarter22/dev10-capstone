@@ -8,7 +8,7 @@ function Vendor(props) {
     console.log(props.vendorObj)
 
     const {vendorId, name, email, phone} = props.vendorObj;
-    // const [user, setUser] = useContext(AuthContext);
+    const [user, setUser] = useContext(AuthContext);
 
 
     return (

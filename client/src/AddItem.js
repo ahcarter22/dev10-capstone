@@ -106,6 +106,7 @@ function AddItem({ overwriteErrorList }) {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token"),
                     Accept: "application/json",
                 },
                 body: JSON.stringify(newItem)

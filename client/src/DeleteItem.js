@@ -10,13 +10,13 @@ function DeleteItem(){
     useEffect( 
         () => {
 
-            //const jwt = localStorage.getItem( "token" );
-            //if( jwt ){
+            const jwt = localStorage.getItem( "token" );
+            if( jwt ){
                 
                 fetch( "http://localhost:8080/api/item/" + itemId,
                     {
                         headers: {
-                        //    Authorization: "Bearer " + jwt
+                           Authorization: "Bearer " + jwt
                         }
                     }
                 )
@@ -36,9 +36,9 @@ function DeleteItem(){
                     console.log( rejection );
                     alert( "something very bad happened...");
                 });
-           // } else {
-            //    nav("/login");
-            //}
+           } else {
+               nav("/login");
+            }
         },
         []
     );
@@ -51,7 +51,7 @@ function DeleteItem(){
         fetch("http://localhost:8080/api/item/" + itemId, {
             method: "DELETE",
             headers: {
-                //"Authorization": "Bearer " + localStorage.getItem("token")
+                "Authorization": "Bearer " + localStorage.getItem("token")
             }
         })
         .then(response => {

@@ -1,8 +1,21 @@
-import { Link } from "react-router-dom";
-import AuthContext from "./AuthContext";
-import { useContext } from "react";
+import { useContext, useState } from 'react';
+import AuthContext from './AuthContext';
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 function Nav(){
+    const [user, setUser] = useContext(AuthContext);
+    let {id} = useParams;
+    const navigate = useNavigate();
+
+    function handleLogOut(event) {
+        event.preventDefault();
+        localStorage.removeItem("token");
+        setUser(null);
+        navigate("/");
+    }
+
+    console.log(user);
+
     return(
         <header>
             <div class="container">
@@ -15,21 +28,33 @@ function Nav(){
                     <Link  to="/">Home</Link>
                 </li> 
 
-                <li>
-                    <Link to="/items">Items</Link>
-                </li>
+                {user?.user ? (
+                    <>
+                        <li>
+                            <Link to="/items">Items</Link>
+                        </li>
 
-                <li>
-                    <Link to="/vendors">Vendors</Link>
-                </li>
+                        <li>
+                            <Link to="/vendors">Vendors</Link>
+                        </li>
 
-                <li>
-                    <Link to="/addItem">Add Item</Link>
-                </li>
+                        <li>
+                            <Link to="/addItem">Add Item</Link>
+                        </li>
 
-                <li>
-                    <Link to="/addVendor">Add Vendor</Link>
-                </li>
+                        <li>
+                            <Link to="/addVendor">Add Vendor</Link>
+                        </li>
+
+                        <li><button onClick={handleLogOut}>Logout of {user.user.sub}</button></li>
+                    </>
+                ): (
+                    <>
+                        <li>
+                            <Link to="/login">Login</Link>
+                        </li>
+                    </>
+                )}
             </ul>
         </nav>
         </div>

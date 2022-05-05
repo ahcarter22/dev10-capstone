@@ -10,7 +10,7 @@ function Item(props) {
 
     const {itemId, name, quantity, scale, 
         expirationDate,imageUrl, categoryId, vendorId} = props.itemObj;
-    // const [user, setUser] = useContext(AuthContext);
+    const [user, setUser] = useContext(AuthContext);
 
     const [category,setCategory] = useState([]);
 
@@ -22,7 +22,7 @@ function Item(props) {
         fetch("http://localhost:8080/api/category/" + categoryId,
         {
             headers: {
-            //     Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + localStorage.getItem("token")
             }
         })
         .then(response => {
@@ -40,7 +40,7 @@ function Item(props) {
             fetch("http://localhost:8080/api/vendor/" + vendorId,
             {
                 headers: {
-                //     Authorization: "Bearer " + localStorage.getItem("token")
+                    Authorization: "Bearer " + localStorage.getItem("token")
                 }
             })
             .then(response => {

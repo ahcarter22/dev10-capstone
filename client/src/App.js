@@ -15,6 +15,7 @@ import Home from "./Home";
 import NotFound from "./NotFound";
 import AllErrors from "./AllErrors";
 import jwtDecode from 'jwt-decode';
+import About from "./About";
 
 import { useEffect, useState } from "react";
 
@@ -40,7 +41,7 @@ function App() {
 
         < Routes >
           <Route exact path="/" element={<Home />} />
-
+          <Route path="/about" element={<About />} />
           {user?.user ? (
               <>
                 <Route path="/items" element={<Items />} />

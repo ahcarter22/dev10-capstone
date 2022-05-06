@@ -46,29 +46,6 @@ home {
 }
 
 
-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6px 14px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-  border-radius: 6px;
-  border: none;
-
-  color: #fff;
-  background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
-   background-origin: border-box;
-  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-
-.button:focus {
-  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
-  outline: 0;
-}
 
 
 .formInfo{
@@ -97,9 +74,11 @@ b {
 .name{
   font-size:x-large;
 }
-.homepage{
+.home-text{
+  padding-top:30px;
   margin-left:200px;
   margin-right:200px;
+  color:#fff;
 }
 select{
   border-radius: 5px;
@@ -147,18 +126,49 @@ select{
 .home-page {
   
   height: 1000px;
-  background-image:url('https://www.americanwarehouses.com/hubfs/AmericanWarehouses_Blog_TheBestApproachToLeasingWarehouseSpace.jpg');
+  background:rgba(0,0,0,0.6) url('https://www.americanwarehouses.com/hubfs/AmericanWarehouses_Blog_TheBestApproachToLeasingWarehouseSpace.jpg');
   background-position: center;
   background-size:cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  opacity: 0.5;
   background-blend-mode: darken;
 }
 .collapse .navbar-collapse .navbar-nav .ml-auto .mb-2 .mb-lg-0,.nav-item{
-  color: red;
   font-size:20px;
 }
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link  {
+  color: #233859;
+}
+.learn-more{
+  align-items: center;
+  background-color: #f0e246;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  letter-spacing: .5px;
+  font-size: 20px;
+}
+
 
 
 

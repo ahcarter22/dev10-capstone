@@ -9,7 +9,7 @@ function Items() {
         fetch("http://localhost:8080/api/item",
         {
             headers: {
-            //     Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + localStorage.getItem("token")
             }
         })
         .then(response => {

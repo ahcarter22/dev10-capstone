@@ -36,6 +36,7 @@ function AddVendor(){
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token"),
                 Accept: "application/json",
             },
             body: JSON.stringify(newVendor)
@@ -51,7 +52,7 @@ function AddVendor(){
 
     return (
         <div>
-            <div className="addVendor">
+            <div className="formInfo">
                 <h1>Add a Vendor</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name"><b>Name:</b></label><br />

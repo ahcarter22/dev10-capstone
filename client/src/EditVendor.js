@@ -5,18 +5,18 @@ import AuthContext from "./AuthContext";
 function EditVendor(){
 
     const [toEdit, setToEdit] = useState(null);
-    //const [userStatus, setUserStatus] = useContext(AuthContext);
+    const [userStatus, setUserStatus] = useContext(AuthContext);
     const navigate = useNavigate();
     const{vendorId} = useParams();
 
     useEffect(() => {
-        //const jwt = localStorage.getItem( "token" );
-        //if(jwt) 
-        //{
+        const jwt = localStorage.getItem( "token" );
+        if(jwt) 
+        {
             fetch("http://localhost:8080/api/vendor/" + vendorId,
                     {
                         headers: {
-                        //    "Authorization": "Bearer " + jwt
+                           "Authorization": "Bearer " + jwt
                         }
                     }
             )
@@ -30,10 +30,10 @@ function EditVendor(){
                 console.log( retrievedVendor );
                 setToEdit( retrievedVendor );})
             .catch(console.log);
-        //}
-        //else{
-        //   navigate("./login");
-        //}
+        }
+        else{
+          navigate("./login");
+        }
    
     },[])
 
@@ -56,12 +56,12 @@ function EditVendor(){
     function handleSubmit(e) {
         e.preventDefault();
 
-        //const jwt = localStorage.getItem("token");
+        const jwt = localStorage.getItem("token");
 
         fetch("http://localhost:8080/api/vendor/" + vendorId,{
             method: "PUT",
             headers: {
-            //    "Authorization": "Bearer " + jwt,
+               "Authorization": "Bearer " + jwt,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(toEdit)
@@ -78,14 +78,19 @@ function EditVendor(){
         );
     }
 
-    return toEdit ? <form className="editForm" onSubmit={handleSubmit}>
+    function handleCancel() {
+        navigate("/vendors");
+    }
+
+    return toEdit ? <form className="formInfo" onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label><br/>
         <input id = "name" value={toEdit.name} onChange={handleNameChange}></input><br/>
         <label htmlFor="email">Email:</label><br/>
         <input id = "email" value={toEdit.email} onChange={handleEmailChange}></input><br/>
         <label htmlFor="phone">Phone:</label><br/>
         <input id = "phone" value={toEdit.phone} onChange={handlePhoneChange}></input><br/>
-        <button> Submit </button>
+        <button> Submit </button> &emsp;
+        <button onClick={handleCancel}>Cancel</button>
     </form>:
        <></>
 }

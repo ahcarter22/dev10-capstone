@@ -9,7 +9,7 @@ function Vendors() {
         fetch("http://localhost:8080/api/vendor",
         {
             headers: {
-            //     Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + localStorage.getItem("token")
             }
         })
         .then(response => {

@@ -3,20 +3,19 @@ import { useParams, useNavigate } from "react-router-dom";
 import AuthContext from "./AuthContext";
 
 function EditItem(){
-
     const [toEdit, setToEdit] = useState(null);
-    //const [userStatus, setUserStatus] = useContext(AuthContext);
+    const [userStatus, setUserStatus] = useContext(AuthContext);
     const navigate = useNavigate();
     const{itemId} = useParams();
 
     useEffect(() => {
-        //const jwt = localStorage.getItem( "token" );
-        //if(jwt) 
-        //{
+        const jwt = localStorage.getItem( "token" );
+        if(jwt) 
+        {
             fetch("http://localhost:8080/api/item/" + itemId,
                     {
                         headers: {
-                        //    "Authorization": "Bearer " + jwt
+                           "Authorization": "Bearer " + jwt
                         }
                     }
             )
@@ -30,10 +29,10 @@ function EditItem(){
                 console.log( retrievedItem );
                 setToEdit( retrievedItem );})
             .catch(console.log);
-        //}
-        //else{
-        //   navigate("./login");
-        //}
+        }
+        else{
+          navigate("./login");
+        }
    
     },[])
 
@@ -56,12 +55,12 @@ function EditItem(){
     function handleSubmit(e) {
         e.preventDefault();
 
-        //const jwt = localStorage.getItem("token");
+        const jwt = localStorage.getItem("token");
 
         fetch("http://localhost:8080/api/item/" + itemId,{
             method: "PUT",
             headers: {
-            //    "Authorization": "Bearer " + jwt,
+               "Authorization": "Bearer " + jwt,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(toEdit)
@@ -78,15 +77,25 @@ function EditItem(){
         );
     }
 
-    return toEdit ? <form className="editForm" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label><br/>
-        <input id = "name" value={toEdit.name} onChange={handleNameChange}></input><br/>
-        <label htmlFor="quantity">Quantity:</label><br/>
-        <input id = "quantity" value={toEdit.quantity} onChange={handleQuantityChange}></input><br/>
-        <label htmlFor="scale">Scale:</label><br/>
-        <input id = "scale" value={toEdit.scale} onChange={handleScaleChange}></input><br/><br/><br/>
-        <button> Submit </button>
-    </form>:
+    function handleCancel() {
+        navigate("/items");
+    }
+
+    return toEdit ? 
+    <>
+        <form className="formInfo" onSubmit={handleSubmit}>
+            <label htmlFor="name">Name:</label><br/>
+            <input id = "name" value={toEdit.name} onChange={handleNameChange}></input><br/>
+            <label htmlFor="quantity">Quantity:</label><br/>
+            <input id = "quantity" value={toEdit.quantity} onChange={handleQuantityChange}></input><br/>
+            <label htmlFor="scale">Scale:</label><br/>
+            <input id = "scale" value={toEdit.scale} onChange={handleScaleChange}></input><br/><br/><br/>
+            <button> Submit </button>  &emsp;
+            <button onClick={handleCancel}>Cancel</button>
+        </form>
+        
+    </>
+    :
        <></>
 }
 

@@ -34,7 +34,7 @@ function Nav() {
                         </li>
 
                         <li className="nav-item">
-                            <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/">About</NavLink>
+                            <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/about">About</NavLink>
                         </li>
 
                         {user?.user ? (

@@ -39,57 +39,6 @@ header::after {
   clear: both;
 }
 
-.logo {
-  float: left;
-  padding: 10px 0;
-}
-
-nav {
-  float: right;
-}
-
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-nav li {
-  display: inline-block;
-  margin-left: 70px;
-  padding-top: 23px;
-
-  position: relative;
-}
-
-nav a {
-  color: #444;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 14px;
-}
-
-nav a:hover {
-  color: #000;
-}
-
-nav a::before {
-  content: '';
-  display: block;
-  height: 5px;
-  background-color: #444;
-
-  position: absolute;
-  top: 0;
-  width: 0%;
-
-  transition: all ease-in-out 250ms;
-}
-
-nav a:hover::before {
-  width: 100%;
-}
-
 home {
   background-image: url;
   text-align:center;
@@ -98,71 +47,29 @@ home {
 
 
 button {
-  padding: 0.6em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 6px;
   border: none;
-  outline: none;
-  color: rgb(255, 255, 255);
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
+
+  color: #fff;
+  background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
+   background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
 
-button:before {
-  content: "";
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing-button 20s linear infinite;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
+
+.button:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+  outline: 0;
 }
 
-@keyframes glowing-button {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 400% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-}
-
-button:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgb(7, 45, 34);
-  left: 0;
-  top: 0;
-  border-radius: 10px;
-}
 
 .formInfo{
   border: thick double #04743c;
@@ -207,3 +114,53 @@ select{
   font-size: x-large;
   text-align: center;
 }
+
+.navbar-nav  > li{
+  padding-right:50px;
+}
+.navbar-nav{
+  margin-left: auto;
+}
+.navbar-brand{
+  display: inline-block;
+  color: #233859;
+  font-family: Montserrat;
+  font-weight: bold;
+  padding-left: 5px;
+}
+.navbar-brand name {
+  font-size:25px;
+  color: #233859;
+}
+.navbar-brand small {
+  display:block;
+  font-size:12px;
+  color: #9c9c9c;
+}
+.navbar-brand-image{
+  padding-left: 60px;
+}
+.navbar{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.home-page {
+  
+  height: 1000px;
+  background-image:url('https://www.americanwarehouses.com/hubfs/AmericanWarehouses_Blog_TheBestApproachToLeasingWarehouseSpace.jpg');
+  background-position: center;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.5;
+  background-blend-mode: darken;
+}
+.collapse .navbar-collapse .navbar-nav .ml-auto .mb-2 .mb-lg-0,.nav-item{
+  color: red;
+  font-size:20px;
+}
+
+
+
+
+

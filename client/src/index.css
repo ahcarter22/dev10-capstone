@@ -169,7 +169,14 @@ select{
   font-size: 20px;
 }
 
+#hideEmailMsg, #hideEmailBtn{
+  display: none;
+  text-align: center;
+}
 
+#showEmailMsg, #showEmailBtn{
+  text-align: center;
+}
 
 
 

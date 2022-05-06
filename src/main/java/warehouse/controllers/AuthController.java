@@ -9,6 +9,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
+import warehouse.domain.EmailService;
 import warehouse.domain.ItemService;
 import warehouse.security.JwtConverter;
 
@@ -25,14 +26,17 @@ public class AuthController {
     AuthenticationManager authManager;
     JwtConverter converter;
     ItemService service;
+    private EmailService emailService;
 
     public AuthController(
             AuthenticationManager authManager,
             JwtConverter converter,
-            ItemService service ){
+            ItemService service,
+            EmailService emailService){
         this.authManager = authManager;
         this.converter = converter;
         this.service = service;
+        this.emailService = emailService;
     }
 
     @PostMapping("/login")
@@ -61,5 +65,6 @@ public class AuthController {
 
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
+
 
 }

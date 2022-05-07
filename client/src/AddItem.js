@@ -13,26 +13,43 @@ function AddItem({ overwriteErrorList }) {
 
     const [items, setItems] = useState([]);
     const [vendors, setVendors] = useState([]);
+    const [categories,setCategories] = useState([]);
 
-    // const [categories,setCategories] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:8080/api/category", 
+        {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                alert("Something went wrong while fetching...");
+            }
+            })
+        .then(categoryData=>setCategories(categoryData))
+        .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+        }, []);
 
-    // useEffect(() => {
-    //     fetch("http://localhost:8080/api/category", 
-    //     {
-    //         headers: {
-    //         //     Authorization: "Bearer " + localStorage.getItem("token")
-    //         }
-    //     })
-    //     .then(response => {
-    //         if (response.status === 200) {
-    //             return response.json();
-    //         } else {
-    //             alert("Something went wrong while fetching...");
-    //         }
-    //         })
-    //     .then(categoryData=>setCategories(categoryData))
-    //     .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
-    //     }, []);
+    useEffect(() => {
+        fetch("http://localhost:8080/api/vendor",
+        {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                alert("Something went wrong while fetching...");
+            }
+            })
+        .then(vendorData => setVendors(vendorData))
+        .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+        }, []);
 
     function handleNameChange(event) {
         setName(event.target.value);
@@ -67,12 +84,11 @@ function AddItem({ overwriteErrorList }) {
     //     //document.getElementById('value').value=option.value;
     //     // console.log(document.queryselector('selectCategory'))
     // }
-    function getOption(event) {
+    function handleCategoryIdChange(event) {
         setCategoryId(event.target.value);
-        console.log(event)
+        console.log(event.target)
+        console.log(categoryId)
     }
-
-
 
     function addItem(itemObj) {
         setItems([...items, itemObj])
@@ -87,9 +103,6 @@ function AddItem({ overwriteErrorList }) {
         if (name == null || name.trim()===""){
             allErrors.push("Please enter a valid name.")
         }
-        
-        
-        
         
         if (allErrors.length > 0){
             overwriteErrorList(allErrors);
@@ -127,26 +140,15 @@ function AddItem({ overwriteErrorList }) {
         }
     }
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/vendor",
-        {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
-            }
-        })
-        .then(response => {
-            if (response.status === 200) {
-                return response.json();
-            } else {
-                alert("Something went wrong while fetching...");
-            }
-            })
-        .then(vendorData => setVendors(vendorData))
-        .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
-        }, []);
-
-        //<label htmlFor="vendorId"><b>VendorId:</b></label><br />
-        // <input onChange={handleVendorIdChange} id="vendorId"></input><br />
+    // This should auto populate category, but we need to change our back-end GET request to give us category ids as well
+    // <label htmlFor="categoryId"><b>Category:</b></label><br />
+    // <select id="selectCategory" value={categoryId} onChange={(e) => handleCategoryIdChange(e)} >
+    //     <option key={0} value="0">Please select an option</option>
+    //     {categories.map((category) => 
+    //         <option key={category.categoryId} value={category.categoryId}>{category}</option>)
+    //     }
+    // </select><br /><br /><br />
+    
     return (
         <div>
             <div className="formInfo">
@@ -176,7 +178,6 @@ function AddItem({ overwriteErrorList }) {
                         }
                     </select><br /><br /><br />
 
-
                     <label htmlFor="categoryId"><b>Category:</b></label><br />
                     <select id="selectCategory" value={categoryId} onChange={(e) => setCategoryId(parseInt(e.target.value))} >
                         <option value="0">Please select an option</option>
@@ -189,6 +190,7 @@ function AddItem({ overwriteErrorList }) {
                     </select><br /><br /><br />
 
 
+                    
                     <button>Submit</button> <br />
                 </form>
             </div>

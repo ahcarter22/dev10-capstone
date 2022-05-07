@@ -1,34 +1,37 @@
 package warehouse.domain;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import warehouse.data.ItemRepository;
-import warehouse.models.Item;
+        import org.junit.jupiter.api.Test;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.boot.test.context.SpringBootTest;
+        import org.springframework.boot.test.mock.mockito.MockBean;
+        import warehouse.data.ItemRepository;
+        import warehouse.data.VendorRepository;
 
-import java.time.LocalDate;
+        import warehouse.models.Item;
+        import warehouse.models.Vendor;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+        import java.time.LocalDate;
+
+        import static org.junit.jupiter.api.Assertions.assertEquals;
+        import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class ItemServiceTest {
+class VendorServiceTest {
 
     @Autowired
-    ItemService itemService;
+    VendorService vendorService;
 
     @MockBean
-    ItemRepository itemRepository;
+    VendorRepository vendorRepository;
 
     @Test
     void shouldAdd() {
-        Item item = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
-        Item mockOut = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
+        Vendor vendor = new Vendor(0, "TEST", "email@test.com", "123-456-7890",null);
+        Vendor mockOut = new Vendor(5, "TEST", "email@test.com", "123-456-7890",null);
 
-        when(itemRepository.add(item)).thenReturn(mockOut);
+        when(vendorRepository.add(vendor)).thenReturn(mockOut);
 
-        Result<Item> actual = itemService.add(item);
+        Result<Vendor> actual = vendorService.add(vendor);
         assertEquals(ResultType.SUCCESS, actual.getType());
         assertEquals(mockOut, actual.getPayload());
     }
@@ -36,66 +39,56 @@ class ItemServiceTest {
     @Test
     void shouldNotAddWhenInvalid() {
 
-        Item item = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
+        Vendor vendor = new Vendor(35, "TEST", "email@test.com", "123-456-7890",null);
 
-        Result<Item> actual = itemService.add(item);
+        Result<Vendor> actual = vendorService.add(vendor);
         assertEquals(ResultType.INVALID, actual.getType());
 
-        item.setItemId(0);
-        item.setName(null);
-        actual = itemService.add(item);
+        vendor.setVendorId(0);
+        vendor.setName(null);
+        actual = vendorService.add(vendor);
         assertEquals(ResultType.INVALID, actual.getType());
 
-        item.setName("TEST");
-
-        actual = itemService.add(item);
+        vendor.setName("TEST");
+        vendor.setEmail("   ");
+        actual = vendorService.add(vendor);
         assertEquals(ResultType.INVALID, actual.getType());
     }
 
     @Test
     void shouldUpdate() {
-        Item item = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
+        Vendor vendor = new Vendor(5, "TEST", "email@test.com", "123-456-7890",null);
 
-        when(itemRepository.update(item)).thenReturn(true);
-        Result<Item> actual = itemService.update(item);
+        when(vendorRepository.update(vendor)).thenReturn(true);
+        Result<Vendor> actual = vendorService.update(vendor);
         assertEquals(ResultType.SUCCESS, actual.getType());
     }
 
     @Test
     void shouldNotUpdateMissing() {
-        Item item = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
+        Vendor vendor = new Vendor(35, "TEST", "email@test.com", "123-456-7890",null);
 
-        when(itemRepository.update(item)).thenReturn(false);
-        Result<Item> actual = itemService.update(item);
+        when(vendorRepository.update(vendor)).thenReturn(false);
+        Result<Vendor> actual = vendorService.update(vendor);
         assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
 
     @Test
     void shouldNotUpdateWhenInvalid() {
-        Item item = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
+        Vendor vendor = new Vendor(35, null, "email@test.com", "123-456-7890",null);
 
-        Result<Item> actual = itemService.update(item);
+        Result<Vendor> actual = vendorService.update(vendor);
         assertEquals(ResultType.INVALID, actual.getType());
 
-        item.setName("TEST Update");
-        item.setQuantity(6);
-        item.setScale("kilos");
-        item.setExpirationDate(LocalDate.of(2020, 9, 16));
-        item.setImageUrl("");
-        item.setVendorId(2);
-        item.setCategoryId(3);
-        actual = itemService.update(item);
+        vendor.setName("TEST");
+        vendor.setEmail(" ");
+        actual = vendorService.update(vendor);
         assertEquals(ResultType.INVALID, actual.getType());
 
-        item.setName("TEST Update");
-        item.setQuantity(6);
-        item.setScale("kilos");
-        item.setExpirationDate(LocalDate.of(2020, 9, 16));
-        item.setImageUrl("");
-        item.setVendorId(2);
-        item.setCategoryId(3);
-       actual = itemService.update(item);
-       assertEquals(ResultType.INVALID, actual.getType());
+        vendor.setVendorId(0);
+        vendor.setEmail("Email Test");
+        actual = vendorService.update(vendor);
+        assertEquals(ResultType.INVALID, actual.getType());
     }
 
 }

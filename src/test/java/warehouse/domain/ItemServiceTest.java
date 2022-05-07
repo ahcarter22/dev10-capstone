@@ -1,67 +1,92 @@
 package warehouse.domain;
 
-import warehouse.data.ItemRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
-import java.time.LocalDate;
+import warehouse.data.VendorRepository;
+import warehouse.domain.Result;
+import warehouse.domain.ResultType;
+import warehouse.domain.VendorService;
+import warehouse.models.Vendor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-public class ItemServiceTest {
+@SpringBootTest
+class VendorServiceTest {
+
     @Autowired
-    ItemService service;
+    VendorService vendorService;
 
     @MockBean
-    ItemRepository repository;
+    VendorRepository vendorRepository;
 
     @Test
-    void shouldFindHazel() {
-//        // pass-through test, probably not useful
-//        Agent expected = makeAgent();
-//        when(repository.findById(1)).thenReturn(expected);
-//        Agent actual = service.findById(1);
-//        assertEquals(expected, actual);
+    void shouldAdd() {
+        Vendor vendor = new Vendor(0, "TEST", "email@test.com", "123-456-7890",null);
+        Vendor mockOut = new Vendor(5, "TEST", "email@test.com", "123-456-7890",null);
+
+        when(vendorRepository.add(vendor)).thenReturn(mockOut);
+
+        Result<Vendor> actual = vendorService.add(vendor);
+        assertEquals(ResultType.SUCCESS, actual.getType());
+        assertEquals(mockOut, actual.getPayload());
     }
 
     @Test
     void shouldNotAddWhenInvalid() {
-//        Agent agent = makeAgent();
-//        Result<Agent> result = service.add(agent);
-//        assertEquals(ResultType.INVALID, result.getType());
-//
-//        agent.setAgentId(0);
-//        agent.setFirstName(null);
-//        result = service.add(agent);
-//        assertEquals(ResultType.INVALID, result.getType());
+
+        Vendor vendor = new Vendor(35, "TEST", "email@test.com", "123-456-7890",null);
+
+        Result<Vendor> actual = vendorService.add(vendor);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        vendor.setVendorId(0);
+        vendor.setName(null);
+        actual = vendorService.add(vendor);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        vendor.setName("TEST");
+        vendor.setEmail("   ");
+        actual = vendorService.add(vendor);
+        assertEquals(ResultType.INVALID, actual.getType());
     }
 
     @Test
-    void shouldNotAddWhenValid() {
-//        Agent expected = makeAgent();
-//        Agent arg = makeAgent();
-//        arg.setAgentId(0);
-//
-//        when(repository.add(arg)).thenReturn(expected);
-//        Result<Agent> result = service.add(arg);
-//        assertEquals(ResultType.SUCCESS, result.getType());
-//
-//        assertEquals(expected, result.getPayload());
+    void shouldUpdate() {
+        Vendor vendor = new Vendor(5, "TEST", "email@test.com", "123-456-7890",null);
+
+        when(vendorRepository.update(vendor)).thenReturn(true);
+        Result<Vendor> actual = vendorService.update(vendor);
+        assertEquals(ResultType.SUCCESS, actual.getType());
     }
 
-//    Agent makeAgent() {
-//        //('Hazel','C','Sauven','1954-09-16',76),
-//        Agent agent = new Agent();
-//        agent.setAgentId(1);
-//        agent.setFirstName("Hazel");
-//        agent.setMiddleName("C");
-//        agent.setLastName("Sauven");
-//        agent.setDob(LocalDate.of(1954, 9, 16));
-//        agent.setHeightInInches(76);
-//        return agent;
-//    }
+    @Test
+    void shouldNotUpdateMissing() {
+        Vendor vendor = new Vendor(35, "TEST", "email@test.com", "123-456-7890",null);
+
+        when(vendorRepository.update(vendor)).thenReturn(false);
+        Result<Vendor> actual = vendorService.update(vendor);
+        assertEquals(ResultType.NOT_FOUND, actual.getType());
+    }
+
+    @Test
+    void shouldNotUpdateWhenInvalid() {
+        Vendor vendor = new Vendor(35, null, "email@test.com", "123-456-7890",null);
+
+        Result<Vendor> actual = vendorService.update(vendor);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        vendor.setName("TEST");
+        vendor.setEmail(" ");
+        actual = vendorService.update(vendor);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        vendor.setVendorId(0);
+        vendor.setEmail("Email Test");
+        actual = vendorService.update(vendor);
+        assertEquals(ResultType.INVALID, actual.getType());
+    }
+
 }

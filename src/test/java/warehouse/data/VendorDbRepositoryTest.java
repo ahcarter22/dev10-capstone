@@ -32,8 +32,8 @@ class VendorDbRepositoryTest {
 
     @Test
     void shouldFindVendorById() {
-        Vendor johnny = repository.findById(1);
-        assertEquals("JOHNNY", johnny.getName());
+        Vendor vendor = repository.findById(1);
+        assertEquals("Johnny's Apples", vendor.getName());
     }
 
     @Test

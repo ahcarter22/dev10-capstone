@@ -35,9 +35,7 @@ class ItemServiceTest {
 
     @Test
     void shouldNotAddWhenInvalid() {
-
-        Item item = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
-
+        Item item = makeItem();
         Result<Item> actual = itemService.add(item);
         assertEquals(ResultType.INVALID, actual.getType());
 
@@ -46,29 +44,8 @@ class ItemServiceTest {
         actual = itemService.add(item);
         assertEquals(ResultType.INVALID, actual.getType());
 
-        item.setName("TEST");
-
-        actual = itemService.add(item);
-        assertEquals(ResultType.INVALID, actual.getType());
     }
 
-    @Test
-    void shouldUpdate() {
-        Item item = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
-
-        when(itemRepository.update(item)).thenReturn(true);
-        Result<Item> actual = itemService.update(item);
-        assertEquals(ResultType.SUCCESS, actual.getType());
-    }
-
-    @Test
-    void shouldNotUpdateMissing() {
-        Item item = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
-
-        when(itemRepository.update(item)).thenReturn(false);
-        Result<Item> actual = itemService.update(item);
-        assertEquals(ResultType.NOT_FOUND, actual.getType());
-    }
 
     @Test
     void shouldNotUpdateWhenInvalid() {
@@ -96,6 +73,19 @@ class ItemServiceTest {
         item.setCategoryId(3);
         actual = itemService.update(item);
         assertEquals(ResultType.INVALID, actual.getType());
+    }
+
+    Item makeItem() {
+        Item item = new Item();
+        item.setItemId(1);
+        item.setName("TEST");
+        item.setQuantity(6);
+        item.setScale("lbs");
+        item.setExpirationDate(LocalDate.of(2020, 9, 16));
+        item.setImageUrl("");
+        item.setVendorId(2);
+        item.setCategoryId(3);
+        return item;
     }
 
 }

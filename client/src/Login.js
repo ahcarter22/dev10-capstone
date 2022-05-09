@@ -20,32 +20,40 @@ function Login() {
                 username, password
             })
         })
-        .then(response => {
-            if (response.status === 200) {
-                return response.json()
-            } else {
-                alert("Something bad");
-            }
-        })
-        .then(tokenContainer => {    
-            console.log("tokenContainer: ", tokenContainer)
-            const { jwt_token } = tokenContainer;
-            console.log("jwt_token: ", jwt_token)
-            localStorage.setItem("token", jwt_token);
-            setUser({ user: jwtDecode(jwt_token) });
-            navigate("/");
-        })
-        .catch(rejection => alert(rejection))
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json()
+                } else {
+                    alert("Something bad");
+                }
+            })
+            .then(tokenContainer => {
+                console.log("tokenContainer: ", tokenContainer)
+                const { jwt_token } = tokenContainer;
+                console.log("jwt_token: ", jwt_token)
+                localStorage.setItem("token", jwt_token);
+                setUser({ user: jwtDecode(jwt_token) });
+                navigate("/");
+            })
+            .catch(rejection => alert(rejection))
     }
 
     return (
-        <form className="formInfo" onSubmit={submitHandler}>
-            <label>Username:</label><br />
-            <input onChange={event => setUsername(event.target.value)}></input><br /><br />
-            <label>Password:</label><br />
-            <input type="password" onChange={event => setPassword(event.target.value)}></input><br /><br />
-            <button>Submit</button>
-        </form>
+        <div className="login-bg">
+        <div className="row login-form container">
+            
+            <div class="col-md-6 login-left">PUT SOME WORDS HERE</div>
+            <div class="col-md-6 login-right">
+                <form className="formInfo" onSubmit={submitHandler}>
+                    <label className="login-label">Username:</label><br />
+                    <input className="login-input" onChange={event => setUsername(event.target.value)} placeholder="Enter Username"></input><br /><br />
+                    <label className="login-label">Password:</label><br />
+                    <input className="login-input" type="password" onChange={event => setPassword(event.target.value)} placeholder="Enter Password"></input><br /><br />
+                    <button className="login-button">Login</button>
+                </form>
+            </div>
+        </div>
+        </div>
     )
 }
 

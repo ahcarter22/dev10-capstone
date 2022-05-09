@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function AddVendor(){
+function AddVendor() {
     const [name, setName] = useState("");
-    const [email,setEmail] = useState("");
+    const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const navigate = useNavigate();
 
@@ -41,30 +41,37 @@ function AddVendor(){
             },
             body: JSON.stringify(newVendor)
         }).then(
-            (response) =>{ if(response.ok){
-                alert("SUCCESS")
-                addVendor(newVendor)
-                navigate("/vendors")}else{alert("Failed")}}
+            (response) => {
+                if (response.ok) {
+                    alert("SUCCESS")
+                    addVendor(newVendor)
+                    navigate("/vendors")
+                } else { alert("Failed") }
+            }
         ).catch(
             rejection => alert(rejection)
         );
     }
 
     return (
-        <div>
-            <div className="formInfo">
-                <h1>Add a Vendor</h1>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="name"><b>Name:</b></label><br />
-                    <input onChange={handleNameChange} id="name"></input><br />
+        <div className="addvendor-bg">
+            <div className="row addvendor-form container">
 
-                    <label htmlFor="email"><b>Email:</b></label><br />
-                    <input onChange={handleEmailChange} id="email"></input><br />
+                <div class="col-md-5 addvendor-left">
+                    <h1 className="vendoradd">ADD <br />VENDOR</h1></div>
+                <div class="col-md-6 addvendor-right">
+                    <form onSubmit={handleSubmit}>
+                        <label className="login-label" htmlFor="name"><b>Name:</b></label><br />
+                        <input className="add-input" onChange={handleNameChange} id="name"></input><br />
 
-                    <label htmlFor="phone"><b>Phone:</b></label><br />
-                    <input onChange={handlePhoneChange} id="phone"></input><br /><br /><br />
-                    <button>Submit</button> <br />
-                </form>
+                        <label className="login-label" htmlFor="email"><b>Email:</b></label><br />
+                        <input className="add-input" onChange={handleEmailChange} id="email"></input><br />
+
+                        <label className="login-label" htmlFor="phone"><b>Phone:</b></label><br />
+                        <input className="add-input" onChange={handlePhoneChange} id="phone"></input><br /><br /><br />
+                        <button className="additem-btn">Submit</button> <br />
+                    </form>
+                </div>
             </div>
         </div>
     )

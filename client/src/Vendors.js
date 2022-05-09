@@ -7,23 +7,23 @@ function Vendors() {
 
     useEffect(() => {
         fetch("http://localhost:8080/api/vendor",
-        {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
-            }
-        })
-        .then(response => {
-            if (response.status === 200) {
-                return response.json();
-            } else {
-                alert("Something went wrong while fetching...");
-            }
+            {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token")
+                }
             })
-        .then(vendorData => setVendors(vendorData))
-        .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
-        }, []);
-        console.log(vendors)
-  
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    alert("Something went wrong while fetching...");
+                }
+            })
+            .then(vendorData => setVendors(vendorData))
+            .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+    }, []);
+    console.log(vendors)
+
 
     function removeVendorFromState(vendorId) {
         setVendors(vendors.filter(vendorObj => vendorObj.vendorId !== vendorId));
@@ -31,9 +31,9 @@ function Vendors() {
 
     function vendorFactory() {
         return vendors.map(vendorObj => (
-            <Vendor 
-                key={vendorObj.vendorId} 
-                vendorObj={vendorObj} 
+            <Vendor
+                key={vendorObj.vendorId}
+                vendorObj={vendorObj}
                 vendors={vendors}
                 removeFromState={removeVendorFromState}
             />
@@ -41,10 +41,14 @@ function Vendors() {
     }
 
     return (
-        <>
-            <p className="pageTitle">Vendors</p>
+        <div className="vendor">
+            <div className="vendor-page">
+                <h1 className="vendor-bg-text">Vendors</h1>
+                <div className="vendor-bg"></div>
+
+            </div>
             {vendorFactory()}
-        </>
+        </div>
     )
 }
 

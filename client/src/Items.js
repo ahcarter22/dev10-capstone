@@ -87,26 +87,40 @@ function Items() {
     return (
 
         <>
-            <p className="pageTitle">Items</p>
-            <div id="showEmailBtn" onClick={handleEmail}><button>Email</button></div>
-            <div id="hideEmailMsg" onClick={handleHideMsg}>
-                <button>Hide Msg</button>
-                <p>Low quantity warning emails sent to vendors</p>
-            </div>
-            {itemFactory()}
-           
-        </>
-
+        
         <div className="item">
-            <div className="item-page">
-              <h1 className="item-bg-text">Items</h1>
-                <div className="itemcards container row">
-                    <div class="col-md-12">{itemFactory()}</div></div>
-               
-            </div>
-          
+        
+        <div className="item-page">
+        
+        <h1 className="item-bg-text">Items</h1>
+        
+        
+        
+        <div className="itemcards container row">
+        
+        <div class="col-md-12">
+        
+        <div id="showEmailBtn" onClick={handleEmail}><button>Send Low Quantity Email Warning</button></div>
+        
+        <div id="hideEmailMsg" onClick={handleHideMsg}>
+        
+        <button>Hide Msg</button>
+        
+        <p>Low quantity warning emails sent to vendors</p>
+        
         </div>
-
+        
+        {itemFactory()}</div></div>
+        
+        
+        
+        </div>
+        
+        
+        
+        </div>
+        
+        </>    
     )
 }
 

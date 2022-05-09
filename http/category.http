@@ -1,3 +1,5 @@
 @url = http://localhost:8080/api/category
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3YXJlaG91c2UiLCJzdWIiOiJqb2huQHNtaXRoLmNvbSIsImF1dGhvcml0aWVzIjoiUk9MRV9BRE1JTiIsImV4cCI6MTY1MTc4NDM4M30.JmM_lUIjo2pb984fdFj1A5CGTaFvvWoSlPiFerAVGY8
 
 GET {{url}} HTTP/1.1
+Authorization: Bearer {{token}}

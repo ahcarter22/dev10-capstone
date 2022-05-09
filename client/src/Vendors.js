@@ -43,10 +43,9 @@ function Vendors() {
     return (
         <div className="vendor">
             <div className="vendor-page">
-                <h1 className="vendor-bg-text">Vendors</h1>
+                <h1 className="vendor-bg-text">Vendors</h1></div>
                 <div className="vendor-bg"></div>
 
-            </div>
             {vendorFactory()}
         </div>
     )

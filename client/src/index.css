@@ -439,6 +439,7 @@ select {
   padding-top:30px;
   padding-bottom:30px;
   padding-left:130px;
+  border-radius: 30px;
 }
 .additem-left{
   color:white;
@@ -476,6 +477,7 @@ select {
   padding-top:60px;
   padding-bottom:30px;
   padding-left:130px;
+  border-radius: 30px;
 }
 .addvendor-left{
   color:white;
@@ -487,3 +489,49 @@ select {
   font-family: 'Righteous', cursive;
   letter-spacing: 5px;
 }
+/* add vendor page css */
+/* not found page css */
+.notfound-bg{
+  background: url("https://wpklik.com/wp-content/uploads/2019/03/A-404-Page-Best-Practices-and-Design-Inspiration.jpg");
+  background-size: cover;
+  height:770px;
+}
+.notfound-bg, .notfoundbtn{
+  text-align: center;
+  padding-top: 70px;
+}
+.goback-btn{
+  align-items: center;
+  background-color: #f0e246;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  letter-spacing: .5px;
+  font-size: 20px;
+  transition-duration: 0.4s;
+}
+.goback-btn:hover{
+  background-color: grey; 
+  color: white;
+}
+/* not found page css */

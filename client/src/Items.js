@@ -41,10 +41,15 @@ function Items() {
     }
 
     return (
-        <>
-            <p className="pageTitle">Items</p>
-            {itemFactory()}
-        </>
+        <div className="item">
+            <div className="item-page">
+              <h1 className="item-bg-text">Items</h1>
+                <div className="itemcards container row">
+                    <div class="col-md-12">{itemFactory()}</div></div>
+               
+            </div>
+          
+        </div>
     )
 }
 

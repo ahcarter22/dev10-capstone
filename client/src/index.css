@@ -1,32 +1,32 @@
-
-
-
-
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
 body {
-	margin: 0;
-	background: rgb(233, 220, 220);
-	font-family: 'Work Sans', sans-serif;
-	font-weight: 800;
+  margin: 0;
+  background: white;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
 }
 
-.item-card,.vendor-card{
+.item-card,
+.vendor-card {
   border: thick double #04743c;
   margin-bottom: 15px;
   padding: 25px;
   width: 25%;
   display: inline-block;
-  margin-right: 15px;
-  margin-top:5px;
-  margin-left:35px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-left: 0px;
   text-align: center;
   border-radius: 20px;
-}
+} 
 
 
 .container {
-	width: 80%;
-	margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 header {
@@ -41,105 +41,128 @@ header::after {
 
 home {
   background-image: url;
-  text-align:center;
-  vertical-align:middle;
-}
-
-
-
-
-.formInfo{
-  border: thick double #04743c;
-  padding: 25px;
-  margin-top:75px;
   text-align: center;
-  
+  vertical-align: middle;
 }
 
-input{
-  border-radius: 5px;
-  width:200px;
-  padding:10px;
-}
 
-label{
+label {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 b {
-  font-family: Copperplate, Papyrus, fantasy;
- 
+  font-family: Arial, Helvetica, sans-serif;
+
 }
 
-.name{
-  font-size:x-large;
+.name {
+  font-size: x-large;
 }
-.home-text{
-  padding-top:30px;
-  margin-left:200px;
-  margin-right:200px;
-  color:#fff;
+
+.home-text {
+  padding-top: 30px;
+  margin-left: 200px;
+  margin-right: 200px;
+  color: #fff;
+  vertical-align: middle;
 }
-select{
+
+select {
   border-radius: 5px;
-  width:200px;
-  padding:10px;
-}
-#homepicture{
-  margin-top: 20px;
+  width: 200px;
+  padding: 10px;
 }
 
-.pageTitle{
+
+
+.pageTitle {
   font-size: x-large;
   text-align: center;
 }
 
-.navbar-nav  > li{
-  padding-right:50px;
+.navbar-nav>li {
+  padding-right: 50px;
 }
-.navbar-nav{
+
+.navbar-nav {
   margin-left: auto;
 }
-.navbar-brand{
+
+.navbar-brand {
   display: inline-block;
   color: #233859;
   font-family: Montserrat;
   font-weight: bold;
   padding-left: 5px;
 }
+
 .navbar-brand name {
-  font-size:25px;
+  font-size: 25px;
   color: #233859;
 }
+
 .navbar-brand small {
-  display:block;
-  font-size:12px;
+  display: block;
+  font-size: 12px;
   color: #9c9c9c;
 }
-.navbar-brand-image{
+
+.navbar-brand-image {
   padding-left: 60px;
 }
-.navbar{
+
+.navbar {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
 .home-page {
-  
-  height: 1000px;
-  background:rgba(0,0,0,0.6) url('https://www.americanwarehouses.com/hubfs/AmericanWarehouses_Blog_TheBestApproachToLeasingWarehouseSpace.jpg');
+
+  height: 800px;
+  background: rgba(0, 0, 0, 0.6) url('https://www.americanwarehouses.com/hubfs/AmericanWarehouses_Blog_TheBestApproachToLeasingWarehouseSpace.jpg');
   background-position: center;
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-blend-mode: darken;
+  opacity: 0.95;
 }
-.collapse .navbar-collapse .navbar-nav .ml-auto .mb-2 .mb-lg-0,.nav-item{
-  font-size:20px;
+
+.header {
+  color: white;
+  text-align: center;
+  font-weight: 100;
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  line-height: 1.3;
+  padding-top: 150px;
+
 }
-.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link  {
+
+
+.header1 {
+  color: white;
+  font-weight: 300;
+  font-style: normal;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  padding-top:30px;
+  padding-bottom: 40px;
+
+}
+
+.collapse .navbar-collapse .navbar-nav .ml-auto .mb-2 .mb-lg-0,
+.nav-item {
+  font-size: 20px;
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show>.nav-link {
   color: #233859;
 }
-.learn-more{
+
+.learn-button {
   align-items: center;
   background-color: #f0e246;
   border: 0;
@@ -167,10 +190,293 @@ select{
   vertical-align: middle;
   letter-spacing: .5px;
   font-size: 20px;
+  transition-duration: 0.4s;
+}
+.learn-button:hover{
+  background-color: grey; 
+  color: white;
 }
 
 
 
 
+/* about page css */
 
+.about-background{
+  background: rgba(0, 0, 0, 0.6) url(2.jpg) 0px;
 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  position:relative;
+  min-height:400px;
+}
+.about-title{
+  padding-top: 120px;
+  text-align: center;
+
+}
+
+.about-grids {
+  margin: 5em 0 0 0;
+}
+.about-right {
+	background: url(3.jpg) no-repeat 0px 0px;
+  background-size: contain;
+  min-height: 600px;
+}
+.about-bg-text{
+  color: white;
+  text-align: center;
+  font-weight: 100;
+  font-family: 'Roboto', sans-serif;
+  font-size: 80px;
+  line-height: 1.3;
+  padding-top: 150px;
+}
+.about-pitch{
+  
+}
+.pitch-text{
+  font-size: 50px;
+  color: #233859;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.pitch-text1{
+  font-size: 20px;
+  color: #233859;
+  padding-bottom: 20px;
+}
+
+/* about page css */
+
+/* login page css */
+.login-bg{
+  background: rgba(0, 0, 0, 0.6) url('https://www.americanwarehouses.com/hubfs/AmericanWarehouses_Blog_TheBestApproachToLeasingWarehouseSpace.jpg');
+  background-size: cover;
+  background-blend-mode: darken;
+  height: 700px;
+}
+.login-form{
+  padding-top: 50px;
+}
+.login-right{
+  background-color: rgba(0, 0, 0, 0.45);
+  padding-top:30px;
+  padding-bottom: 30px;
+  padding-left:75px;
+  border-radius:30px;
+}
+.login-left{
+  color:white;
+  padding-top:30px;
+}
+.login-button{
+  background-color: #f0e246;
+  color: #233859;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border:none;
+  cursor: pointer;
+  width: 80%;
+  transition-duration: 0.4s;
+  border-radius: 20px;
+}
+.login-button:hover {
+  background-color: grey; 
+  color: white;
+}
+.formInfo .login-input{
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:20px;
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.login-label{
+  color: white;
+  font-size:20px;
+}
+/* login page css */
+.logout-btn{
+  align-items: center;
+  background-color: #f0e246;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 200px;
+  min-height: 40px;
+  min-width: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  transition-duration: 0.4s;
+}
+.logout-btn:hover{
+  background-color: grey; 
+  color: white;
+}
+/* view item page css */
+.item-page{
+  background:rgba(0, 0, 0, 0.65) url("https://thumbs.dreamstime.com/b/%E5%85%85%E5%88%86%E7%A9%BA%E7%9A%84%E4%BB%93%E5%BA%93%E8%B4%A7%E7%89%A9-105517645.jpg") ;
+  background-size: cover;
+  height:400px;
+  background-blend-mode: darken;
+}
+.item-bg-text{
+  color: white;
+  text-align: center;
+  font-weight: 100;
+  font-family: 'Roboto', sans-serif;
+  font-size: 80px;
+  line-height: 1.3;
+  padding-top: 150px;
+}
+.itemcards{
+  padding-top: 200px;
+  padding-left:0px;
+}
+/* view item page css */
+/* view vendor page css */
+.vendor-page{
+  background:rgba(0, 0, 0, 0.65) url("https://www.stibosystems.com/hubfs/what-is-vendor-data.png") ;
+  background-size: cover;
+  height:400px;
+  background-blend-mode: darken;
+}
+.vendor-bg-text{
+  color: white;
+  text-align: center;
+  font-weight: 100;
+  font-family: 'Roboto', sans-serif;
+  font-size: 80px;
+  line-height: 1.3;
+  padding-top: 150px;
+}
+/* view vendor page css */
+/* add item page css */
+.additem-bg{
+  background: rgba(0, 0, 0, 0.65) url("https://thumbs.dreamstime.com/b/%E5%85%85%E5%88%86%E7%A9%BA%E7%9A%84%E4%BB%93%E5%BA%93%E8%B4%A7%E7%89%A9-105517645.jpg");
+  background-size: cover;
+  height:800px;
+  background-blend-mode: darken;
+}
+.additem-btn{
+  align-items: center;
+  background-color: #f0e246;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  font-size: 20px;
+  width: 70%;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+.additem-btn:hover{
+  background-color: grey; 
+  color: white;
+}
+.additem-form{
+  padding-top: 50px;
+}
+.add-input{
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:17px;
+  width: 70%;
+  padding: 10px 8px;
+  display: inline-block;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+}
+.additem-right{
+  background-color: rgba(0, 0, 0, 0.45);
+  padding-top:30px;
+  padding-bottom:30px;
+  padding-left:130px;
+}
+.additem-left{
+  color:white;
+  text-align: center;
+  padding-top: 200px;
+}
+.itemadd,.vendoradd{
+  font-size:5em;
+  font-family: 'Righteous', cursive;
+  letter-spacing: 5px;
+}
+/* add item page css */
+/* add vendor page css */
+.addvendor-bg{
+  background: rgba(0, 0, 0, 0.65) url("https://www.stibosystems.com/hubfs/what-is-vendor-data.png");
+  background-size: cover;
+  height:800px;
+  background-blend-mode: darken;
+}
+.addvendor-form{
+  padding-top: 50px;
+}
+.add-input{
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:17px;
+  width: 70%;
+  padding: 10px 8px;
+  display: inline-block;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+}
+.addvendor-right{
+  background-color: rgba(0, 0, 0, 0.45);
+  padding-top:60px;
+  padding-bottom:30px;
+  padding-left:130px;
+}
+.addvendor-left{
+  color:white;
+  text-align: center;
+  padding-top: 150px;
+}
+.vendoradd{
+  font-size:5em;
+  font-family: 'Righteous', cursive;
+  letter-spacing: 5px;
+}

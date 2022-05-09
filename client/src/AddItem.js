@@ -99,12 +99,19 @@ function AddItem({ overwriteErrorList }) {
         const allErrors = [];
         if (categoryId == null || categoryId == 0) {
             allErrors.push("This category ID is not set. Please choose another category");
-        } 
-        if (name == null || name.trim()===""){
+        }
+        if (name == null || name.trim() === "") {
             allErrors.push("Please enter a valid name.")
         }
+
+
+
+
+
+
         
         if (allErrors.length > 0){
+
             overwriteErrorList(allErrors);
         } else {
             let newItem = {};
@@ -140,6 +147,80 @@ function AddItem({ overwriteErrorList }) {
         }
     }
 
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/vendor",
+            {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token")
+                }
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    alert("Something went wrong while fetching...");
+                }
+            })
+            .then(vendorData => setVendors(vendorData))
+            .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+    }, []);
+
+    //<label htmlFor="vendorId"><b>VendorId:</b></label><br />
+    // <input onChange={handleVendorIdChange} id="vendorId"></input><br />
+    return (
+        <div className="additem-bg">
+            <div className="row additem-form container">
+
+                <div class="col-md-5 additem-left">
+                    <h1 className="itemadd">ADD <br/>ITEM</h1></div>
+                <div class="col-md-6 additem-right">
+                    <form  onSubmit={handleSubmit}>
+                        <label className="login-label" htmlFor="name"><b>Name:</b></label><br />
+                        <input className="add-input" onChange={handleNameChange} id="name"></input><br />
+
+                        <label className="login-label" htmlFor="quantity"><b>Quantity:</b></label><br />
+                        <input className="add-input" onChange={handleQuantityChange} id="quantity"></input><br />
+
+                        <label className="login-label" htmlFor="scale"><b>Scale:</b></label><br />
+                        <input className="add-input" onChange={handleScaleChange} id="scale"></input><br />
+
+                        <label className="login-label" htmlFor="expirationDate"><b>Expiration Date:</b></label><br />
+                        <input className="add-input" onChange={handleExpirationDateChange} id="expirationDate"></input><br />
+
+                        <label className="login-label" htmlFor="imageUrl"><b>Image URL:</b></label><br />
+                        <input className="add-input" onChange={handleImageUrlChange} id="imageUrl"></input><br />
+
+
+                        <label className="login-label" htmlFor="vendorId"><b>Vendor Name:</b></label><br />
+                        <select className="add-input" id="selectVendorName" value={vendorId} onChange={(e) => handleVendorIdChange(e)} >
+                            <option key={0} value="0">Please select an option</option>
+                            {vendors.map((vendor) =>
+                                <option key={vendor.vendorId} value={vendor.vendorId}>{vendor.name}</option>)
+                            }
+                        </select><br />
+
+
+                        <label className="login-label" htmlFor="categoryId"><b>Category:</b></label><br />
+                        <select className="add-input" id="selectCategory" value={categoryId} onChange={(e) => setCategoryId(parseInt(e.target.value))} >
+                            <option value="0">Please select an option</option>
+                            <option value="1">Meat</option>
+                            <option value="2">Produce</option>
+                            <option value="3">Dairy</option>
+                            <option value="4">Frozen</option>
+                            <option value="5">Alcohol</option>
+                            <option value="6">Baked Goods</option>
+                        </select><br /><br /><br />
+
+
+                        <button className="additem-btn">Add</button> <br />
+                    </form>
+                </div>
+          </div>
+        </div>
+    )
+}
+
     // This should auto populate category, but we need to change our back-end GET request to give us category ids as well
     // <label htmlFor="categoryId"><b>Category:</b></label><br />
     // <select id="selectCategory" value={categoryId} onChange={(e) => handleCategoryIdChange(e)} >
@@ -149,53 +230,6 @@ function AddItem({ overwriteErrorList }) {
     //     }
     // </select><br /><br /><br />
     
-    return (
-        <div>
-            <div className="formInfo">
-                <h1>Add an Item</h1>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="name"><b>Name:</b></label><br />
-                    <input onChange={handleNameChange} id="name"></input><br />
-
-                    <label htmlFor="quantity"><b>Quantity:</b></label><br />
-                    <input onChange={handleQuantityChange} id="quantity"></input><br />
-
-                    <label htmlFor="scale"><b>Scale:</b></label><br />
-                    <input onChange={handleScaleChange} id="scale"></input><br />
-
-                    <label htmlFor="expirationDate"><b>Expiration Date:</b></label><br />
-                    <input onChange={handleExpirationDateChange} id="expirationDate"></input><br />
-
-                    <label htmlFor="imageUrl"><b>Image URL:</b></label><br />
-                    <input onChange={handleImageUrlChange} id="imageUrl"></input><br />
-
-                    
-                    <label htmlFor="vendorId"><b>Vendor Name:</b></label><br />
-                    <select id="selectVendorName" value={vendorId} onChange={(e) => handleVendorIdChange(e)} >
-                        <option key={0} value="0">Please select an option</option>
-                        {vendors.map((vendor) => 
-                            <option key={vendor.vendorId} value={vendor.vendorId}>{vendor.name}</option>)
-                        }
-                    </select><br /><br /><br />
-
-                    <label htmlFor="categoryId"><b>Category:</b></label><br />
-                    <select id="selectCategory" value={categoryId} onChange={(e) => setCategoryId(parseInt(e.target.value))} >
-                        <option value="0">Please select an option</option>
-                        <option value="1">Meat</option>
-                        <option value="2">Produce</option>
-                        <option value="3">Dairy</option>
-                        <option value="4">Frozen</option>
-                        <option value="5">Alcohol</option>
-                        <option value="6">Baked Goods</option>
-                    </select><br /><br /><br />
-
-
-                    
-                    <button>Submit</button> <br />
-                </form>
-            </div>
-        </div>
-    )
-}
+   
 
 export default AddItem;

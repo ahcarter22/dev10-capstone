@@ -1,3 +1,4 @@
+import { getDefaultNormalizer } from "@testing-library/react";
 import { useState, useEffect } from "react";
 import Item from "./Item";
 
@@ -40,7 +41,10 @@ function Items() {
         ))
     }
 
-    function handleEmail(){
+    function handleEmail(e){
+        e.preventDefault();
+
+       
         
         const x = document.getElementById("hideEmailMsg");
         x.id = "showEmailMsg";
@@ -50,6 +54,14 @@ function Items() {
 
         items.forEach(item => {
             if (item.quantity < 10){
+
+
+                const newEmail = {
+                    to: "ahcarter22@gmail.com",
+                    subject: "warning: " + item.name,
+                    text: item.name + "has low quantity"
+                };
+
                 fetch("http://localhost:8080/api/message", {
                     method: "POST",
                     headers: {
@@ -57,7 +69,7 @@ function Items() {
                         "Authorization": "Bearer " + localStorage.getItem("token"),
                         Accept: "application/json",
                     },
-                    body: JSON.stringify()
+                    body: JSON.stringify(newEmail)
                 }).then(
                     (response) => {
                         if (response.ok) {

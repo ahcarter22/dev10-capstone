@@ -75,7 +75,7 @@ public class VendorDbRepository implements VendorRepository{
 
     @Override
     public boolean deleteById(int vendorId) {
-
+        jdbcTemplate.update("delete from item where vendor_id = ?;", vendorId);
         return jdbcTemplate.update("delete from vendor where vendor_id = ?;", vendorId) > 0;
 
     }

@@ -40,7 +40,63 @@ function Items() {
         ))
     }
 
+    function handleEmail(){
+        
+        const x = document.getElementById("hideEmailMsg");
+        x.id = "showEmailMsg";
+        console.log(x);
+        const y = document.getElementById("showEmailBtn");
+        y.id = "hideEmailBtn";
+
+        items.forEach(item => {
+            if (item.quantity < 10){
+                fetch("http://localhost:8080/api/message", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + localStorage.getItem("token"),
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify()
+                }).then(
+                    (response) => {
+                        if (response.ok) {
+                            alert("SUCCESS");
+                            // addItem(newItem);
+                            // overwriteErrorList([]);
+                            // navigate("/items");
+                        } else { alert("Failed") }
+                    }
+                ).catch(
+                    rejection => alert(rejection)
+                );
+
+            }
+        });
+
+    }
+
+    function handleHideMsg(){
+        const x = document.getElementById("showEmailMsg");
+        x.id = "hideEmailMsg";
+        const y = document.getElementById("hideEmailBtn");
+        y.id = "showEmailBtn";
+
+    }
+
     return (
+
+        <>
+            <p className="pageTitle">Items</p>
+            <div id="showEmailBtn" onClick={handleEmail}><button>Email</button></div>
+            <div id="hideEmailMsg" onClick={handleHideMsg}>
+                <button>Hide Msg</button>
+                <p>Low quantity warning emails sent to vendors</p>
+            </div>
+            {itemFactory()}
+           
+        </>
+
         <div className="item">
             <div className="item-page">
               <h1 className="item-bg-text">Items</h1>
@@ -50,6 +106,7 @@ function Items() {
             </div>
           
         </div>
+
     )
 }
 

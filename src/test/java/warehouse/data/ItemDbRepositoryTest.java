@@ -4,15 +4,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import warehouse.models.Item;
+import warehouse.models.Vendor;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-public class ItemDbRepositoryTest {
-//    final static int NEXT_ID = 9;
 
+@SpringBootTest
+class ItemDbRepositoryTest {
     @Autowired
     ItemDbRepository repository;
 
@@ -25,64 +26,55 @@ public class ItemDbRepositoryTest {
     }
 
     @Test
-    void shouldFindAll() {
-//        List<Agent> agents = repository.findAll();
-//        assertNotNull(agents);
-//
-//        // can't predict order
-//        // if delete is first, we're down to 7
-//        // if add is first, we may go as high as 10
-//        assertTrue(agents.size() >= 7 && agents.size() <= 10);
+    void shouldFindItems() {
+        List<Item> items = repository.findAll();
+        assertNotNull(items);
+        assertTrue(items.size() > 0);
     }
 
     @Test
-    void shouldFindHazel() {
-//        Agent hazel = repository.findById(1);
-//        assertEquals(1, hazel.getAgentId());
-//        assertEquals("Hazel", hazel.getFirstName());
-//        assertEquals(2, hazel.getAgencies().size());
+    void shouldFindItemById() {
+        Item item = repository.findById(1);
+        assertEquals("apples", item.getName());
     }
 
     @Test
-    void shouldAdd() {
-//        // all fields
-//        Agent agent = makeAgent();
-//        Agent actual = repository.add(agent);
-//        assertNotNull(actual);
-//        assertEquals(NEXT_ID, actual.getAgentId());
-//
-//        // null dob
-//        agent = makeAgent();
-//        agent.setDob(null);
-//        actual = repository.add(agent);
-//        assertNotNull(actual);
-//        assertEquals(NEXT_ID + 1, actual.getAgentId());
+    void shouldAddItem() {
+        Item item = new Item();
+        item.setName("TEST");
+        item.setQuantity(2);
+        item.setScale("kilos");
+        item.setExpirationDate(LocalDate.of(2020, 9, 16));
+        item.setImageUrl("");
+        item.setVendorId(2);
+        item.setCategoryId(3);
+        Item actual = repository.add(item);
+        assertNotNull(actual);
+        assertEquals(4, actual.getItemId());
     }
 
     @Test
-    void shouldUpdate() {
-//        Agent agent = makeAgent();
-//        agent.setAgentId(3);
-//        assertTrue(repository.update(agent));
-//        agent.setAgentId(13);
-//        assertFalse(repository.update(agent));
+    void shouldUpdateItem() {
+
+        Item item = new Item();
+        item.setName("TEST Update");
+        item.setQuantity(6);
+        item.setScale("kilos");
+        item.setExpirationDate(LocalDate.of(2020, 9, 16));
+        item.setImageUrl("");
+        item.setVendorId(2);
+        item.setCategoryId(3);
+        Item actual = repository.add(item);
+        assertNotNull(actual);
+        assertEquals(4, actual.getItemId());
+
+        assertTrue(repository.update(item));
     }
 
     @Test
-    void shouldDelete() {
-//        assertTrue(repository.deleteById(2));
-//        assertFalse(repository.deleteById(2));
+    void shouldDeleteItem() {
+        assertTrue(repository.deleteById(2));
+        assertFalse(repository.deleteById(2));
     }
-
-    /*
-    private Agent makeAgent() {
-        Agent agent = new Agent();
-        agent.setFirstName("Test");
-        agent.setLastName("Last Name");
-        agent.setDob(LocalDate.of(1985, 8, 15));
-        agent.setHeightInInches(66);
-        return agent;
-    }
-
-    */
 }
+

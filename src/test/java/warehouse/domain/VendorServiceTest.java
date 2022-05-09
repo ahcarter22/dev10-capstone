@@ -1,14 +1,19 @@
 package warehouse.domain;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import warehouse.data.VendorRepository;
-import warehouse.models.Vendor;
+        import org.junit.jupiter.api.Test;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.boot.test.context.SpringBootTest;
+        import org.springframework.boot.test.mock.mockito.MockBean;
+        import warehouse.data.ItemRepository;
+        import warehouse.data.VendorRepository;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+        import warehouse.models.Item;
+        import warehouse.models.Vendor;
+
+        import java.time.LocalDate;
+
+        import static org.junit.jupiter.api.Assertions.assertEquals;
+        import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class VendorServiceTest {
@@ -80,10 +85,10 @@ class VendorServiceTest {
         actual = vendorService.update(vendor);
         assertEquals(ResultType.INVALID, actual.getType());
 
-       vendor.setVendorId(0);
-       vendor.setEmail("Email Test");
-       actual = vendorService.update(vendor);
-       assertEquals(ResultType.INVALID, actual.getType());
+        vendor.setVendorId(0);
+        vendor.setEmail("Email Test");
+        actual = vendorService.update(vendor);
+        assertEquals(ResultType.INVALID, actual.getType());
     }
 
 }

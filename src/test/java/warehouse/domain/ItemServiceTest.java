@@ -1,67 +1,91 @@
 package warehouse.domain;
 
-import warehouse.data.ItemRepository;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+        import org.junit.jupiter.api.Test;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.boot.test.context.SpringBootTest;
+        import org.springframework.boot.test.mock.mockito.MockBean;
+        import warehouse.data.ItemRepository;
+        import warehouse.models.Item;
 
-import java.time.LocalDate;
+        import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+        import static org.junit.jupiter.api.Assertions.assertEquals;
+        import static org.mockito.Mockito.when;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-public class ItemServiceTest {
+@SpringBootTest
+class ItemServiceTest {
+
     @Autowired
-    ItemService service;
+    ItemService itemService;
 
     @MockBean
-    ItemRepository repository;
+    ItemRepository itemRepository;
 
     @Test
-    void shouldFindHazel() {
-//        // pass-through test, probably not useful
-//        Agent expected = makeAgent();
-//        when(repository.findById(1)).thenReturn(expected);
-//        Agent actual = service.findById(1);
-//        assertEquals(expected, actual);
+    void shouldAdd() {
+        Item item = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
+        Item mockOut = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
+
+        when(itemRepository.add(item)).thenReturn(mockOut);
+
+        Result<Item> actual = itemService.add(item);
+        assertEquals(ResultType.SUCCESS, actual.getType());
+        assertEquals(mockOut, actual.getPayload());
     }
 
     @Test
     void shouldNotAddWhenInvalid() {
-//        Agent agent = makeAgent();
-//        Result<Agent> result = service.add(agent);
-//        assertEquals(ResultType.INVALID, result.getType());
-//
-//        agent.setAgentId(0);
-//        agent.setFirstName(null);
-//        result = service.add(agent);
-//        assertEquals(ResultType.INVALID, result.getType());
+        Item item = makeItem();
+        Result<Item> actual = itemService.add(item);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        item.setItemId(0);
+        item.setName(null);
+        actual = itemService.add(item);
+        assertEquals(ResultType.INVALID, actual.getType());
+
     }
+
 
     @Test
-    void shouldNotAddWhenValid() {
-//        Agent expected = makeAgent();
-//        Agent arg = makeAgent();
-//        arg.setAgentId(0);
-//
-//        when(repository.add(arg)).thenReturn(expected);
-//        Result<Agent> result = service.add(arg);
-//        assertEquals(ResultType.SUCCESS, result.getType());
-//
-//        assertEquals(expected, result.getPayload());
+    void shouldNotUpdateWhenInvalid() {
+        Item item = new Item(0, "TEST", 100, "pounds",(LocalDate.of(2020, 9, 16)),null,1,2);
+
+        Result<Item> actual = itemService.update(item);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        item.setName("TEST Update");
+        item.setQuantity(6);
+        item.setScale("kilos");
+        item.setExpirationDate(LocalDate.of(2020, 9, 16));
+        item.setImageUrl("");
+        item.setVendorId(2);
+        item.setCategoryId(3);
+        actual = itemService.update(item);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        item.setName("TEST Update");
+        item.setQuantity(6);
+        item.setScale("kilos");
+        item.setExpirationDate(LocalDate.of(2020, 9, 16));
+        item.setImageUrl("");
+        item.setVendorId(2);
+        item.setCategoryId(3);
+        actual = itemService.update(item);
+        assertEquals(ResultType.INVALID, actual.getType());
     }
 
-//    Agent makeAgent() {
-//        //('Hazel','C','Sauven','1954-09-16',76),
-//        Agent agent = new Agent();
-//        agent.setAgentId(1);
-//        agent.setFirstName("Hazel");
-//        agent.setMiddleName("C");
-//        agent.setLastName("Sauven");
-//        agent.setDob(LocalDate.of(1954, 9, 16));
-//        agent.setHeightInInches(76);
-//        return agent;
-//    }
+    Item makeItem() {
+        Item item = new Item();
+        item.setItemId(1);
+        item.setName("TEST");
+        item.setQuantity(6);
+        item.setScale("lbs");
+        item.setExpirationDate(LocalDate.of(2020, 9, 16));
+        item.setImageUrl("");
+        item.setVendorId(2);
+        item.setCategoryId(3);
+        return item;
+    }
+
 }

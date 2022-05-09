@@ -197,7 +197,14 @@ select {
   color: white;
 }
 
+#hideEmailMsg, #hideEmailBtn{
+  display: none;
+  text-align: center;
+}
 
+#showEmailMsg, #showEmailBtn{
+  text-align: center;
+}
 
 
 /* about page css */

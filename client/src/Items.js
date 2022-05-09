@@ -44,10 +44,11 @@ function Items() {
         <div className="item">
             <div className="item-page">
               <h1 className="item-bg-text">Items</h1>
-                <div className="item-bg"></div>
+                <div className="itemcards container row">
+                    <div class="col-md-12">{itemFactory()}</div></div>
                
             </div>
-            {itemFactory()}
+          
         </div>
     )
 }

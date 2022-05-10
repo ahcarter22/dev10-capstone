@@ -385,7 +385,7 @@ select {
 .additem-bg{
   background: rgba(0, 0, 0, 0.65) url("https://thumbs.dreamstime.com/b/%E5%85%85%E5%88%86%E7%A9%BA%E7%9A%84%E4%BB%93%E5%BA%93%E8%B4%A7%E7%89%A9-105517645.jpg");
   background-size: cover;
-  height:800px;
+  height:1200px;
   background-blend-mode: darken;
 }
 .additem-btn{
@@ -739,4 +739,7 @@ select {
 .hideemail:hover{
   background-color: grey; 
   color: white;
+}
+.errormsg{
+  color:white;
 }

@@ -32,7 +32,9 @@ function App() {
     }
   },[]);
 
-  const[errorList, setErrorList]=useState([]);
+  // const[errors, setErrors]=useState([]);
+  // const[showErrors,setShowErrors]=useState(false);
+   const [errorList, setErrorList] = useState([]);
   return (
     <AuthContext.Provider value={[user, setUser]}>
       <div className="App">
@@ -45,7 +47,8 @@ function App() {
           {user?.user ? (
               <>
                 <Route path="/items" element={<Items />} />
-                <Route path="/addItem" element={<AddItem overwriteErrorList={setErrorList}/>} />
+                <Route path="/addItem" element={<AddItem errorList={errorList} setErrorList={setErrorList}/>} />
+                {/* <Route path="/addItem" element={<AddItem errors={errors} setErrors={setErrors}/>} /> */}
                 <Route path="/editItem/:itemId" element={<EditItem />} />
                 <Route path="/deleteItem/:itemId" element={<DeleteItem />} />
                 <Route path="/vendors" element={<Vendors />} />
@@ -62,7 +65,7 @@ function App() {
           <Route path="*" element={<NotFound/>} />
         </Routes>
 
-        <AllErrors errorList={errorList} />
+        
       
 
         </BrowserRouter> 

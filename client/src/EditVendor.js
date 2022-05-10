@@ -1,55 +1,55 @@
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import AuthContext from "./AuthContext";
 
-function EditVendor(){
+function EditVendor() {
 
     const [toEdit, setToEdit] = useState(null);
     const [userStatus, setUserStatus] = useContext(AuthContext);
     const navigate = useNavigate();
-    const{vendorId} = useParams();
+    const { vendorId } = useParams();
 
     useEffect(() => {
-        const jwt = localStorage.getItem( "token" );
-        if(jwt) 
-        {
+        const jwt = localStorage.getItem("token");
+        if (jwt) {
             fetch("http://localhost:8080/api/vendor/" + vendorId,
-                    {
-                        headers: {
-                           "Authorization": "Bearer " + jwt
-                        }
+                {
+                    headers: {
+                        "Authorization": "Bearer " + jwt
                     }
-            )
-            .then((response) => {
-                if(response.status !== 200){
-                    return Promise.reject("Failed");
                 }
-                return response.json();
-            })
-            .then(retrievedVendor => {
-                console.log( retrievedVendor );
-                setToEdit( retrievedVendor );})
-            .catch(console.log);
+            )
+                .then((response) => {
+                    if (response.status !== 200) {
+                        return Promise.reject("Failed");
+                    }
+                    return response.json();
+                })
+                .then(retrievedVendor => {
+                    console.log(retrievedVendor);
+                    setToEdit(retrievedVendor);
+                })
+                .catch(console.log);
         }
-        else{
-          navigate("./login");
+        else {
+            navigate("./login");
         }
-   
-    },[])
+
+    }, [])
 
     function handleNameChange(event) {
-        let copy = {...toEdit}
-        copy.name=event.target.value;
+        let copy = { ...toEdit }
+        copy.name = event.target.value;
         setToEdit(copy);
     }
     function handleEmailChange(event) {
-        let copy = {...toEdit}
-        copy.email=event.target.value;
+        let copy = { ...toEdit }
+        copy.email = event.target.value;
         setToEdit(copy);
     }
     function handlePhoneChange(event) {
-        let copy = {...toEdit}
-        copy.phone=event.target.value;
+        let copy = { ...toEdit }
+        copy.phone = event.target.value;
         setToEdit(copy);
     }
 
@@ -58,18 +58,18 @@ function EditVendor(){
 
         const jwt = localStorage.getItem("token");
 
-        fetch("http://localhost:8080/api/vendor/" + vendorId,{
+        fetch("http://localhost:8080/api/vendor/" + vendorId, {
             method: "PUT",
             headers: {
-               "Authorization": "Bearer " + jwt,
+                "Authorization": "Bearer " + jwt,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(toEdit)
         }).then(
             response => {
-                if(response.status == 204){
+                if (response.status == 204) {
                     navigate("/vendors");
-                }else{
+                } else {
                     alert("failed");
                 }
             }
@@ -82,17 +82,27 @@ function EditVendor(){
         navigate("/vendors");
     }
 
-    return toEdit ? <form className="formInfo" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label><br/>
-        <input id = "name" value={toEdit.name} onChange={handleNameChange}></input><br/>
-        <label htmlFor="email">Email:</label><br/>
-        <input id = "email" value={toEdit.email} onChange={handleEmailChange}></input><br/>
-        <label htmlFor="phone">Phone:</label><br/>
-        <input id = "phone" value={toEdit.phone} onChange={handlePhoneChange}></input><br/>
-        <button> Submit </button> &emsp;
-        <button onClick={handleCancel}>Cancel</button>
-    </form>:
-       <></>
+    return toEdit ?
+        <div className="addvendor-bg">
+            <div className="row addvendor-form container">
+
+                <div class="col-md-5 addvendor-left">
+                    <h1 className="vendoradd">EDIT <br />VENDOR</h1></div>
+                <div class="col-md-6 addvendor-right">
+                    <form onSubmit={handleSubmit}>
+                        <label className="login-label" htmlFor="name">Name:</label><br />
+                        <input className="add-input" id="name" value={toEdit.name} onChange={handleNameChange}></input><br />
+                        <label className="login-label" htmlFor="email">Email:</label><br />
+                        <input className="add-input" id="email" value={toEdit.email} onChange={handleEmailChange}></input><br />
+                        <label className="login-label" htmlFor="phone">Phone:</label><br />
+                        <input className="add-input" id="phone" value={toEdit.phone} onChange={handlePhoneChange}></input><br /><br /><br />
+                        <button className="cardbtn1"> Submit </button> &emsp;&emsp;
+                        <button className="cardbtn1" onClick={handleCancel}>Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div> :
+        <></>
 }
 
 export default EditVendor;

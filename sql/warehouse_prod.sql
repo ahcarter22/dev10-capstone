@@ -64,7 +64,7 @@ insert into vendor (vendor_name, vendor_email, vendor_phone, vendor_imageUrl)
    values
    ("Johnny's Apples", 'apples@johnny.com','347-123-0055',null),
    ('Meats For Us', 'meats@meats.com','929-345-0123',null),
-   ('Millennial Avocados','avocados@millennial.org', '646-235-2215',null);
+   ('Millennial Avocados','avocados@mill.org', '646-235-2215',null);
 
 insert into app_role (`name`) values
     ('USER'),
@@ -90,8 +90,8 @@ insert into app_user_role
     ('BAKED GOODS');
 
    insert into item(item_name,quantity,scale,expiration_date,imageUrl,vendor_id,category_id) values
-    ("Johnny's Awesome Apple",100,'pounds','2020-10-05','https://c.tenor.com/1HdVv6rRFcQAAAAM/excited-apple.gif',1,2),
-    ('Brand Name Beef Sirloin',150,'pounds','2001-01-01','https://media2.giphy.com/media/Bij8vM5lm372rT13ty/giphy.gif',2,1),
-    ('Antiboomer Avocado',200,'pounds','2005-09-11','http://image.thepaper.cn/wap/image/9/745/963.gif',3,2);
+    ("Johnny's Awesome Apple",100,'pounds','2020-10-05','https://i.epochtimes.com/assets/uploads/2019/12/Fotolia_84273812_Subscription_L.jpg',1,2),
+    ('Brand Name Beef Sirloin',150,'pounds','2001-01-01','https://embed.widencdn.net/img/beef/melpznnl7q/800x600px/Top%20Sirloin%20Steak.psd?keep=c&u=7fueml',2,1),
+    ('Antiboomer Avocado',200,'pounds','2005-09-11','https://www.kroger.com/product/images/large/front/0000000004225',3,2);
 
 

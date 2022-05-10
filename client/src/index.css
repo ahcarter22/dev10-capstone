@@ -18,7 +18,7 @@ body {
   display: inline-block;
   margin-right: 0px;
   margin-top: 0px;
-  margin-left: 0px;
+  margin-left: 30px;
   text-align: center;
   border-radius: 20px;
 } 
@@ -52,7 +52,7 @@ label {
 
 b {
   font-family: Arial, Helvetica, sans-serif;
-
+  font-weight: 500;
 }
 
 .name {
@@ -359,8 +359,9 @@ select {
   padding-top: 150px;
 }
 .itemcards{
-  padding-top: 200px;
+  padding-top: 50px;
   padding-left:0px;
+  padding-bottom:50px;
 }
 /* view item page css */
 /* view vendor page css */
@@ -535,3 +536,117 @@ select {
   color: white;
 }
 /* not found page css */
+.card{
+  border-radius: 30px;
+  border-width: 5px;
+  padding-top: 10px;
+}
+
+.card-title{
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:
+  30px;
+}
+.card-titlev{
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:30px;
+  text-align: center;
+  padding-top: 20px;
+  font-weight: 600;
+}
+.vendorinfo{
+  padding-left:50px;
+  padding-top:30px;
+  font-size: 22px;
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.cardinfo{
+  font-size: 17px;
+  color: #233859;
+}
+.cardbtn{
+  align-items: center;
+  background-color: #f0e246;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  letter-spacing: .5px;
+  font-size: 17px;
+  transition-duration: 0.4s;
+}
+.cardbtn:hover{
+  background-color: grey; 
+  color: white;
+}
+.cardbtn1{
+  align-items: center;
+  background-color: #f0e246;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  letter-spacing: .5px;
+  font-size: 17px;
+  transition-duration: 0.4s;
+}
+.cardbtn1:hover{
+  background-color: grey; 
+  color: white;
+}
+.nav-link {
+  display: inline-block;
+}
+.vendorcards{
+  padding-top:50px;
+  padding-bottom: 50px;
+}
+.a{
+  padding-bottom:10px;
+}
+.aa{
+  padding-left:40px;
+}

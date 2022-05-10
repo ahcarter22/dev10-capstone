@@ -650,3 +650,17 @@ select {
 .aa{
   padding-left:40px;
 }
+.deletepg{
+  text-align: center;
+  padding-top:100px;
+ 
+}
+.deletetxt{
+  padding-bottom: 50px;
+}
+.animate__animated.animate__swing {
+  --animate-duration: 8s;
+}
+.rusure{
+  padding-right: 600px;
+}

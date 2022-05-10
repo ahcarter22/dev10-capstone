@@ -22,7 +22,7 @@ function Vendor(props) {
                 <p className="v"><b>Email:</b> {email}</p>
                 <p><b>Phone:</b> {phone}</p>
                 <div className="a row">
-                    <div className="aa col-md-5">
+                    <div className="aa col-md-4">
                 <NavLink className="nav-link" to={'/editVendor/' + vendorId}><button className="cardbtn">EDIT</button></NavLink> </div>
                 <div className="col-md-6">
                 <NavLink className="nav-link" to={"/deleteVendor/" + vendorId} ><button className="cardbtn">DELETE</button></NavLink></div>

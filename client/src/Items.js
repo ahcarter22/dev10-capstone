@@ -91,10 +91,11 @@ function Items() {
             <div className="item">
                 <div className="item-page"><h1 className="item-bg-text">Items</h1></div>
                 <div>
-                    <div class="col-md-4" id="showEmailBtn" onClick={handleEmail}><button>Send Low Quantity Email Warning</button></div>
+                    <div className="emailbtn" id="showEmailBtn" onClick={handleEmail}><button className="sendemail">Send Low Quantity Email Warning</button></div>
                     <div id="hideEmailMsg" onClick={handleHideMsg}>
-                        <button>Hide Msg</button>
-                        <p>Low quantity warning emails sent to vendors</p>
+                    
+                        <p className="animate__animated animate__heartBeat emailtxt">Warning emails successfully sent to vendors 📤 </p>
+                        <button className="hideemail">Hide Msg</button>
                     </div>
 
                     <div className="itemcards container row">

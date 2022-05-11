@@ -99,6 +99,9 @@ function AddItem({ errorList,setErrorList }) {
         if (isNaN(quantity) || quantity <= 0) {
             allErrors.push("Please enter a valid number");
         }
+        if (scale == null || scale.trim() === ""){
+            allErrors.push("Please enter a valid scale")
+        }
         if (vendorId == null || vendorId ==0){
             allErrors.push("Please choose a valid vendor")
         }

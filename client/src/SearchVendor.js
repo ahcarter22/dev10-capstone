@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Item from "./Item";
 
-function Search({setItems}){
+function SearchVendor({setVendors}){
 
     const [ searchTerm, setSearchTerm ] = useState({});
     const { register, handleSubmit } = useForm();
@@ -18,7 +18,7 @@ function Search({setItems}){
     }, [searchTerm])
 
     function getSearchResults() {
-        fetch("http://localhost:8080/api/item/search?name=" + searchTerm.searchTerm,
+        fetch("http://localhost:8080/api/vendor/search?name=" + searchTerm.searchTerm,
         {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
@@ -32,7 +32,7 @@ function Search({setItems}){
                 console.log("error");
             }
         })
-        .then(itemData => setItems(itemData))
+        .then(itemData => setVendors(itemData))
       
         .catch(errors => {
             console.log("error: ", errors);
@@ -52,4 +52,4 @@ function Search({setItems}){
         
     )
 }
-export default Search;
+export default SearchVendor;

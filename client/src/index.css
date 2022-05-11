@@ -741,7 +741,7 @@ select {
   color: white;
 }
 .errormsg{
-  color:white;
+  color:red;
 }
 .searchbar{
   padding-top:20px;

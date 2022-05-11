@@ -35,8 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( HttpMethod.GET, "/api/category").authenticated()
                 .antMatchers( HttpMethod.GET, "/api/category/*").authenticated()
 
-//                .antMatchers( HttpMethod.GET, "/api/item").authenticated()
-//                .antMatchers( HttpMethod.GET, "/api/item/*" ).authenticated()
+                .antMatchers( HttpMethod.GET, "/api/item").authenticated()
+                .antMatchers( HttpMethod.GET, "/api/item/*" ).authenticated()
                 .antMatchers( HttpMethod.POST, "/api/item").authenticated()
                 .antMatchers( HttpMethod.PUT, "/api/item/*").hasRole("ADMIN")
                 .antMatchers( HttpMethod.DELETE, "/api/item/*").hasRole("ADMIN")
@@ -47,8 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( HttpMethod.PUT, "/api/vendor/*").hasRole("ADMIN")
                 .antMatchers( HttpMethod.DELETE, "/api/vendor/*").hasRole("ADMIN")
                 .antMatchers( HttpMethod.GET,"api/item/search").permitAll()
-                .antMatchers( HttpMethod.GET, "/api/item").permitAll()
-                .antMatchers( HttpMethod.GET, "/api/item/*" ).permitAll()
+                .antMatchers( HttpMethod.GET,"api/vendor/search").permitAll()
+
 
                 .antMatchers("/**").denyAll()
 

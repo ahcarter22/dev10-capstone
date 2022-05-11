@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Vendor from "./Vendor";
+import SearchVendor from "./SearchVendor";
 
 
 function Vendors() {
@@ -43,6 +44,8 @@ function Vendors() {
     return (
         <div className="vendor">
             <div className="vendor-page">
+            <div className="searchbar">
+                    <SearchVendor setVendors={setVendors}/></div>
                 <h1 className="vendor-bg-text">Vendors</h1></div>
                 <div className="vendorcards container row">  {vendorFactory()}</div>
 

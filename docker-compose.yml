@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  backendApi:
+    image: ahcarter22/warehouse-image
+    environment:
+      - PROD_DB_URL=${PROD_DB_URL}
+      - PROD_DB_USERNAME=${PROD_DB_USERNAME}
+      - PROD_DB_PASSWORD=${PROD_DB_PASSWORD}
+    ports:
+      - 8080:8080

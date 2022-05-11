@@ -10,7 +10,7 @@ import java.util.Map;
 
 // RestController annotates spring into dependency
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000"})
+// @CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/api")
 public class EmailController {
 

@@ -11,7 +11,7 @@ import warehouse.models.Vendor;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000"})
+// @CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/api/vendor")
 public class VendorController {
     private final VendorService vendorService;

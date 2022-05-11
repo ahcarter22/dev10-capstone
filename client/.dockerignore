@@ -1,0 +1,10 @@
+# being paranoid
+.git
+# don't need the build directory since we'll rebuild the project
+build
+# copying node_modules is slow and we'll need a fresh install anyway
+node_modules
+# no docker artifacts
+Dockerfile*
+# no documentation
+*.md

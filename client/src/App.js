@@ -51,7 +51,7 @@ function App() {
                 <Route path="/editItem/:itemId" element={<EditItem />} />
                 <Route path="/deleteItem/:itemId" element={<DeleteItem />} />
                 <Route path="/vendors" element={<Vendors />} />
-                <Route path="/addVendor" element={<AddVendor />} />
+                <Route path="/addVendor" element={<AddVendor errorList={errorList} setErrorList={setErrorList}/>} />
                 <Route path="/editVendor/:vendorId" element={<EditVendor />} />
                 <Route path="/deleteVendor/:vendorId" element={<DeleteVendor />} />
                 

@@ -62,9 +62,9 @@ create table app_user_role (
 
 insert into vendor (vendor_name, vendor_email, vendor_phone, vendor_imageUrl)
    values
-   ("Johnny's Apples", 'apples@johnny.com','347-123-0055',null),
-   ('Meats For Us', 'meats@meats.com','929-345-0123',null),
-   ('Millennial Avocados','avocados@mill.org', '646-235-2215',null);
+   ("Johnny's Apples", 'apples@johnny.com','347-123-0055',"https://cdn.freelogodesign.org/files/b3c1bb6a59f045309ce4fccbcf5da165/thumb/logo_200x200.png?v=0"),
+   ('Meats For Us', 'meats@meats.com','929-345-0123',"https://cdn.freelogodesign.org/files/5c5b4ccbc270405fb7961c4b6fd9a59c/thumb/logo_200x200.png?v=0"),
+   ('Millennial Avocados','avocados@mill.org', '646-235-2215',"https://cdn.freelogodesign.org/files/cb262064f88c46e49539c1b7579e06eb/thumb/logo_200x200.png?v=0");
 
 insert into app_role (`name`) values
     ('USER'),

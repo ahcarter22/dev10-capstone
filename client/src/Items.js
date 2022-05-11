@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Item from "./Item";
+import Search from "./Search";
 
 
 function Items() {
@@ -89,7 +90,10 @@ function Items() {
         <>
 
             <div className="item">
-                <div className="item-page"><h1 className="item-bg-text">Items</h1></div>
+                <div className="item-page">
+                    <div className="searchbar">
+                    <Search setItems={setItems}/></div>
+                    <h1 className="item-bg-text">Items</h1></div>
                 <div>
                     <div className="emailbtn" id="showEmailBtn" onClick={handleEmail}><button className="sendemail">Send Low Quantity Email Warning</button></div>
                     <div id="hideEmailMsg" onClick={handleHideMsg}>

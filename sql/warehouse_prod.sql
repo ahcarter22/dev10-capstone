@@ -68,7 +68,7 @@ insert into vendor (vendor_name, vendor_email, vendor_phone, vendor_imageUrl)
    ("Brilliant Bread Company", 'ltorvalds01@gmail.com','247-658-1658',"https://cdn.freelogodesign.org/files/4d694abdcfdf4f988390dc4e1ff13785/thumb/logo_200x200.png?v=0"),
    ('Crayon Army', 'crayon@army.com','412-589-1147',"https://cdn.freelogodesign.org/files/a3c4324d031146d88cf83d74bb42cf2d/thumb/logo_200x200.png?v=0"),
    ("Mr.Freezie's Smashing Delights",'ahcarter22@gmail.com', '646-235-2215',"https://cdn.freelogodesign.org/files/92dbbacbd24640c696adb862a7702a23/thumb/logo_200x200.png?v=0");
-
+   
 insert into app_role (`name`) values
     ('USER'),
     ('ADMIN');
@@ -98,6 +98,6 @@ insert into app_user_role
     ('Antiboomer Avocado',200,'pounds','2005-09-11','https://www.kroger.com/product/images/large/front/0000000004225',3,2),
     ("Bangin Bread",3,'loaves','2022-10-05','https://www.houseofwellness.com.au/wp-content/uploads/2020/09/HOW-LH-banana-bread.jpg',6,6),
     ('Crayon Army Draft Beer',150,'bottles','2025-11-24',"https://i.etsystatic.com/26215724/r/il/be4697/3386040000/il_fullxfull.3386040000_o10u.jpg",5,5),
-    ('Mr.Freezie Ice Cream',5,'cartons','2025-09-11','https://www.awesomealpharetta.com/wp-content/uploads/2020/06/ice_cream_cones_blog.jpg',4,4);
-
+    ('Mr.Freezie Ice Cream',5,'cartons','2025-09-11','https://www.awesomealpharetta.com/wp-content/uploads/2020/06/ice_cream_cones_blog.jpg',4,4),
+    ("Honeycrisp Apple",90,'pounds','2023-01-04','https://images.heb.com/is/image/HEBGrocery/000466634',1,2);
 

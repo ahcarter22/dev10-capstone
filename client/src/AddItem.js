@@ -18,37 +18,44 @@ function AddItem({ errorList,setErrorList }) {
     const [showMessages, setShowMessages] = useState(false);
    
 
+    const apiUrl=window.API_URL;
+
     useEffect(() => {
-        fetch("http://localhost:8080/api/category",
-            {
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem("token")
-                }
-            })
-            .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                } else {
-                    alert("Something went wrong while fetching...");
-                }
+
+        
+        fetch(apiUrl + "api/category", 
+        {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                alert("Something went wrong while fetching...");
+            }
+
+
             })
             .then(categoryData => setCategories(categoryData))
             .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/vendor",
-            {
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem("token")
-                }
-            })
-            .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                } else {
-                    alert("Something went wrong while fetching...");
-                }
+
+        
+        fetch(apiUrl + "api/vendor",
+        {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                alert("Something went wrong while fetching...");
             })
             .then(vendorData => setVendors(vendorData))
             .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
@@ -125,7 +132,7 @@ function AddItem({ errorList,setErrorList }) {
             newItem.categoryId = categoryId;
 
 
-            fetch("http://localhost:8080/api/item", {
+            fetch(apiUrl + "api/item", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -150,7 +157,7 @@ function AddItem({ errorList,setErrorList }) {
 
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/vendor",
+        fetch(apiUrl + "api/vendor",
             {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")

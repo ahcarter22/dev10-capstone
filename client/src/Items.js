@@ -1,24 +1,30 @@
+import { getDefaultNormalizer } from "@testing-library/react";
 import { useState, useEffect } from "react";
 import Item from "./Item";
 import Search from "./Search";
 
 
+
 function Items() {
     const [items, setItems] = useState([]);
 
+    const apiUrl=window.API_URL;
+
     useEffect(() => {
-        fetch("http://localhost:8080/api/item",
-            {
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem("token")
-                }
-            })
-            .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                } else {
-                    alert("Something went wrong while fetching...");
-                }
+
+        fetch(apiUrl + "api/item",
+        {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                alert("Something went wrong while fetching...");
+            }
+
             })
             .then(itemData => setItems(itemData))
             .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
@@ -69,24 +75,33 @@ function Items() {
     //     document.getElementById("sort-value").innerHTML(sortBy);
     // }
 
-    function handleEmail() {
+   
 
+
+    function handleEmail(e){
+        e.preventDefault();
         const x = document.getElementById("hideEmailMsg");
         x.id = "showEmailMsg";
-        console.log(x);
         const y = document.getElementById("showEmailBtn");
         y.id = "hideEmailBtn";
 
         items.forEach(item => {
-            if (item.quantity < 10) {
-                fetch("http://localhost:8080/api/message", {
+            if (item.quantity < 10){
+                const newEmail = {
+                    to: "ahcarter22@gmail.com",
+                    subject: "warning: " + item.name,
+                    text: item.name + "has low quantity"
+                };
+
+                fetch(apiUrl + "api/message", {
+
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": "Bearer " + localStorage.getItem("token"),
                         Accept: "application/json",
                     },
-                    body: JSON.stringify()
+                    body: JSON.stringify(newEmail)
                 }).then(
                     (response) => {
                         if (response.ok) {
@@ -116,6 +131,7 @@ function Items() {
     return (
 
         <>
+
 
             <div className="item">
                 <div className="item-page">
@@ -152,6 +168,7 @@ function Items() {
 
             </div>
         </>
+
 
     )
 }

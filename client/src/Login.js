@@ -8,10 +8,11 @@ function Login() {
     const [password, setPassword] = useState("");
     const [user, setUser] = useContext(AuthContext);
     const navigate = useNavigate();
+    const apiUrl=window.API_URL;
 
     function submitHandler(event) {
         event.preventDefault()
-        fetch("http://localhost:8080/api/login", {
+        fetch(apiUrl + "api/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

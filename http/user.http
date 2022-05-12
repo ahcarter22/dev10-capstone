@@ -1,4 +1,4 @@
-@url = http://localhost:8080/api/login
+@url = http://test1-env.eba-riwszv5v.us-east-1.elasticbeanstalk.com/api/login
 @token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2Mzk3MTQ4OTZ9.SBDSFXdO8UkGsL7lKkQNU0cgBNdUkgRQjBF8GodI52M
 
 ## john is an admin

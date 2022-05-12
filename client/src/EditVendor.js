@@ -7,17 +7,22 @@ function EditVendor() {
     const [toEdit, setToEdit] = useState(null);
     const [userStatus, setUserStatus] = useContext(AuthContext);
     const navigate = useNavigate();
-    const { vendorId } = useParams();
+
+    const{vendorId} = useParams();
+    const apiUrl=window.API_URL;
 
     useEffect(() => {
-        const jwt = localStorage.getItem("token");
-        if (jwt) {
-            fetch("http://localhost:8080/api/vendor/" + vendorId,
-                {
-                    headers: {
-                        "Authorization": "Bearer " + jwt
+        const jwt = localStorage.getItem( "token" );
+        if(jwt) 
+        {
+            fetch(apiUrl + "api/vendor/" + vendorId,
+                    {
+                        headers: {
+                           "Authorization": "Bearer " + jwt
+                        }
+
                     }
-                }
+                
             )
                 .then((response) => {
                     if (response.status !== 200) {
@@ -35,7 +40,7 @@ function EditVendor() {
             navigate("./login");
         }
 
-    }, [])
+    }, []);
 
     function handleNameChange(event) {
         let copy = { ...toEdit }
@@ -63,7 +68,9 @@ function EditVendor() {
 
         const jwt = localStorage.getItem("token");
 
-        fetch("http://localhost:8080/api/vendor/" + vendorId, {
+
+        fetch(apiUrl + "api/vendor/" + vendorId,{
+
             method: "PUT",
             headers: {
                 "Authorization": "Bearer " + jwt,

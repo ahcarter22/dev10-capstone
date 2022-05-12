@@ -12,6 +12,8 @@ function AddVendor({errorList, setErrorList}) {
     const [vendors, setVendors] = useState([]);
     const [showMessages, setShowMessages] = useState(false);
 
+    const apiUrl=window.API_URL;
+
     function handleNameChange(event) {
         setName(event.target.value);
     }
@@ -55,7 +57,7 @@ function AddVendor({errorList, setErrorList}) {
         newVendor.email = email;
         newVendor.phone = phone;
 
-        fetch("http://localhost:8080/api/vendor", {
+        fetch(apiUrl + "api/vendor", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

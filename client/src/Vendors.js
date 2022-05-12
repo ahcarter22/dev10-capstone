@@ -5,9 +5,10 @@ import SearchVendor from "./SearchVendor";
 
 function Vendors() {
     const [vendors, setVendors] = useState([]);
+    const apiUrl=window.API_URL;
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/vendor",
+        fetch(apiUrl + "api/vendor",
             {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")

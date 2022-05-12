@@ -18,26 +18,32 @@ function Item(props) {
 
     console.log(props);
 
+    const apiUrl=window.API_URL;
+
     useEffect(() => {
-        fetch("http://localhost:8080/api/category/" + categoryId,
-            {
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem("token")
-                }
-            })
-            .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                } else {
-                    alert("Something went wrong while fetching...");
-                }
+
+        fetch(apiUrl + "api/category/" + categoryId,
+        {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                alert("Something went wrong while fetching...");
+            }
+
             })
             .then(categoryData => setCategory(categoryData))
             .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/vendor/" + vendorId,
+
+            fetch(apiUrl + "api/vendor/" + vendorId,
+
             {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")

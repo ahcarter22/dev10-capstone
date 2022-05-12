@@ -2,16 +2,15 @@ package warehouse.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import warehouse.domain.EmailService;
+
+import java.util.Map;
 
 
 // RestController annotates spring into dependency
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000"})
+// @CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/api")
 public class EmailController {
 
@@ -24,12 +23,11 @@ public class EmailController {
     }
 
     @PostMapping("/message")
-    String sendEmailMessage() {
+    String sendEmailMessage(@RequestBody Map<String, String> emailMap) {
         this.emailService.sendMessage(
-                "ahcarter22@gmail.com",
-                "Hello World",
-                "I hope this works..."
-
+                emailMap.get("to"),
+                emailMap.get("subject"),
+                emailMap.get("text")
         );
 
         return "Message sent";

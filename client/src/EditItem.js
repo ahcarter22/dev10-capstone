@@ -8,15 +8,21 @@ function EditItem() {
     const navigate = useNavigate();
     const { itemId } = useParams();
 
+    const apiUrl=window.API_URL;
+
     useEffect(() => {
-        const jwt = localStorage.getItem("token");
-        if (jwt) {
-            fetch("http://localhost:8080/api/item/" + itemId,
-                {
-                    headers: {
-                        "Authorization": "Bearer " + jwt
+
+        const jwt = localStorage.getItem( "token" );
+        if(jwt) 
+        {
+            fetch(apiUrl + "api/item/" + itemId,
+                    {
+                        headers: {
+                           "Authorization": "Bearer " + jwt
+                        }
+
                     }
-                }
+                
             )
                 .then((response) => {
                     if (response.status !== 200) {
@@ -34,7 +40,7 @@ function EditItem() {
             navigate("./login");
         }
 
-    }, [])
+    }, []);
 
     function handleNameChange(event) {
         let copy = { ...toEdit }
@@ -67,7 +73,8 @@ function EditItem() {
 
         const jwt = localStorage.getItem("token");
 
-        fetch("http://localhost:8080/api/item/" + itemId, {
+        fetch(apiUrl + "api/item/" + itemId,{
+
             method: "PUT",
             headers: {
                 "Authorization": "Bearer " + jwt,

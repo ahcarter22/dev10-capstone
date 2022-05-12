@@ -29,6 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors();
 
         http.authorizeRequests()
+                .antMatchers( HttpMethod.GET, "/").permitAll()
+                .antMatchers( HttpMethod.GET, "/environment").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/login").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/message").permitAll()
 
@@ -77,7 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000")
+                        .allowedOrigins("*")
                         .allowedMethods("*");
             }
         };

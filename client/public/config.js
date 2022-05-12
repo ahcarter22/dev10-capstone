@@ -1,0 +1,1 @@
+window.API_URL = "http://test1-env.eba-riwszv5v.us-east-1.elasticbeanstalk.com/"

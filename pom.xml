@@ -20,12 +20,14 @@
         <relativePath/>
     </parent>
 
+
     <dependencies>
         <!-- Spring MVC -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
 
 
         <!-- Spring email -->
@@ -98,5 +100,16 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+
+    <!-- the `build` element is defined after `dependencies` -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

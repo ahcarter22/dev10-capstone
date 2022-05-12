@@ -7,13 +7,15 @@ function DeleteVendor(){
 
     const [toDelete, setToDelete] = useState(null);
 
+    const apiUrl=window.API_URL;
+
     useEffect( 
         () => {
 
             const jwt = localStorage.getItem( "token" );
             if( jwt ){
                 
-                fetch( "http://localhost:8080/api/vendor/" + vendorId,
+                fetch( apiUrl + "api/vendor/" + vendorId,
                     {
                         headers: {
                            Authorization: "Bearer " + jwt
@@ -48,7 +50,7 @@ function DeleteVendor(){
     }
 
     function handleDelete() {
-        fetch("http://localhost:8080/api/vendor/" + vendorId, {
+        fetch(apiUrl + "api/vendor/" + vendorId, {
             method: "DELETE",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")

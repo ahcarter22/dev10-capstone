@@ -356,7 +356,7 @@ select {
   font-family: 'Roboto', sans-serif;
   font-size: 80px;
   line-height: 1.3;
-  padding-top: 110px;
+  padding-top: 150px;
 }
 .itemcards{
   padding-top: 30px;
@@ -378,7 +378,7 @@ select {
   font-family: 'Roboto', sans-serif;
   font-size: 80px;
   line-height: 1.3;
-  padding-top: 110px;
+  padding-top: 150px;
 }
 /* view vendor page css */
 /* add item page css */
@@ -745,11 +745,12 @@ select {
 }
 .searchbar{
   padding-top:30px;
-  margin-left:50px;
-  width:30%;
+  padding-left: 220px;
+  
 }
 .sortitem{
   padding-left:100px;
+  padding-top: 30px;
 }
 .sort-label{
   font-size: 22px;
@@ -760,9 +761,27 @@ select {
 .sortselect{
   color: #233859;
   font-family: Arial, Helvetica, sans-serif;
-  width: 18%;
+  width: 40%;
   padding: 10px 8px;
   display: inline-block;
   border: 4px solid #ccc;
   border-radius: 20px;
+}
+.searchselect{
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 55%;
+  padding: 10px 8px;
+  display: inline-block;
+  border: 4px solid #ccc;
+  border-radius: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.sv{
+  padding-top:30px;
+}
+.loginimg{
+  height:400px;
+ 
 }

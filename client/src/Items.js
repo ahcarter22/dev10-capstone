@@ -47,7 +47,7 @@ function Items() {
         if (sortBy == "quantity") {
             sortedItems.sort((a, b) => a.quantity - b.quantity)
         } else if (sortBy == "name") {
-            sortedItems.sort((a, b) => a.name - b.name)
+            sortedItems.sort((a, b) => a.name.localeCompare(b.name))
         } else {
             sortedItems.sort((a, b) => new Date(a.expirationDate) - new Date(b.expirationDate));
         }
@@ -119,9 +119,7 @@ function Items() {
 
             <div className="item">
                 <div className="item-page">
-                    <div className="searchbar">
-                        <Search setItems={setItems} />
-                    </div>
+                    
                     <h1 className="item-bg-text">Items</h1></div>
                 <div>
 
@@ -132,14 +130,18 @@ function Items() {
                         <button className="hideemail">Hide Msg</button>
 
                     </div>
-                    <div className="sortitem">
+                    <div className= "row">
+                    <div className="col-md-6 sortitem">
                         <p className="sort-label">SORT BY: &emsp;
                             <select className="sortselect" id="select-sorting" onChange={changeSorting}>
                                 <option value="random">Please Select</option>
                                 <option value="expirationDate">Expiration Date</option>
-                                <option value="quantity">Quantity</option>
-                                <option value="name">NAME</option>
+                                <option value="quantity">Quantity (low to high)</option>
+                                <option value="name">NAME (A to Z)</option>
                             </select></p></div>
+                            <div className="col-md-6 searchbar">
+                        <Search setItems={setItems} />
+                    </div></div>
 
                     <div className="itemcards container row">
 

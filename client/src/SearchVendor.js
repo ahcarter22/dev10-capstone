@@ -45,7 +45,7 @@ function SearchVendor({setVendors}){
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="d-flex">
-                <input className="add-input form-control me-2" type="search" placeholder="Search" aria-label="Search" {...register("searchTerm")} />
+                <input className="searchselect form-control me-2" type="search" placeholder="Search Vendor Name" aria-label="Search" {...register("searchTerm")} />
                 <button className="cardbtn1 btn btn-outline-success" type="submit">Search</button>
             </form>
         </>

@@ -41,13 +41,44 @@ function Vendors() {
         ))
     }
 
+    function changeSorting() {
+        var sortBy = document.getElementById("select-sorting").value;
+        let sortedVendors = [...vendors];
+        if (sortBy == "name") {
+            sortedVendors.sort((a, b) => a.name.localeCompare(b.name))
+        } else {
+            sortedVendors=vendors;
+        }
+        setVendors(sortedVendors);
+      
+        return sortedVendors.map(vendorObj => (
+            <Vendor
+            key={vendorObj.vendorId}
+            vendorObj={vendorObj}
+            vendors={vendors}
+            removeFromState={removeVendorFromState}
+        />
+        ))
+    }
+
     return (
         <div className="vendor">
             <div className="vendor-page">
-            <div className="searchbar">
-                    <SearchVendor setVendors={setVendors}/></div>
                 <h1 className="vendor-bg-text">Vendors</h1></div>
-                <div className="vendorcards container row">  {vendorFactory()}</div>
+
+                <div className= "row sv">
+                    <div className="col-md-6 sortitem">
+                        <p className="sort-label">SORT BY: &emsp;
+                            <select className="sortselect" id="select-sorting" onChange={changeSorting}>
+                                <option value="random">Please Select</option>
+                                <option value="name">NAME</option>
+                            </select></p></div>
+                            <div className="col-md-6 searchbar">
+                        <SearchVendor setVendors={setVendors} />
+                    </div></div>
+
+                <div className="vendorcards container row"> 
+                 {vendorFactory()}</div>
 
            
         </div>

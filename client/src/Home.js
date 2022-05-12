@@ -10,7 +10,7 @@ function Home(){
         <home>
         <div className="home-page">
             <div className="header"> Distribution, Storage, Warehousing & Fulfillment </div>
-            <div className="header1">Your solution for first class warehousing services for the goods, food, grocery, pharmaceutical and general commodity industries.</div>
+            <div className="header1">Your solution for first class warehousing services for the goods, food, grocery, pharmaceutical and general commodity industries.</div>
             <button onClick={handleAbout} className="learn-button">Learn More</button>
           
           

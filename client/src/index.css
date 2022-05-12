@@ -18,7 +18,7 @@ body {
   display: inline-block;
   margin-right: 0px;
   margin-top: 0px;
-  margin-left: 0px;
+  margin-left: 30px;
   text-align: center;
   border-radius: 20px;
 } 
@@ -52,7 +52,7 @@ label {
 
 b {
   font-family: Arial, Helvetica, sans-serif;
-
+  font-weight: 500;
 }
 
 .name {
@@ -228,7 +228,7 @@ select {
   margin: 5em 0 0 0;
 }
 .about-right {
-	background: url(3.jpg) no-repeat 0px 0px;
+	background: url(team.png) no-repeat 0px 0px;
   background-size: contain;
   min-height: 600px;
 }
@@ -263,7 +263,7 @@ select {
   background: rgba(0, 0, 0, 0.6) url('https://www.americanwarehouses.com/hubfs/AmericanWarehouses_Blog_TheBestApproachToLeasingWarehouseSpace.jpg');
   background-size: cover;
   background-blend-mode: darken;
-  height: 700px;
+  height: 900px;
 }
 .login-form{
   padding-top: 50px;
@@ -315,7 +315,7 @@ select {
 /* login page css */
 .logout-btn{
   align-items: center;
-  background-color: #f0e246;
+  background-color: #efe468;
   border: 0;
   border-radius: 100px;
   box-sizing: border-box;
@@ -359,8 +359,9 @@ select {
   padding-top: 150px;
 }
 .itemcards{
-  padding-top: 200px;
+  padding-top: 30px;
   padding-left:0px;
+  padding-bottom:50px;
 }
 /* view item page css */
 /* view vendor page css */
@@ -384,7 +385,7 @@ select {
 .additem-bg{
   background: rgba(0, 0, 0, 0.65) url("https://thumbs.dreamstime.com/b/%E5%85%85%E5%88%86%E7%A9%BA%E7%9A%84%E4%BB%93%E5%BA%93%E8%B4%A7%E7%89%A9-105517645.jpg");
   background-size: cover;
-  height:800px;
+  height:1200px;
   background-blend-mode: darken;
 }
 .additem-btn{
@@ -439,6 +440,7 @@ select {
   padding-top:30px;
   padding-bottom:30px;
   padding-left:130px;
+  border-radius: 30px;
 }
 .additem-left{
   color:white;
@@ -476,6 +478,7 @@ select {
   padding-top:60px;
   padding-bottom:30px;
   padding-left:130px;
+  border-radius: 30px;
 }
 .addvendor-left{
   color:white;
@@ -486,4 +489,299 @@ select {
   font-size:5em;
   font-family: 'Righteous', cursive;
   letter-spacing: 5px;
+}
+/* add vendor page css */
+/* not found page css */
+.notfound-bg{
+  background: url("https://wpklik.com/wp-content/uploads/2019/03/A-404-Page-Best-Practices-and-Design-Inspiration.jpg");
+  background-size: cover;
+  height:770px;
+}
+.notfound-bg, .notfoundbtn{
+  text-align: center;
+  padding-top: 70px;
+}
+.goback-btn{
+  align-items: center;
+  background-color: #f0e246;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  letter-spacing: .5px;
+  font-size: 20px;
+  transition-duration: 0.4s;
+}
+.goback-btn:hover{
+  background-color: grey; 
+  color: white;
+}
+/* not found page css */
+.card{
+  border-radius: 30px;
+  border-width: 5px;
+  padding-top: 10px;
+}
+
+.card-title{
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:
+  30px;
+}
+.card-titlev{
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:30px;
+  text-align: center;
+  padding-top: 20px;
+  font-weight: 600;
+}
+.vendorinfo{
+  padding-left:50px;
+  padding-top:30px;
+  font-size: 22px;
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.cardinfo{
+  font-size: 17px;
+  color: #233859;
+}
+.cardbtn{
+  align-items: center;
+  background-color: #efe468;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  letter-spacing: .5px;
+  font-size: 17px;
+  transition-duration: 0.4s;
+}
+.cardbtn:hover{
+  background-color: grey; 
+  color: white;
+}
+.cardbtn1{
+  align-items: center;
+  background-color: #efe468;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  letter-spacing: .5px;
+  font-size: 17px;
+  transition-duration: 0.4s;
+}
+.cardbtn1:hover{
+  background-color: grey; 
+  color: white;
+}
+.nav-link {
+  display: inline-block;
+}
+.vendorcards{
+  padding-top:50px;
+  padding-bottom: 50px;
+}
+.a{
+  padding-bottom:10px;
+}
+.aa{
+  padding-left:40px;
+}
+.deletepg{
+  text-align: center;
+  padding-top:100px;
+ 
+}
+.deletetxt{
+  padding-bottom: 50px;
+}
+.animate__animated.animate__swing {
+  --animate-duration: 8s;
+}
+.rusure{
+  padding-right: 600px;
+}
+.emailbtn{
+  padding-top: 40px;
+}
+.sendemail{
+  align-items: center;
+  background-color: #efe468;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  letter-spacing: .5px;
+  font-size: 17px;
+  transition-duration: 0.4s;
+
+}
+.sendemail:hover{
+  background-color: grey; 
+  color: white;
+}
+.emailtxt{
+  font-size: 25px;
+  padding-top: 20px;
+}
+.hideemail{
+  align-items: center;
+  background-color: #efe468;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #233859;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  letter-spacing: .5px;
+  font-size: 17px;
+  transition-duration: 0.4s;
+}
+.hideemail:hover{
+  background-color: grey; 
+  color: white;
+}
+.errormsg{
+  color:red;
+}
+.searchbar{
+  padding-top:30px;
+  padding-left: 220px;
+  
+}
+.sortitem{
+  padding-left:100px;
+  padding-top: 30px;
+}
+.sort-label{
+  font-size: 22px;
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+}
+.sortselect{
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 40%;
+  padding: 10px 8px;
+  display: inline-block;
+  border: 4px solid #ccc;
+  border-radius: 20px;
+}
+.searchselect{
+  color: #233859;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 55%;
+  padding: 10px 8px;
+  display: inline-block;
+  border: 4px solid #ccc;
+  border-radius: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.sv{
+  padding-top:30px;
+}
+.loginimg{
+  height:400px;
+ 
 }

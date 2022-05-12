@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AllErrors from './AllErrors';
 
-function AddItem({ overwriteErrorList }) {
+function AddItem({ errorList,setErrorList }) {
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState("");
     const [scale, setScale] = useState("");
@@ -13,11 +14,14 @@ function AddItem({ overwriteErrorList }) {
 
     const [items, setItems] = useState([]);
     const [vendors, setVendors] = useState([]);
-    const [categories,setCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [showMessages, setShowMessages] = useState(false);
+   
 
     const apiUrl=window.API_URL;
 
     useEffect(() => {
+
         
         fetch(apiUrl + "api/category", 
         {
@@ -31,12 +35,15 @@ function AddItem({ overwriteErrorList }) {
             } else {
                 alert("Something went wrong while fetching...");
             }
+
+
             })
-        .then(categoryData=>setCategories(categoryData))
-        .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
-        }, []);
+            .then(categoryData => setCategories(categoryData))
+            .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+    }, []);
 
     useEffect(() => {
+
         
         fetch(apiUrl + "api/vendor",
         {
@@ -49,11 +56,10 @@ function AddItem({ overwriteErrorList }) {
                 return response.json();
             } else {
                 alert("Something went wrong while fetching...");
-            }
             })
-        .then(vendorData => setVendors(vendorData))
-        .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
-        }, []);
+            .then(vendorData => setVendors(vendorData))
+            .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+    }, []);
 
     function handleNameChange(event) {
         setName(event.target.value);
@@ -81,13 +87,6 @@ function AddItem({ overwriteErrorList }) {
     }
 
 
-    // function getOption(){
-    //     setCategoryId(parseInt(document.getElementById('selectCategory').value));
-
-    //     //document.getElementById('selectCategory').value
-    //     //document.getElementById('value').value=option.value;
-    //     // console.log(document.queryselector('selectCategory'))
-    // }
     function handleCategoryIdChange(event) {
         setCategoryId(event.target.value);
         console.log(event.target)
@@ -101,23 +100,28 @@ function AddItem({ overwriteErrorList }) {
     function handleSubmit(e) {
         e.preventDefault();
         const allErrors = [];
-        if (categoryId == null || categoryId == 0) {
-            allErrors.push("This category ID is not set. Please choose another category");
-        }
         if (name == null || name.trim() === "") {
-            allErrors.push("Please enter a valid name.")
+             allErrors.push("Please enter a valid name.") 
+        }    
+        if (isNaN(quantity) || quantity <= 0) {
+            allErrors.push("Please enter a valid number");
         }
+        if (scale == null || scale.trim() === ""){
+            allErrors.push("Please enter a valid scale")
+        }
+        if (vendorId == null || vendorId ==0){
+            allErrors.push("Please choose a valid vendor")
+        }
+        if (categoryId == null || categoryId == 0) {
+            allErrors.push("Please choose a valid category");
+       }
 
-
-
-
-
-
-        
-        if (allErrors.length > 0){
-
-            overwriteErrorList(allErrors);
-        } else {
+           if (allErrors.length > 0){
+               setErrorList(allErrors);
+               setShowMessages(true);
+               }
+       
+        else {
             let newItem = {};
             newItem.name = name;
             newItem.quantity = quantity;
@@ -141,7 +145,7 @@ function AddItem({ overwriteErrorList }) {
                     if (response.ok) {
                         alert("SUCCESS");
                         addItem(newItem);
-                        overwriteErrorList([]);
+                        setErrorList([]);
                         navigate("/items");
                     } else { alert("Failed") }
                 }
@@ -170,16 +174,15 @@ function AddItem({ overwriteErrorList }) {
             .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
     }, []);
 
-    //<label htmlFor="vendorId"><b>VendorId:</b></label><br />
-    // <input onChange={handleVendorIdChange} id="vendorId"></input><br />
     return (
         <div className="additem-bg">
             <div className="row additem-form container">
 
                 <div class="col-md-5 additem-left">
-                    <h1 className="itemadd">ADD <br/>ITEM</h1></div>
+                    <h1 className="itemadd">ADD <br />ITEM</h1></div>
                 <div class="col-md-6 additem-right">
-                    <form  onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
+
                         <label className="login-label" htmlFor="name"><b>Name:</b></label><br />
                         <input className="add-input" onChange={handleNameChange} id="name"></input><br />
 
@@ -214,26 +217,28 @@ function AddItem({ overwriteErrorList }) {
                             <option value="4">Frozen</option>
                             <option value="5">Alcohol</option>
                             <option value="6">Baked Goods</option>
-                        </select><br /><br /><br />
+                        </select><br /><br />
+                        <div className="errormsg">
+                        <AllErrors errorList={errorList}/></div><br />
 
 
                         <button className="additem-btn">Add</button> <br />
                     </form>
                 </div>
-          </div>
+            </div>
         </div>
     )
 }
 
-    // This should auto populate category, but we need to change our back-end GET request to give us category ids as well
-    // <label htmlFor="categoryId"><b>Category:</b></label><br />
-    // <select id="selectCategory" value={categoryId} onChange={(e) => handleCategoryIdChange(e)} >
-    //     <option key={0} value="0">Please select an option</option>
-    //     {categories.map((category) => 
-    //         <option key={category.categoryId} value={category.categoryId}>{category}</option>)
-    //     }
-    // </select><br /><br /><br />
-    
-   
+// This should auto populate category, but we need to change our back-end GET request to give us category ids as well
+// <label htmlFor="categoryId"><b>Category:</b></label><br />
+// <select id="selectCategory" value={categoryId} onChange={(e) => handleCategoryIdChange(e)} >
+//     <option key={0} value="0">Please select an option</option>
+//     {categories.map((category) => 
+//         <option key={category.categoryId} value={category.categoryId}>{category}</option>)
+//     }
+// </select><br /><br /><br />
+
+
 
 export default AddItem;

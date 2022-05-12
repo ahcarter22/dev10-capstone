@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import warehouse.domain.Result;
 import warehouse.domain.VendorService;
+import warehouse.models.Item;
 import warehouse.models.Vendor;
 
 import java.util.List;
@@ -59,6 +60,21 @@ public class VendorController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity findByName(String name){
+        if (name == null) {
+            return new ResponseEntity("Name cannot be null", HttpStatus.BAD_REQUEST);
+        }else{
+            List<Vendor> foundItem = vendorService.findByName(name);
+            if (foundItem != null) {
+                return ResponseEntity.ok(foundItem);
+            }else{
+                return new ResponseEntity("Not found",HttpStatus.NOT_FOUND);
+            }
+        }
+
     }
 
 

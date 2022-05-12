@@ -1,26 +1,27 @@
 import EditItem from './EditItem';
 import DeleteItem from './DeleteItem';
-import { useContext,useEffect,useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AuthContext from './AuthContext';
-import {Link} from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 
 
 function Item(props) {
     console.log(props.itemObj)
 
-    const {itemId, name, quantity, scale, 
-        expirationDate,imageUrl, categoryId, vendorId} = props.itemObj;
+    const { itemId, name, quantity, scale,
+        expirationDate, imageUrl, categoryId, vendorId } = props.itemObj;
     const [user, setUser] = useContext(AuthContext);
 
-    const [category,setCategory] = useState([]);
+    const [category, setCategory] = useState([]);
 
-    const [vendor,setVendor] = useState([]);
+    const [vendor, setVendor] = useState([]);
 
     console.log(props);
 
     const apiUrl=window.API_URL;
 
     useEffect(() => {
+
         fetch(apiUrl + "api/category/" + categoryId,
         {
             headers: {
@@ -33,13 +34,16 @@ function Item(props) {
             } else {
                 alert("Something went wrong while fetching...");
             }
+
             })
-        .then(categoryData=>setCategory(categoryData))
-        .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
-        }, []);
+            .then(categoryData => setCategory(categoryData))
+            .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+    }, []);
 
     useEffect(() => {
+
             fetch(apiUrl + "api/vendor/" + vendorId,
+
             {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")
@@ -51,24 +55,34 @@ function Item(props) {
                 } else {
                     alert("Something went wrong while fetching...");
                 }
-                })
-            .then(vendorData=>setVendor(vendorData))
+            })
+            .then(vendorData => setVendor(vendorData))
             .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
-            }, []);
+    }, []);
 
 
     return (
-        <div className="item-card">
-            <p className="name"><b>{name}</b></p>
-            <img src={imageUrl}  width="180" height="160"></img>
-            <p><b>Quantity: </b>{quantity} {scale}</p>
-            <p><b>Expiration Date: </b>{expirationDate}</p>
-            <p><b>Category: </b> {category}</p>
-            <p><b>Vendor: </b> {vendor.name}</p>
-            <Link to ={'/editItem/'+itemId}><button >EDIT</button></Link> &emsp;
-            <Link to={"/deleteItem/" + itemId} ><button>DELETE</button></Link>
-        
-      
+        <div class="card col-md-6">
+            <div className="row"><h1 class="card-title">{name}</h1>
+            </div>
+            <div className="row">
+                <div className="col-md-6">
+                    <img class="card-img-top img-fluid" src={imageUrl} alt="Card image cap"></img></div>
+
+                <div className="col-md-6">
+                     
+                        <p className="cardinfo"><b>Quantity:</b> {quantity} {scale}</p>
+                        <p className="cardinfo"><b>Expiration Date: </b>{expirationDate}</p>
+                        <p className="cardinfo"><b>Category: </b> {category}</p>
+                        <p className="cardinfo"><b>Vendor: </b> {vendor.name}</p>
+                      
+                    <NavLink className="nav-link" to={'/editItem/' + itemId}><button className="cardbtn">EDIT</button></NavLink> 
+                    <NavLink className="nav-link" to={"/deleteItem/" + itemId} ><button className="cardbtn">DELETE</button></NavLink>
+              
+                </div>
+            </div>
+
+
         </div>
     )
 

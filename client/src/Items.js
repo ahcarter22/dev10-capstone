@@ -1,6 +1,7 @@
 import { getDefaultNormalizer } from "@testing-library/react";
 import { useState, useEffect } from "react";
 import Item from "./Item";
+import Search from "./Search";
 
 
 
@@ -10,6 +11,7 @@ function Items() {
     const apiUrl=window.API_URL;
 
     useEffect(() => {
+
         fetch(apiUrl + "api/item",
         {
             headers: {
@@ -22,43 +24,69 @@ function Items() {
             } else {
                 alert("Something went wrong while fetching...");
             }
+
             })
-        .then(itemData => setItems(itemData))
-        .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
-        }, []);
+            .then(itemData => setItems(itemData))
+            .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
+    }, []);
 
     function removeItemFromState(itemId) {
         setItems(items.filter(itemObj => itemObj.itemId !== itemId));
     }
 
     function itemFactory() {
-        const sortedItems = items.sort((a , b) => new Date(a.expirationDate) - new Date(b.expirationDate))
-        console.log(sortedItems)
-        return sortedItems.map(itemObj => (
-            <Item 
-                key={itemObj.itemId} 
-                itemObj={itemObj} 
+       
+        return items.map(itemObj => (
+            <Item
+                key={itemObj.itemId}
+
+                itemObj={itemObj}
                 items={items}
                 removeFromState={removeItemFromState}
             />
         ))
     }
 
+    function changeSorting() {
+        var sortBy = document.getElementById("select-sorting").value;
+        let sortedItems = [...items];
+        if (sortBy == "quantity") {
+            sortedItems.sort((a, b) => a.quantity - b.quantity)
+        } else if (sortBy == "name") {
+            sortedItems.sort((a, b) => a.name.localeCompare(b.name))
+        } else {
+            sortedItems.sort((a, b) => new Date(a.expirationDate) - new Date(b.expirationDate));
+        }
+        console.log("before", items === sortedItems);
+        setItems(sortedItems);
+        console.log("after", items === sortedItems);
+
+        return sortedItems.map(itemObj => (
+            <Item
+                key={itemObj.itemId}
+                itemObj={itemObj}
+                items={items}
+                removeFromState={removeItemFromState}
+            />
+        ))
+    }
+    // function changeSorting() {
+    //     var sortBy = document.getElementById("select-sorting").value;
+    //     document.getElementById("sort-value").innerHTML(sortBy);
+    // }
+
+   
+
+
     function handleEmail(e){
         e.preventDefault();
-
-       
-        
         const x = document.getElementById("hideEmailMsg");
         x.id = "showEmailMsg";
-        console.log(x);
         const y = document.getElementById("showEmailBtn");
         y.id = "hideEmailBtn";
 
         items.forEach(item => {
             if (item.quantity < 10){
-
-
                 const newEmail = {
                     to: "ahcarter22@gmail.com",
                     subject: "warning: " + item.name,
@@ -66,6 +94,7 @@ function Items() {
                 };
 
                 fetch(apiUrl + "api/message", {
+
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -91,7 +120,7 @@ function Items() {
 
     }
 
-    function handleHideMsg(){
+    function handleHideMsg() {
         const x = document.getElementById("showEmailMsg");
         x.id = "hideEmailMsg";
         const y = document.getElementById("hideEmailBtn");
@@ -102,40 +131,45 @@ function Items() {
     return (
 
         <>
-        
-        <div className="item">
-        
-        <div className="item-page">
-        
-        <h1 className="item-bg-text">Items</h1>
-        
-        
-        
-        <div className="itemcards container row">
-        
-        <div class="col-md-12">
-        
-        <div id="showEmailBtn" onClick={handleEmail}><button>Send Low Quantity Email Warning</button></div>
-        
-        <div id="hideEmailMsg" onClick={handleHideMsg}>
-        
-        <button>Hide Msg</button>
-        
-        <p>Low quantity warning emails sent to vendors</p>
-        
-        </div>
-        
-        {itemFactory()}</div></div>
-        
-        
-        
-        </div>
-        
-        
-        
-        </div>
-        
-        </>    
+
+
+            <div className="item">
+                <div className="item-page">
+                    
+                    <h1 className="item-bg-text">Items</h1></div>
+                <div>
+
+                    <div className="emailbtn" id="showEmailBtn" ><button onClick={handleEmail} className="sendemail">Send Low Quantity Email Warning</button></div>
+                    <div id="hideEmailMsg" onClick={handleHideMsg}>
+
+                        <p className="animate__animated animate__heartBeat emailtxt">Warning emails successfully sent to vendors 📤 </p>
+                        <button className="hideemail">Hide Msg</button>
+
+                    </div>
+                    <div className= "row">
+                    <div className="col-md-6 sortitem">
+                        <p className="sort-label">SORT BY: &emsp;
+                            <select className="sortselect" id="select-sorting" onChange={changeSorting}>
+                                <option value="random">Please Select</option>
+                                <option value="expirationDate">Expiration Date</option>
+                                <option value="quantity">Quantity (low to high)</option>
+                                <option value="name">NAME (A to Z)</option>
+                            </select></p></div>
+                            <div className="col-md-6 searchbar">
+                        <Search setItems={setItems} />
+                    </div></div>
+
+                    <div className="itemcards container row">
+
+                        {itemFactory()}</div>
+                </div>
+
+
+
+            </div>
+        </>
+
+
     )
 }
 

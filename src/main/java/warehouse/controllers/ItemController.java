@@ -64,5 +64,19 @@ public class ItemController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+    @GetMapping("/search")
+    public ResponseEntity findByName(String name){
+        if (name == null) {
+            return new ResponseEntity("Name cannot be null", HttpStatus.BAD_REQUEST);
+        }else{
+            List<Item> foundItem = itemService.findByName(name);
+            if (foundItem != null) {
+                return ResponseEntity.ok(foundItem);
+            }else{
+                return new ResponseEntity("Not found",HttpStatus.NOT_FOUND);
+            }
+        }
+
+    }
 
 }

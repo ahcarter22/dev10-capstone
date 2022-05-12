@@ -16,11 +16,15 @@ import NotFound from "./NotFound";
 import AllErrors from "./AllErrors";
 import jwtDecode from 'jwt-decode';
 import About from "./About";
+import Search from './Search';
+
 
 import { useEffect, useState } from "react";
 
 
 function App() {
+  //const[foundItems,setFoundItems]=useState([]);
+
   const [user, setUser] = useState({
     user: null
   });
@@ -32,10 +36,12 @@ function App() {
     }
   },[]);
 
-  const[errorList, setErrorList]=useState([]);
+   const [errorList, setErrorList] = useState([]);
   return (
+
     <AuthContext.Provider value={[user, setUser]}>
       <div className="App">
+      
         <BrowserRouter>
         <Nav />
 
@@ -47,13 +53,14 @@ function App() {
           {user?.user ? (
               <>
                 <Route path="/items" element={<Items />} />
-                <Route path="/addItem" element={<AddItem overwriteErrorList={setErrorList}/>} />
+                <Route path="/addItem" element={<AddItem errorList={errorList} setErrorList={setErrorList}/>} />
                 <Route path="/editItem/:itemId" element={<EditItem />} />
                 <Route path="/deleteItem/:itemId" element={<DeleteItem />} />
                 <Route path="/vendors" element={<Vendors />} />
-                <Route path="/addVendor" element={<AddVendor />} />
+                <Route path="/addVendor" element={<AddVendor errorList={errorList} setErrorList={setErrorList}/>} />
                 <Route path="/editVendor/:vendorId" element={<EditVendor />} />
                 <Route path="/deleteVendor/:vendorId" element={<DeleteVendor />} />
+                
               </>
           ): (
             <>
@@ -64,7 +71,7 @@ function App() {
           <Route path="*" element={<NotFound/>} />
         </Routes>
 
-        <AllErrors errorList={errorList} />
+        
       
 
         </BrowserRouter> 

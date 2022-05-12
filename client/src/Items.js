@@ -88,8 +88,8 @@ function Items() {
             if (item.quantity < 10){
                 const newEmail = {
                     to: "ahcarter22@gmail.com",
-                    subject: "warning: " + item.name,
-                    text: item.name + "has low quantity"
+                    subject: "Dunder Mifflin Warehouse: Warning Low Quantity For " + item.name,
+                    text: item.name + " has low quantity, there are only " + item.quantity + " " + item.scale + " remaining. Please arrange a delivery date." 
                 };
 
                 fetch(apiUrl + "api/message", {

@@ -43,7 +43,7 @@ function Login() {
         <div className="row login-form container">
             
             <div class="col-md-6 login-left">
-            <img className="loginimg" src="https://o.remove.bg/downloads/d7028fef-8a1c-48ca-878f-3b9dd2fe5d7e/login-removebg-preview.png"></img>
+            {/* <img className="loginimg" src="https://o.remove.bg/downloads/ad8cda1d-f2b0-4a3c-aed2-c32f761db56c/login-removebg-preview.png"></img> */}
             </div>
             <div class="col-md-6 login-right">
                 <form className="formInfo" onSubmit={submitHandler}>

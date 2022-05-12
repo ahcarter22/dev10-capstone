@@ -52,6 +52,11 @@ function EditVendor() {
         copy.phone = event.target.value;
         setToEdit(copy);
     }
+    function handleImageUrlChange(event) {
+        let copy = { ...toEdit }
+        copy.imageUrl = event.target.value;
+        setToEdit(copy);
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -95,7 +100,9 @@ function EditVendor() {
                         <label className="login-label" htmlFor="email">Email:</label><br />
                         <input className="add-input" id="email" value={toEdit.email} onChange={handleEmailChange}></input><br />
                         <label className="login-label" htmlFor="phone">Phone:</label><br />
-                        <input className="add-input" id="phone" value={toEdit.phone} onChange={handlePhoneChange}></input><br /><br /><br />
+                        <input className="add-input" id="phone" value={toEdit.phone} onChange={handlePhoneChange}></input><br />
+                        <label className="login-label" htmlFor="imageUrl">ImageUrl:</label><br />
+                        <input className="add-input" id="imageUrl" value={toEdit.imageUrl} onChange={handleImageUrlChange}></input><br /><br /><br />
                         <button className="cardbtn1"> Submit </button> &emsp;&emsp;
                         <button className="cardbtn1" onClick={handleCancel}>Cancel</button>
                     </form>

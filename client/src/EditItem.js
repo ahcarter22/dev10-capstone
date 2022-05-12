@@ -56,6 +56,11 @@ function EditItem() {
         copy.expirationDate = event.target.value;
         setToEdit(copy);
     }
+    function handleImageUrlChange(event){
+        let copy = { ...toEdit }
+        copy.imageUrl = event.target.value;
+        setToEdit(copy);
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -102,7 +107,9 @@ function EditItem() {
                             <label className="login-label" htmlFor="scale">Scale:</label><br />
                             <input className="add-input" id="scale" value={toEdit.scale} onChange={handleScaleChange}></input><br />
                             <label className="login-label" htmlFor="exp">Expiration Date:</label><br />
-                            <input className="add-input" id="exp" value={toEdit.expirationDate} onChange={handleExpirationDateChange}></input><br /><br /><br />
+                            <input className="add-input" id="exp" value={toEdit.expirationDate} onChange={handleExpirationDateChange}></input><br />
+                            <label className="login-label" htmlFor="imageUrl">ImageUrl:</label><br />
+                            <input className="add-input" id="imageUrl" value={toEdit.imageUrl} onChange={handleImageUrlChange}></input><br /><br /><br />
                             <button className="cardbtn1"> Submit </button>  &emsp; &emsp;
                             <button className="cardbtn1" onClick={handleCancel}>Cancel</button>
 

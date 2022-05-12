@@ -228,7 +228,7 @@ select {
   margin: 5em 0 0 0;
 }
 .about-right {
-	background: url(3.jpg) no-repeat 0px 0px;
+	background: url(team.png) no-repeat 0px 0px;
   background-size: contain;
   min-height: 600px;
 }
@@ -263,7 +263,7 @@ select {
   background: rgba(0, 0, 0, 0.6) url('https://www.americanwarehouses.com/hubfs/AmericanWarehouses_Blog_TheBestApproachToLeasingWarehouseSpace.jpg');
   background-size: cover;
   background-blend-mode: darken;
-  height: 700px;
+  height: 900px;
 }
 .login-form{
   padding-top: 50px;

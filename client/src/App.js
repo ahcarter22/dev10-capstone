@@ -18,11 +18,13 @@ import jwtDecode from 'jwt-decode';
 import About from "./About";
 import Search from './Search';
 
+
 import { useEffect, useState } from "react";
 
 
 function App() {
   //const[foundItems,setFoundItems]=useState([]);
+
   const [user, setUser] = useState({
     user: null
   });
@@ -36,8 +38,10 @@ function App() {
 
    const [errorList, setErrorList] = useState([]);
   return (
+
     <AuthContext.Provider value={[user, setUser]}>
       <div className="App">
+      
         <BrowserRouter>
         <Nav />
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Item from "./Item";
+import Search from "./Search";
 
 
 function Items() {
@@ -28,8 +29,32 @@ function Items() {
     }
 
     function itemFactory() {
-        const sortedItems = items.sort((a, b) => new Date(a.expirationDate) - new Date(b.expirationDate))
-        console.log(sortedItems)
+       
+        return items.map(itemObj => (
+            <Item
+                key={itemObj.itemId}
+
+                itemObj={itemObj}
+                items={items}
+                removeFromState={removeItemFromState}
+            />
+        ))
+    }
+
+    function changeSorting() {
+        var sortBy = document.getElementById("select-sorting").value;
+        let sortedItems = [...items];
+        if (sortBy == "quantity") {
+            sortedItems.sort((a, b) => a.quantity - b.quantity)
+        } else if (sortBy == "name") {
+            sortedItems.sort((a, b) => a.name.localeCompare(b.name))
+        } else {
+            sortedItems.sort((a, b) => new Date(a.expirationDate) - new Date(b.expirationDate));
+        }
+        console.log("before", items === sortedItems);
+        setItems(sortedItems);
+        console.log("after", items === sortedItems);
+
         return sortedItems.map(itemObj => (
             <Item
                 key={itemObj.itemId}
@@ -39,6 +64,10 @@ function Items() {
             />
         ))
     }
+    // function changeSorting() {
+    //     var sortBy = document.getElementById("select-sorting").value;
+    //     document.getElementById("sort-value").innerHTML(sortBy);
+    // }
 
     function handleEmail() {
 
@@ -89,13 +118,30 @@ function Items() {
         <>
 
             <div className="item">
-                <div className="item-page"><h1 className="item-bg-text">Items</h1></div>
+                <div className="item-page">
+                    
+                    <h1 className="item-bg-text">Items</h1></div>
                 <div>
-                    <div class="col-md-4" id="showEmailBtn" onClick={handleEmail}><button>Send Low Quantity Email Warning</button></div>
+
+                    <div className="emailbtn" id="showEmailBtn" ><button onClick={handleEmail} className="sendemail">Send Low Quantity Email Warning</button></div>
                     <div id="hideEmailMsg" onClick={handleHideMsg}>
-                        <button>Hide Msg</button>
-                        <p>Low quantity warning emails sent to vendors</p>
+
+                        <p className="animate__animated animate__heartBeat emailtxt">Warning emails successfully sent to vendors 📤 </p>
+                        <button className="hideemail">Hide Msg</button>
+
                     </div>
+                    <div className= "row">
+                    <div className="col-md-6 sortitem">
+                        <p className="sort-label">SORT BY: &emsp;
+                            <select className="sortselect" id="select-sorting" onChange={changeSorting}>
+                                <option value="random">Please Select</option>
+                                <option value="expirationDate">Expiration Date</option>
+                                <option value="quantity">Quantity (low to high)</option>
+                                <option value="name">NAME (A to Z)</option>
+                            </select></p></div>
+                            <div className="col-md-6 searchbar">
+                        <Search setItems={setItems} />
+                    </div></div>
 
                     <div className="itemcards container row">
 

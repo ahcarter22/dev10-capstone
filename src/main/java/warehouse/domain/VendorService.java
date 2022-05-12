@@ -23,6 +23,8 @@ public class VendorService {
         return vendorRepository.findById(vendorId);
     }
 
+    public List<Vendor> findByName(String name) {return vendorRepository.findByName(name);}
+
     public Result<Vendor> add(Vendor vendor) {
 
         Result<Vendor> result = validate(vendor);

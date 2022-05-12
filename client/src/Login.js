@@ -42,7 +42,9 @@ function Login() {
         <div className="login-bg">
         <div className="row login-form container">
             
-            <div class="col-md-6 login-left">PUT SOME WORDS HERE</div>
+            <div class="col-md-6 login-left">
+            {/* <img className="loginimg" src="https://o.remove.bg/downloads/ad8cda1d-f2b0-4a3c-aed2-c32f761db56c/login-removebg-preview.png"></img> */}
+            </div>
             <div class="col-md-6 login-right">
                 <form className="formInfo" onSubmit={submitHandler}>
                     <label className="login-label">Username:</label><br />

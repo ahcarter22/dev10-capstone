@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class ItemDbRepository implements ItemRepository{
@@ -36,6 +37,15 @@ public class ItemDbRepository implements ItemRepository{
                 .findAny().orElse(null);
 
         return result;
+    }
+
+    @Override
+    public List<Item> findByName(String name) {
+        String sql = "select * from item where item_name like ?;";
+        return jdbcTemplate.query(sql,new ItemMapper(), "%" + name + "%")
+                .stream().filter(i->i.getName().toLowerCase()
+                .contains(name.toLowerCase())).collect(Collectors.toList());
+
     }
 
     @Override

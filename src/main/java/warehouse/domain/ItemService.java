@@ -25,6 +25,8 @@ public class ItemService {
         return itemRepository.findById(itemId);
     }
 
+    public List<Item> findByName(String name) {return itemRepository.findByName(name);}
+
     public Result<Item> add(Item item){
 
         Result<Item> result = validate(item);

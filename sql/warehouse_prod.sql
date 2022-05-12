@@ -62,10 +62,13 @@ create table app_user_role (
 
 insert into vendor (vendor_name, vendor_email, vendor_phone, vendor_imageUrl)
    values
-   ("Johnny's Apples", 'apples@johnny.com','347-123-0055',null),
-   ('Meats For Us', 'meats@meats.com','929-345-0123',null),
-   ('Millennial Avocados','avocados@millennial.org', '646-235-2215',null);
-
+   ("Johnny's Apples", 'apples@johnny.com','347-123-0055',"https://cdn.freelogodesign.org/files/b3c1bb6a59f045309ce4fccbcf5da165/thumb/logo_200x200.png?v=0"),
+   ('Meats For Us', 'meats@meats.com','929-345-0123',"https://cdn.freelogodesign.org/files/5c5b4ccbc270405fb7961c4b6fd9a59c/thumb/logo_200x200.png?v=0"),
+   ('Millennial Avocados','avocados@mill.org', '646-235-2215',"https://cdn.freelogodesign.org/files/cb262064f88c46e49539c1b7579e06eb/thumb/logo_200x200.png?v=0"),
+   ("Brilliant Bread Company", 'ltorvalds01@gmail.com','247-658-1658',"https://cdn.freelogodesign.org/files/4d694abdcfdf4f988390dc4e1ff13785/thumb/logo_200x200.png?v=0"),
+   ('Crayon Army', 'crayon@army.com','412-589-1147',"https://cdn.freelogodesign.org/files/a3c4324d031146d88cf83d74bb42cf2d/thumb/logo_200x200.png?v=0"),
+   ("Mr.Freezie's Smashing Delights",'ahcarter22@gmail.com', '646-235-2215',"https://cdn.freelogodesign.org/files/92dbbacbd24640c696adb862a7702a23/thumb/logo_200x200.png?v=0");
+   
 insert into app_role (`name`) values
     ('USER'),
     ('ADMIN');
@@ -90,8 +93,11 @@ insert into app_user_role
     ('BAKED GOODS');
 
    insert into item(item_name,quantity,scale,expiration_date,imageUrl,vendor_id,category_id) values
-    ("Johnny's Awesome Apple",100,'pounds','2020-10-05','https://c.tenor.com/1HdVv6rRFcQAAAAM/excited-apple.gif',1,2),
-    ('Brand Name Beef Sirloin',150,'pounds','2001-01-01','https://media2.giphy.com/media/Bij8vM5lm372rT13ty/giphy.gif',2,1),
-    ('Antiboomer Avocado',200,'pounds','2005-09-11','http://image.thepaper.cn/wap/image/9/745/963.gif',3,2);
-
+    ("Johnny's Awesome Apple",100,'pounds','2020-10-05','https://i.epochtimes.com/assets/uploads/2019/12/Fotolia_84273812_Subscription_L.jpg',1,2),
+    ('Brand Name Beef Sirloin',150,'pounds','2001-01-01','https://embed.widencdn.net/img/beef/melpznnl7q/800x600px/Top%20Sirloin%20Steak.psd?keep=c&u=7fueml',2,1),
+    ('Antiboomer Avocado',200,'pounds','2005-09-11','https://www.kroger.com/product/images/large/front/0000000004225',3,2),
+    ("Bangin Bread",3,'loaves','2022-10-05','https://www.houseofwellness.com.au/wp-content/uploads/2020/09/HOW-LH-banana-bread.jpg',6,6),
+    ('Crayon Army Draft Beer',150,'bottles','2025-11-24',"https://i.etsystatic.com/26215724/r/il/be4697/3386040000/il_fullxfull.3386040000_o10u.jpg",5,5),
+    ('Mr.Freezie Ice Cream',5,'cartons','2025-09-11','https://www.awesomealpharetta.com/wp-content/uploads/2020/06/ice_cream_cones_blog.jpg',4,4),
+    ("Honeycrisp Apple",90,'pounds','2023-01-04','https://images.heb.com/is/image/HEBGrocery/000466634',1,2);
 

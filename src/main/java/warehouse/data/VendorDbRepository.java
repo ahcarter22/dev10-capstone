@@ -4,12 +4,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import warehouse.data.mappers.ItemMapper;
 import warehouse.data.mappers.VendorMapper;
 import warehouse.models.Vendor;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Repository
 public class VendorDbRepository implements VendorRepository{
 
@@ -32,6 +35,14 @@ public class VendorDbRepository implements VendorRepository{
                 .findAny().orElse(null);
 
         return result;
+    }
+
+    @Override
+    public List<Vendor> findByName(String name) {
+        String sql = "select * from vendor where vendor_name like ?;";
+        return jdbcTemplate.query(sql,new VendorMapper(), "%" + name + "%")
+                .stream().filter(i->i.getName().toLowerCase()
+                        .contains(name.toLowerCase())).collect(Collectors.toList());
     }
 
     @Override

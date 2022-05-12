@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Vendor from "./Vendor";
+import SearchVendor from "./SearchVendor";
 
 
 function Vendors() {
@@ -40,13 +41,46 @@ function Vendors() {
         ))
     }
 
+    function changeSorting() {
+        var sortBy = document.getElementById("select-sorting").value;
+        let sortedVendors = [...vendors];
+        if (sortBy == "name") {
+            sortedVendors.sort((a, b) => a.name.localeCompare(b.name))
+        } else {
+            sortedVendors=vendors;
+        }
+        setVendors(sortedVendors);
+      
+        return sortedVendors.map(vendorObj => (
+            <Vendor
+            key={vendorObj.vendorId}
+            vendorObj={vendorObj}
+            vendors={vendors}
+            removeFromState={removeVendorFromState}
+        />
+        ))
+    }
+
     return (
         <div className="vendor">
             <div className="vendor-page">
                 <h1 className="vendor-bg-text">Vendors</h1></div>
-                <div className="vendor-bg"></div>
 
-            {vendorFactory()}
+                <div className= "row sv">
+                    <div className="col-md-6 sortitem">
+                        <p className="sort-label">SORT BY: &emsp;
+                            <select className="sortselect" id="select-sorting" onChange={changeSorting}>
+                                <option value="random">Please Select</option>
+                                <option value="name">NAME</option>
+                            </select></p></div>
+                            <div className="col-md-6 searchbar">
+                        <SearchVendor setVendors={setVendors} />
+                    </div></div>
+
+                <div className="vendorcards container row"> 
+                 {vendorFactory()}</div>
+
+           
         </div>
     )
 }

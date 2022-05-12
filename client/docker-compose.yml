@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   front-end:
-    image: ahcarter22/ui-warehouse:true-ev
+    image: ahcarter22/dmw-ui:true-env
     environment:
       - API_URL=http://test1-env.eba-riwszv5v.us-east-1.elasticbeanstalk.com/
     ports:

@@ -10,6 +10,7 @@ function Search({setItems}){
     const onSubmit = term =>  {
         setSearchTerm(term);
     }
+    const apiUrl=window.API_URL;
 
     useEffect(() => {
         if (searchTerm.searchTerm) {
@@ -18,7 +19,7 @@ function Search({setItems}){
     }, [searchTerm])
 
     function getSearchResults() {
-        fetch("http://localhost:8080/api/item/search?name=" + searchTerm.searchTerm,
+        fetch(apiUrl + "api/item/search?name=" + searchTerm.searchTerm,
         {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")

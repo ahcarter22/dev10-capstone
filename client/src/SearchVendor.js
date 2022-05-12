@@ -11,6 +11,8 @@ function SearchVendor({setVendors}){
         setSearchTerm(term);
     }
 
+    const apiUrl=window.API_URL;
+
     useEffect(() => {
         if (searchTerm.searchTerm) {
             getSearchResults();
@@ -18,7 +20,7 @@ function SearchVendor({setVendors}){
     }, [searchTerm])
 
     function getSearchResults() {
-        fetch("http://localhost:8080/api/vendor/search?name=" + searchTerm.searchTerm,
+        fetch(apiUrl + "api/vendor/search?name=" + searchTerm.searchTerm,
         {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")

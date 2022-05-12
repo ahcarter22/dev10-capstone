@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   backendApi:
-    image: ahcarter22/warehouse-image
+    image: ahcarter22/dmw-api:latest
     environment:
       - PROD_DB_URL=${PROD_DB_URL}
       - PROD_DB_USERNAME=${PROD_DB_USERNAME}

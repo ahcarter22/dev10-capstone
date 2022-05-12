@@ -3,11 +3,14 @@ import { useState, useEffect } from "react";
 import Item from "./Item";
 
 
+
 function Items() {
     const [items, setItems] = useState([]);
 
+    const apiUrl=window.API_URL;
+
     useEffect(() => {
-        fetch("http://localhost:8080/api/item",
+        fetch(apiUrl + "api/item",
         {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
@@ -62,7 +65,7 @@ function Items() {
                     text: item.name + "has low quantity"
                 };
 
-                fetch("http://localhost:8080/api/message", {
+                fetch(apiUrl + "api/message", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

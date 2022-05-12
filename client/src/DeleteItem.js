@@ -7,13 +7,15 @@ function DeleteItem(){
 
     const [toDelete, setToDelete] = useState(null);
 
+    const apiUrl=window.API_URL;
+
     useEffect( 
         () => {
 
             const jwt = localStorage.getItem( "token" );
             if( jwt ){
                 
-                fetch( "http://localhost:8080/api/item/" + itemId,
+                fetch( apiUrl + "api/item/" + itemId,
                     {
                         headers: {
                            Authorization: "Bearer " + jwt
@@ -48,7 +50,7 @@ function DeleteItem(){
     }
 
     function handleDelete() {
-        fetch("http://localhost:8080/api/item/" + itemId, {
+        fetch(apiUrl + "api/item/" + itemId, {
             method: "DELETE",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("token")

@@ -15,8 +15,11 @@ function AddItem({ overwriteErrorList }) {
     const [vendors, setVendors] = useState([]);
     const [categories,setCategories] = useState([]);
 
+    const apiUrl=window.API_URL;
+
     useEffect(() => {
-        fetch("http://localhost:8080/api/category", 
+        
+        fetch(apiUrl + "api/category", 
         {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
@@ -34,7 +37,8 @@ function AddItem({ overwriteErrorList }) {
         }, []);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/vendor",
+        
+        fetch(apiUrl + "api/vendor",
         {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
@@ -124,7 +128,7 @@ function AddItem({ overwriteErrorList }) {
             newItem.categoryId = categoryId;
 
 
-            fetch("http://localhost:8080/api/item", {
+            fetch(apiUrl + "api/item", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -149,7 +153,7 @@ function AddItem({ overwriteErrorList }) {
 
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/vendor",
+        fetch(apiUrl + "api/vendor",
             {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")

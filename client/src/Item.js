@@ -18,8 +18,10 @@ function Item(props) {
 
     console.log(props);
 
+    const apiUrl=window.API_URL;
+
     useEffect(() => {
-        fetch("http://localhost:8080/api/category/" + categoryId,
+        fetch(apiUrl + "api/category/" + categoryId,
         {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
@@ -37,7 +39,7 @@ function Item(props) {
         }, []);
 
     useEffect(() => {
-            fetch("http://localhost:8080/api/vendor/" + vendorId,
+            fetch(apiUrl + "api/vendor/" + vendorId,
             {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")

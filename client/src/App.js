@@ -40,7 +40,7 @@ function App() {
         <Nav />
 
         < Routes >
-        <Route path="/environment" element={<h1>{window.HELLO_REACT}</h1>} />
+        <Route path="/environment" element={<h1>{window.API_URL}</h1>} />
         
           <Route exact path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

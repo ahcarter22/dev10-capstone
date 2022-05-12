@@ -30,9 +30,6 @@ function Nav() {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                            <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/environment">Environment</NavLink>
-                        </li>
                         <li className="nav-item">
                             <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/">Home</NavLink>
                         </li>

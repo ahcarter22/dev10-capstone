@@ -6,7 +6,7 @@ import { NavLink,Link } from 'react-router-dom';
 
 
 function Item(props) {
-    console.log(props.itemObj)
+    
 
     const { itemId, name, quantity, scale,
         expirationDate, imageUrl, categoryId, vendorId } = props.itemObj;
@@ -16,7 +16,6 @@ function Item(props) {
 
     const [vendor, setVendor] = useState([]);
 
-    console.log(props);
 
     const apiUrl=window.API_URL;
 

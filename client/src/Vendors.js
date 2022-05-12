@@ -24,7 +24,7 @@ function Vendors() {
             .then(vendorData => setVendors(vendorData))
             .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
     }, []);
-    console.log(vendors)
+   
 
 
     function removeVendorFromState(vendorId) {

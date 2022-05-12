@@ -57,10 +57,9 @@ function Items() {
         } else {
             sortedItems.sort((a, b) => new Date(a.expirationDate) - new Date(b.expirationDate));
         }
-        console.log("before", items === sortedItems);
+       
         setItems(sortedItems);
-        console.log("after", items === sortedItems);
-
+       
         return sortedItems.map(itemObj => (
             <Item
                 key={itemObj.itemId}
@@ -142,8 +141,8 @@ function Items() {
                     <div className="emailbtn" id="showEmailBtn" ><button onClick={handleEmail} className="sendemail">Send Low Quantity Email Warning</button></div>
                     <div id="hideEmailMsg" onClick={handleHideMsg}>
 
-                        <p className="animate__animated animate__heartBeat emailtxt">Warning emails successfully sent to vendors 📤 </p>
-                        <button className="hideemail">Hide Msg</button>
+                        <p className="animate__animated animate__heartBeat emailtxt">Low quantity emails successfully sent to vendors 📤 </p>
+                        <button className="hideemail">Okay</button>
 
                     </div>
                     <div className= "row">

@@ -31,7 +31,7 @@ function EditVendor() {
                     return response.json();
                 })
                 .then(retrievedVendor => {
-                    console.log(retrievedVendor);
+                
                     setToEdit(retrievedVendor);
                 })
                 .catch(console.log);

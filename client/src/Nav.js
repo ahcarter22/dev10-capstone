@@ -14,7 +14,7 @@ function Nav() {
         navigate("/");
     }
 
-    console.log(user);
+ 
 
     return (
 

@@ -29,9 +29,7 @@ function Login() {
                 }
             })
             .then(tokenContainer => {
-                console.log("tokenContainer: ", tokenContainer)
-                const { jwt_token } = tokenContainer;
-                console.log("jwt_token: ", jwt_token)
+                const { jwt_token } = tokenContainer;  
                 localStorage.setItem("token", jwt_token);
                 setUser({ user: jwtDecode(jwt_token) });
                 navigate("/");

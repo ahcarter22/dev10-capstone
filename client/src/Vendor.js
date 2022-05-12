@@ -5,7 +5,7 @@ import AuthContext from './AuthContext';
 import { NavLink } from 'react-router-dom';
 
 function Vendor(props) {
-    console.log(props.vendorObj)
+    
 
     const { vendorId, name, email, phone, imageUrl } = props.vendorObj;
     const [user, setUser] = useContext(AuthContext);

@@ -77,7 +77,7 @@ function DeleteVendor(){
     return <>
     { toDelete ?
     <div className="deletepg">
-        <h2 className="animate__animated animate__swing deletetxt">Are you sure you'd like to delete {toDelete.name}?</h2>
+        <h2 className="deletetxt">Are you sure you'd like to delete {toDelete.name}?</h2>
         <button className="cardbtn1" onClick={handleDelete}>Delete</button> &emsp;&emsp;&emsp;
         <button className="cardbtn1" onClick={handleCancel}>Cancel</button>
         <div className="rusure">

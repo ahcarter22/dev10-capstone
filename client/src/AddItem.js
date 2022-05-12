@@ -56,7 +56,8 @@ function AddItem({ errorList,setErrorList }) {
                 return response.json();
             } else {
                 alert("Something went wrong while fetching...");
-            })
+            }
+        })
             .then(vendorData => setVendors(vendorData))
             .catch(rejection => alert("Failure: " + rejection.status + ": " + rejection.statusText));
     }, []);
